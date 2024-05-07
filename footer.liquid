@@ -1,0 +1,381 @@
+<div class="payment-gateway-wrapper container">
+  <div class="page-width">
+    <div class="first">
+      <p>Securely Pay Using</p>
+    </div>
+    <div class="mid">
+      <img src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/payment.svg?v=1714649113" alt="Coffeeza Payment Gateway" width="" height="35"/>
+      <img src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/payment_2.svg?v=1714649114" alt="Coffeeza Payment Gateway" width="" height="35"/>
+      <img src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/payment_1.svg?v=1714649114" alt="Coffeeza Payment Gateway" width="" height="35"/>
+      <img src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/payment_3.svg?v=1714649114" alt="Coffeeza Payment Gateway" width="" height="35"/>
+      <img src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/payment_4.svg?v=1714649114" alt="Coffeeza Payment Gateway" width="" height="35"/>
+    </div>
+    <div class="last">
+      <p>Oh! and Cash On Delivery too :)</p>
+    </div>
+  </div>
+</div>
+<footer class="page-footer {% if section.settings.sticky_footer %}page-footer--with-sticky-footer{% endif %}" data-section-id="{{ section.id }}" data-section-type="footer">
+  <div class="page-footer__inner {% if section.settings.sticky_footer %}sticky-footer{% endif %}">
+    {%- if section.settings.show_subscribe_form -%}
+      <div class="page-footer__subscribe subscribe-form">
+        <!-- <div class="subscribe-form__heading">
+          {{- section.settings.subscribe_title -}}
+        </div> -->
+
+        <!-- {%- if section.settings.subscribe_description != blank -%}
+          <div class="subscribe-form__text rte small-text">
+            {{- section.settings.subscribe_description -}}
+          </div>
+        {%- endif -%} -->
+        <div class="container">
+          <div class="page-width d-flex align-center justify-between">
+            <div class="left d-flex align-center justify-between">
+              <div class="d-flex justify-start align-start flex-column">
+                  <h2 class="email-sub-header">Get exclusive offers and updates</h2>
+                  <p class="email-sub-para">By signing up, you agree to with our Privacy Policy and Terms of Use.</p>
+              </div>
+            
+              {%- form 'customer' -%}
+                {%- if form.posted_successfully? -%}
+                  <div class="subscribe-form__response footer-subscribe-form__response--success">
+                    <h4>{{ 'layout.footer.subscribe_success' | t }}</h4>
+                  </div>
+                {%- else -%}
+                  {%- if form.errors -%}
+                    <div class="subscribe-form__response">
+                      {%- for field in form.errors -%}
+                        <p class="error-message">{{ field | capitalize }} - {{ form.errors.messages[field] }}</p>
+                      {%- endfor -%}
+                    </div>
+                  {%- endif -%}
+    
+                  <input type="hidden" id="contact_tags" name="contact[tags]" value="prospect,newsletter">
+                  <div class="subscribe-form__inputs">
+                    <div class="input-wrapper">
+                      <label class="subscribe-form__label" for="footer_mailinglist_email">
+                        {{- section.settings.subscribe_label -}}
+                      </label>
+                      <input type="email" required class="subscribe-form__email required" value="" id="footer_mailinglist_email" name="contact[email]">
+                    </div>
+                    <button class="btn btn--secondary subscribe-form__submit" type="submit">
+                      {{- section.settings.subscribe_button -}}
+                    </button>
+                  </div>
+                {%- endif -%}
+              {%- endform -%}
+            </div>
+            <div class="right">
+              <p class="footer-block__heading">{{ block.settings.heading | escape }}</p>
+              {%- render 'social-icons', icon_setting: settings.social_custom_icon_footer, icon_size: '48x' -%}
+              {%- if shop.features.follow_on_shop? and block.settings.enable_follow_on_shop -%}
+                <div class="follow-on-shop">
+                  {{- shop | login_button: action: 'follow' -}}
+                </div>
+              {%- endif -%}
+           </div>
+          </div>
+        </div>
+      </div>
+      <hr class="page-footer__hr">
+    {%- endif -%}
+    <div class="container">
+      <div class="page-width">
+        
+        {%- liquid
+          if section.blocks.size == 2
+            assign col_class = 'one-half'
+          elsif section.blocks.size == 3
+            assign col_class = 'one-third'
+          else
+            assign col_class = 'one-quarter'
+          endif
+        -%}
+
+        {%- if section.blocks.size > 0 -%}
+          <div class="page-footer__blocks grid">
+            {%- for block in section.blocks -%}
+              <div class="footer-block grid__item small-down--one-whole {{ col_class }}" {{ block.shopify_attributes }}>
+                {%- case block.type -%}
+                  {%- when 'link_list' -%}
+                    <p class="footer-block__heading">{{ block.settings.heading | escape }}</p>
+                    <ul class="nav">
+                      {%- for link in block.settings.menu.links -%}
+                        <li class="nav__item">
+                          <a href="{{ link.url }}" class="nav__link">{{ link.title }}</a>
+                        </li>
+                      {%- endfor -%}
+                    </ul>
+
+                  {%- when 'social' -%}
+                    <p class="footer-block__heading">{{ block.settings.heading | escape }}</p>
+                    {%- render 'social-icons', icon_setting: settings.social_custom_icon_footer, icon_size: '48x' -%}
+                    {%- if shop.features.follow_on_shop? and block.settings.enable_follow_on_shop -%}
+                      <div class="follow-on-shop">
+                        {{- shop | login_button: action: 'follow' -}}
+                      </div>
+                    {%- endif -%}
+
+                  {%- when 'text' -%}
+                    <p class="footer-block__heading">{{ block.settings.heading | escape }}</p>
+                    {%- if block.settings.text != blank -%}
+                      <div class="rte">
+                        {{ block.settings.text }}
+                      </div>
+                    {%- endif -%}
+                    {%- if shop.features.follow_on_shop? and block.settings.enable_follow_on_shop -%}
+                      <div class="follow-on-shop">
+                        {{- shop | login_button: action: 'follow' -}}
+                      </div>
+                    {%- endif -%}
+
+                {%- endcase -%}
+              </div>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+
+        <div class="page-footer__end">
+          <!-- <div>
+            {%- assign small_linklist = section.settings.small_linklist -%}
+            {%- if linklists[small_linklist].links.size > 0 -%}
+              <ul class="small-nav">
+                {%- for link in linklists[small_linklist].links -%}
+                  <li class="small-nav__item">
+                    <a class="small-nav__link" href="{{ link.url }}">{{ link.title }}</a>
+                  </li>
+                {%- endfor -%}
+              </ul>
+            {%- endif -%}
+
+            <small class="copyright-text">
+              {{ 'layout.footer.copyright' | t }} &copy; {{ 'now' | date: "%Y" }} <a href="{{ routes.root_url }}">{{ shop.name }}</a>.
+              {% if section.settings.show_powered_by %}
+                {{ powered_by_link }}
+              {% endif %}
+            </small>
+          </div>
+
+          <div>
+            {%- if section.settings.show_country_selector or section.settings.show_language_selector -%}
+              <div class="footer-localization">
+                {% render 'localization', input_prefix: 'footer' %}
+              </div>
+            {%- endif -%}
+
+            {%- if section.settings.show_payment_icons -%}
+              {% unless shop.enabled_payment_types == empty %}
+                <span class="visually-hidden">{{ 'layout.footer.payment_methods' | t }}</span>
+                <ul class="payment-icons">
+                  {%- for type in shop.enabled_payment_types -%}
+                    <li class="payment-icon">
+                      {{ type | payment_type_svg_tag: class: 'payment-icon-svg' }}
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              {% endunless %}
+            {%- endif -%}
+          </div> -->
+
+          <div class="second">
+            <div class="left d-flex justify-between align-start">
+                <ul>
+                    <li><a href="https://coffeeza.in/collections/all">Shop</a></li>
+                    <li><a href="https://coffeeza.wiq.app/">Track Your Order</a></li>
+                    <li><a href="https://coffeeza.in/pages/offer">Register Warranty</a></li>
+                    <li><a href="https://coffeeza.in/pages/coffeeza-for-business">For Business</a></li>
+                    <li><a href="https://coffeeza.in/pages/capsule-recycling-program">Recycling Program</a></li>
+                    <li><a href="https://coffeeza.in/pages/videos">How-to Videos</a></li>
+                    <li><a href="https://coffeeza.in/pages/recipe-videos">Recipe Videos</a></li>
+                </ul>
+                <ul>
+                    <li><a href="https://coffeeza.in/pages/contact">Contact Us</a></li>
+                    <li><a href="https://coffeeza.in/policies/terms-of-service">Terms of Service</a></li>
+                    <li><a href="https://coffeeza.in/policies/privacy-policy">Privacy Policy</a></li>
+                    <li><a href="https://coffeeza.in/policies/refund-policy">Refund Policy</a></li>
+                    <li><a href="https://coffeeza.in/pages/warranty-policy">Warranty Policy</a></li>
+                    <li><a href="https://coffeeza.in/pages/shipping-policy">Shipping Policy</a></li>
+                </ul>
+                <div class="right">
+                    <div class="footer-logo">
+                        <a href="https://coffeeza.in/" >
+                            <img src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/logo_9a6bec34-ea93-40f4-97a2-7453fafc400b.png?v=1714630155" alt="" width="250" height="65" loading="lazy">
+                        </a>
+                    </div>
+                    <div class="d-flex justify-between align-start">
+                        <img width="20" height="20" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/image.svg?v=1714710868" alt="">
+                        <div>
+                            <h3>Shop with an Expert.</h3>
+                            <p>We're here to help.</p>
+                            <p>Call Us: <a title="Phone" href="tel:18001235171">1-800-123-5171</a></p>
+                            <p>Mail Us: <a href="mailto:write@coffeeza.in" target="_blank">write@coffeeza.com</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="third">
+            <p>Copyright © 2024 Coffeeza. Powered by Shopify</p>
+            <p>* Coffeeza is not affiliated with or endorsed or sponsored by Nespresso. Nespresso®️ is a registered trademark of Societe des Produits Nestlé S.A. Coffeeza is suitable for Nespresso®️ OriginalLine machines, excluding professional machines and 'built-in' models.</p>
+        </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+  {
+    "name": "Footer",
+    "settings": [
+      {
+        "type": "link_list",
+        "id": "small_linklist",
+        "label": "Secondary menu",
+        "info": "This menu won't show dropdown items"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_powered_by",
+        "label": "Show 'Powered by Shopify'",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_payment_icons",
+        "label": "Show payment icons",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "sticky_footer",
+        "label": "Enable scroll-reveal effect",
+        "default": false,
+        "info": "Only shown on desktop screens"
+      },
+      {
+        "type": "header",
+        "content": "Country/Region Selector",
+        "info": "To add a country/region, go to your [payment settings.](/admin/settings/payments)"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_country_selector",
+        "label": "Enable country/region selector",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Language Selector",
+        "info": "To add a language, go to your [language settings.](/admin/settings/languages)"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_language_selector",
+        "label": "Show language selector",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Newsletter"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_subscribe_form",
+        "label": "Show newsletter signup",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "subscribe_title",
+        "label": "Heading",
+        "default": "Get updates"
+      },
+      {
+        "type": "text",
+        "id": "subscribe_label",
+        "label": "Label",
+        "default": "Email address"
+      },
+      {
+        "type": "text",
+        "id": "subscribe_button",
+        "label": "Submit button text",
+        "default": "Sign up"
+      },
+      {
+        "type": "richtext",
+        "id": "subscribe_description",
+        "label": "Subheading"
+      }
+    ],
+    "max_blocks": 4,
+    "blocks": [
+      {
+        "type": "link_list",
+        "name": "Menu",
+        "settings": [
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+            "default": "Footer links"
+          },
+          {
+            "type": "link_list",
+            "id": "menu",
+            "label": "Menu",
+            "default": "footer"
+          }
+        ]
+      },
+      {
+        "type": "social",
+        "name": "Social links",
+        "settings": [
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+            "default": "Follow us"
+          },
+          {
+            "type": "checkbox",
+            "id": "enable_follow_on_shop",
+            "label": "Enable Follow on Shop",
+            "info": "To allow customers to follow your store on the Shop app from your storefront, Shop Pay must be enabled. [Learn more](https://help.shopify.com/manual/online-store/themes/customizing-themes/follow-on-shop)",
+            "default": false
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "name": "Text area",
+        "settings": [
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+            "default": "Talk about your store"
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text",
+            "default": "<p>Share store details, promotions, or brand content with your customers.</p>"
+          },
+          {
+            "type": "checkbox",
+            "id": "enable_follow_on_shop",
+            "label": "Enable Follow on Shop",
+            "info": "To allow customers to follow your store on the Shop app from your storefront, Shop Pay must be enabled. [Learn more](https://help.shopify.com/manual/online-store/themes/customizing-themes/follow-on-shop)",
+            "default": false
+          }
+        ]
+      }
+    ]
+  }
+
+{% endschema %}
