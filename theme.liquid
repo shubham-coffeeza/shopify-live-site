@@ -128,7 +128,6 @@
     {% sections 'header-group' %}
     
     {% section 'as-seen-on' %}
-    
 
     <a href="#" class="focus-tint" aria-hidden="true" aria-label="{{ 'general.accessibility_labels.close' | t }}"></a>
   </div>
@@ -142,13 +141,23 @@
   {% endunless %}
 
   <main id="MainContent">
-    {%- assign accent_alpha = settings.accent_color | color_extract: 'alpha' -%}
     {%- if template contains 'index' -%}
       {%- if settings.color_body_background != settings.accent_color and accent_alpha > 0 -%}
         <span class="accent-background"></span>
       {%- endif -%}
       {% section 'banner' %}
     {%- endif -%}
+
+    {% section 'main-categories' %}
+
+    {% section 'exclusive-collection' %}
+    
+    {% section 'must-try' %}
+
+    {% section 'hero-section' %}
+
+    {% section 'instagram-reels' %}
+    
     {{ content_for_layout }}
   </main>
 
