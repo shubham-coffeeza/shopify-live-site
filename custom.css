@@ -519,7 +519,7 @@ body{
   &.custom-ground-coffee{
     .collection-title-outer{
           text-align: center;
-          margin: 50px 0 10px;
+          margin: 50px auto 10px auto;
         }
       .collection-para-outer{
         margin: 0 auto 50px auto;
@@ -569,6 +569,230 @@ body{
      }
   }
 
+  &.custom-pour-overs{
+    .collection-title-outer{
+          text-align: center;
+          margin: 50px auto 10px auto;
+        }
+    .collection-para-outer{
+      margin: 0 auto 50px auto;
+      text-align: center;
+      width: 60%;
+    }
+    .bestselling-pourover-wrapper{
+      
+        
+      padding-top: 75px;
+      padding-bottom: 100px;
+      .bestselling-pourover{
+        padding-bottom: 20px;
+        .prod-card{
+          /* padding: 0 15px; */
+        }
+        .prev, .next{
+          display: none;
+        }
+      }
+    }
+     .full-width-banner{
+       position: relative;
+       width: 100%;
+     
+      img{
+        width: 100%;
+      }
+       .collection-data{
+         position: absolute;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+         width: 100%;
+       }
+      .collection-title{
+          text-align: center;
+        margin-bottom: 5px;
+        color: #fff;
+        }
+      .collection-para{
+        text-align: center;
+        width: 60%;
+        color: #fff;
+        margin: auto;
+      }
+     }
+    }
+
+  &.custom-bestsellers{
+    .collection-title-outer{
+          text-align: center;
+          margin: 50px auto 10px auto;
+        }
+    .collection-para-outer{
+      margin: 0 auto 50px auto;
+      text-align: center;
+      width: 60%;
+    }
+    .bestselling-bestsellers-wrapper{
+      
+        
+      padding-top: 75px;
+      padding-bottom: 100px;
+      .bestselling-bestsellers{
+        padding-bottom: 20px;
+        .prod-card{
+          /* padding: 0 15px; */
+        }
+        .prev, .next{
+          display: none;
+        }
+      }
+    }
+     .full-width-banner{
+       position: relative;
+       width: 100%;
+     
+      img{
+        width: 100%;
+      }
+       .collection-data{
+         position: absolute;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+         width: 100%;
+       }
+      .collection-title{
+          text-align: center;
+        margin-bottom: 5px;
+        color: #fff;
+        }
+      .collection-para{
+        text-align: center;
+        width: 60%;
+        color: #fff;
+        margin: auto;
+      }
+     }
+    }
+
+  &.custom-accessories{
+    .collection-title-outer{
+          text-align: center;
+          margin: 50px auto 10px auto;
+        }
+    .collection-para-outer{
+      margin: 0 auto 50px auto;
+      text-align: center;
+      width: 60%;
+    }
+    .bestselling-accessories-wrapper{
+      
+        
+      padding-top: 75px;
+      padding-bottom: 100px;
+      .bestselling-accessories{
+        padding-bottom: 20px;
+        .prod-card{
+          /* padding: 0 15px; */
+        }
+        .prev, .next{
+          display: none;
+        }
+      }
+    }
+     .full-width-banner{
+       position: relative;
+       width: 100%;
+     
+      img{
+        width: 100%;
+      }
+       .collection-data{
+         position: absolute;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+         width: 100%;
+       }
+      .collection-title{
+          text-align: center;
+        margin-bottom: 5px;
+        color: #fff;
+        }
+      .collection-para{
+        text-align: center;
+        width: 60%;
+        color: #fff;
+        margin: auto;
+      }
+     }
+    }
+
+   &.custom-machines{
+    .banner-custom, .breadcrumbs-container{
+      display: none;
+    }
+    .custom-breadcrumb {
+      display: block;
+    }
+   
+    .hero-section-wrapper{
+      video{
+        width: 100%;
+      }
+    }
+    .collection-title-outer{
+          text-align: center;
+          margin: 50px auto 10px auto;
+        }
+    .collection-para-outer{
+      margin: 0 auto 50px auto;
+      text-align: center;
+      width: 60%;
+    }
+    .bestselling-machines-wrapper{
+      
+        
+      padding-top: 75px;
+      padding-bottom: 100px;
+      .bestselling-machines{
+        padding-bottom: 20px;
+        .prod-card{
+          /* padding: 0 15px; */
+        }
+        .prev, .next{
+          display: none;
+        }
+      }
+    }
+     .full-width-banner{
+       position: relative;
+       width: 100%;
+     
+      img{
+        width: 100%;
+      }
+       .collection-data{
+         position: absolute;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+         width: 100%;
+       }
+      .collection-title{
+          text-align: center;
+        margin-bottom: 5px;
+        color: #fff;
+        }
+      .collection-para{
+        text-align: center;
+        width: 60%;
+        color: #fff;
+        margin: auto;
+      }
+     }
+    }
+  
   &.custom-capsules{
     .everything-wrapper{
       padding-top: 25px;
@@ -1480,8 +1704,9 @@ body{
   }
 
   .scroll-slider-wrapper{
-            overflow-x: auto;
-          overflow-y: hidden;
+    padding: 0 15px;
+        overflow-x: auto;
+        overflow-y: hidden;
         scroll-behavior: smooth;
         &::-webkit-scrollbar {
             // width: 5px;
@@ -1976,6 +2201,62 @@ body{
           }
         }
       }
+
+    &.custom-pour-overs{
+        .bestselling-pourover-wrapper{
+          .bestselling-pourover{
+            .prod-card{
+              grid-template-columns: repeat(3, 40%);
+                gap: 30px;
+            }
+            .prev, .next{
+              display: block;
+            }
+          }
+        }
+      }
+
+    &.custom-bestsellers{
+        .bestselling-bestsellers-wrapper{
+          .bestselling-bestsellers{
+            .prod-card{
+              grid-template-columns: repeat(3, 40%);
+                gap: 30px;
+            }
+            .prev, .next{
+              display: block;
+            }
+          }
+        }
+      }
+    
+    &.custom-accessories{
+        .bestselling-accessories-wrapper{
+          .bestselling-accessories{
+            .prod-card{
+              grid-template-columns: repeat(3, 40%);
+                gap: 30px;
+            }
+            .prev, .next{
+              display: block;
+            }
+          }
+        }
+      }
+
+    &.custom-machines{
+        .bestselling-machines-wrapper{
+          .bestselling-machines{
+            .prod-card{
+              grid-template-columns: repeat(3, 40%);
+                gap: 30px;
+            }
+            .prev, .next{
+              display: block;
+            }
+          }
+        }
+      }
     
     .header-group header{
       .close-mobile-menu{
@@ -2275,7 +2556,6 @@ body{
     &.custom-ground-coffee{
     .collection-title-outer{
           text-align: center;
-          margin: 50px 0 10px;
       font-size: 26px;
         }
       .collection-para-outer{
@@ -2289,6 +2569,222 @@ body{
       padding-top: 50px;
       padding-bottom: 75px;
       .bestselling-groundcoffee{
+        padding-bottom: 20px;
+        .prod-card{
+          /* padding: 0 15px; */
+        }
+        .prev, .next{
+          display: block;
+        }
+      }
+    }
+     .full-width-banner{
+       position: relative;
+       width: 100%;
+     
+      img{
+        width: 100%;
+      }
+       .collection-data{
+         position: absolute;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+         width: 100%;
+       }
+      .collection-title{
+          text-align: center;
+        margin-bottom: 5px;
+        color: #fff;
+        font-size: 26px;
+        }
+      .collection-para{
+        text-align: center;
+        width: 100% !important;
+        color: #fff;
+        margin: auto;
+      }
+     }
+  }
+
+     &.custom-pour-overs{
+    .collection-title-outer{
+          text-align: center;
+      font-size: 26px;
+        }
+      .collection-para-outer{
+        margin: 0 auto 50px auto;
+        text-align: center;
+        width: 100%;
+      }
+    .bestselling-pourover-wrapper{
+      
+        
+      padding-top: 50px;
+      padding-bottom: 75px;
+      .bestselling-pourover{
+        padding-bottom: 20px;
+        .prod-card{
+          /* padding: 0 15px; */
+        }
+        .prev, .next{
+          display: block;
+        }
+      }
+    }
+     .full-width-banner{
+       position: relative;
+       width: 100%;
+     
+      img{
+        width: 100%;
+      }
+       .collection-data{
+         position: absolute;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+         width: 100%;
+       }
+      .collection-title{
+          text-align: center;
+        margin-bottom: 5px;
+        color: #fff;
+        font-size: 26px;
+        }
+      .collection-para{
+        text-align: center;
+        width: 100% !important;
+        color: #fff;
+        margin: auto;
+      }
+     }
+  }
+
+    &.custom-bestsellers{
+    .collection-title-outer{
+          text-align: center;
+      font-size: 26px;
+        }
+      .collection-para-outer{
+        margin: 0 auto 50px auto;
+        text-align: center;
+        width: 100%;
+      }
+    .bestselling-bestsellers-wrapper{
+      
+        
+      padding-top: 50px;
+      padding-bottom: 75px;
+      .bestselling-bestsellers{
+        padding-bottom: 20px;
+        .prod-card{
+          /* padding: 0 15px; */
+        }
+        .prev, .next{
+          display: block;
+        }
+      }
+    }
+     .full-width-banner{
+       position: relative;
+       width: 100%;
+     
+      img{
+        width: 100%;
+      }
+       .collection-data{
+         position: absolute;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+         width: 100%;
+       }
+      .collection-title{
+          text-align: center;
+        margin-bottom: 5px;
+        color: #fff;
+        font-size: 26px;
+        }
+      .collection-para{
+        text-align: center;
+        width: 100% !important;
+        color: #fff;
+        margin: auto;
+      }
+     }
+  }
+    
+    &.custom-accessories{
+    .collection-title-outer{
+          text-align: center;
+      font-size: 26px;
+        }
+      .collection-para-outer{
+        margin: 0 auto 50px auto;
+        text-align: center;
+        width: 100%;
+      }
+    .bestselling-accessories-wrapper{
+      
+        
+      padding-top: 50px;
+      padding-bottom: 75px;
+      .bestselling-accessories{
+        padding-bottom: 20px;
+        .prod-card{
+          /* padding: 0 15px; */
+        }
+        .prev, .next{
+          display: block;
+        }
+      }
+    }
+     .full-width-banner{
+       position: relative;
+       width: 100%;
+     
+      img{
+        width: 100%;
+      }
+       .collection-data{
+         position: absolute;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+         width: 100%;
+       }
+      .collection-title{
+          text-align: center;
+        margin-bottom: 5px;
+        color: #fff;
+        font-size: 26px;
+        }
+      .collection-para{
+        text-align: center;
+        width: 100% !important;
+        color: #fff;
+        margin: auto;
+      }
+     }
+  }
+
+    &.custom-machines{
+    .collection-title-outer{
+          text-align: center;
+      font-size: 26px;
+        }
+      .collection-para-outer{
+        margin: 0 auto 50px auto;
+        text-align: center;
+        width: 100%;
+      }
+    .bestselling-machines-wrapper{
+      
+        
+      padding-top: 50px;
+      padding-bottom: 75px;
+      .bestselling-machines{
         padding-bottom: 20px;
         .prod-card{
           /* padding: 0 15px; */
@@ -2538,31 +3034,28 @@ body{
     }
 
     &.custom-ground-coffee{
-    .collection-title-outer{
+      .collection-title-outer{
           text-align: center;
-          margin: 50px 0 10px;
-        }
+      }
       .collection-para-outer{
         margin: 0 auto 50px auto;
         text-align: center;
         width: 100%;
       }
-    .bestselling-groundcoffee-wrapper{
-      
-        
-      padding-top: 75px;
-      padding-bottom: 100px;
-      .bestselling-groundcoffee{
-        padding-bottom: 20px;
-        .prod-card {
-        grid-template-columns: repeat(3, 70%);
-        gap: 30px;
-    }
-        .prev, .next{
-          display: none;
+      .bestselling-groundcoffee-wrapper{
+        padding-top: 75px;
+        padding-bottom: 100px;
+        .bestselling-groundcoffee{
+          padding-bottom: 20px;
+          .prod-card {
+            grid-template-columns: repeat(3, 70%);
+            gap: 30px;
+          }
+          .prev, .next{
+            display: none;
+          }
         }
       }
-    }
      .full-width-banner{
        position: relative;
        width: 100%;
@@ -2590,7 +3083,217 @@ body{
         margin: auto;
       }
      }
-  }
+    }
+
+    &.custom-pour-overs{
+      .collection-title-outer{
+          text-align: center;
+      }
+      .collection-para-outer{
+        margin: 0 auto 50px auto;
+        text-align: center;
+        width: 100%;
+      }
+      .bestselling-pourover-wrapper{
+        padding-top: 75px;
+        padding-bottom: 100px;
+        .bestselling-pourover{
+          padding-bottom: 20px;
+          .prod-card {
+            grid-template-columns: repeat(3, 70%);
+            gap: 30px;
+          }
+          .prev, .next{
+            display: none;
+          }
+        }
+      }
+     .full-width-banner{
+       position: relative;
+       width: 100%;
+     
+      img{
+        width: 100%;
+        height: 100px;
+      }
+       .collection-data{
+         position: absolute;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+         width: 100%;
+       }
+      .collection-title{
+          text-align: center;
+        margin-bottom: 5px;
+        color: #fff;
+        }
+      .collection-para{
+        text-align: center;
+        width: 60%;
+        color: #fff;
+        margin: auto;
+      }
+     }
+    }
+
+    &.custom-bestsellers{
+      .collection-title-outer{
+          text-align: center;
+      }
+      .collection-para-outer{
+        margin: 0 auto 50px auto;
+        text-align: center;
+        width: 100%;
+      }
+      .bestselling-bestsellers-wrapper{
+        padding-top: 75px;
+        padding-bottom: 100px;
+        .bestselling-bestsellers{
+          padding-bottom: 20px;
+          .prod-card {
+            grid-template-columns: repeat(3, 70%);
+            gap: 30px;
+          }
+          .prev, .next{
+            display: none;
+          }
+        }
+      }
+     .full-width-banner{
+       position: relative;
+       width: 100%;
+     
+      img{
+        width: 100%;
+        height: 100px;
+      }
+       .collection-data{
+         position: absolute;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+         width: 100%;
+       }
+      .collection-title{
+          text-align: center;
+        margin-bottom: 5px;
+        color: #fff;
+        }
+      .collection-para{
+        text-align: center;
+        width: 60%;
+        color: #fff;
+        margin: auto;
+      }
+     }
+    }
+
+    &.custom-accessories{
+      .collection-title-outer{
+          text-align: center;
+      }
+      .collection-para-outer{
+        margin: 0 auto 50px auto;
+        text-align: center;
+        width: 100%;
+      }
+      .bestselling-accessories-wrapper{
+        padding-top: 75px;
+        padding-bottom: 100px;
+        .bestselling-accessories{
+          padding-bottom: 20px;
+          .prod-card {
+            grid-template-columns: repeat(3, 70%);
+            gap: 30px;
+          }
+          .prev, .next{
+            display: none;
+          }
+        }
+      }
+     .full-width-banner{
+       position: relative;
+       width: 100%;
+     
+      img{
+        width: 100%;
+        height: 100px;
+      }
+       .collection-data{
+         position: absolute;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+         width: 100%;
+       }
+      .collection-title{
+          text-align: center;
+        margin-bottom: 5px;
+        color: #fff;
+        }
+      .collection-para{
+        text-align: center;
+        width: 60%;
+        color: #fff;
+        margin: auto;
+      }
+     }
+    }
+
+    &.custom-machines{
+      
+    
+      .collection-title-outer{
+          text-align: center;
+      }
+      .collection-para-outer{
+        margin: 0 auto 50px auto;
+        text-align: center;
+        width: 100%;
+      }
+      .bestselling-machines-wrapper{
+        padding-top: 75px;
+        padding-bottom: 100px;
+        .bestselling-machines{
+          padding-bottom: 20px;
+          .prod-card {
+            grid-template-columns: repeat(3, 70%);
+            gap: 30px;
+          }
+          .prev, .next{
+            display: none;
+          }
+        }
+      }
+     .full-width-banner{
+       position: relative;
+       width: 100%;
+     
+      img{
+        width: 100%;
+        height: 100px;
+      }
+       .collection-data{
+         position: absolute;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+         width: 100%;
+       }
+      .collection-title{
+          text-align: center;
+        margin-bottom: 5px;
+        color: #fff;
+        }
+      .collection-para{
+        text-align: center;
+        width: 60%;
+        color: #fff;
+        margin: auto;
+      }
+     }
+    }
     
     .container{
       padding: 0px 15px;
