@@ -127,7 +127,9 @@
   <div class="header-group">
     {% sections 'header-group' %}
     
-    {% section 'as-seen-on' %}
+    {% if request.path == '/' %}
+      {% section 'as-seen-on' %}
+    {% endif %}
 
     <a href="#" class="focus-tint" aria-hidden="true" aria-label="{{ 'general.accessibility_labels.close' | t }}"></a>
   </div>
@@ -148,15 +150,42 @@
       {% section 'banner' %}
     {%- endif -%}
 
-    {% section 'main-categories' %}
+    {% if request.path == '/' %}
+      {% section 'main-categories' %}
 
-    {% section 'exclusive-collection' %}
+      {% section 'exclusive-collection' %}
+      
+      {% section 'must-try' %}
+  
+      {% section 'hero-section' %}
+  
+      {% section 'instagram-reels' %}
+    {% endif %}
     
-    {% section 'must-try' %}
+    {% if request.path == '/collections/coffee-capsules' %}
+      {% section 'capsules-slider' %}
+      {% section 'bestselling-coffee-capsules' %}
+    {% endif %}
 
-    {% section 'hero-section' %}
+    {% if request.path == '/collections/ground-coffee' %}
+      {% section 'bestselling-ground-coffee' %}
+    {% endif %}
 
-    {% section 'instagram-reels' %}
+    {% if request.path == '/collections/pour-over-coffee-bags' %}
+      {% section 'bestselling-pourover-bags' %}
+    {% endif %}
+
+    {% if request.path == '/collections/coffee-machines' %}
+      {% section 'bestselling-coffee-machines' %}
+    {% endif %}
+
+    {% if request.path == '/collections/all-accessories' %}
+      {% section 'bestselling-accessories' %}
+    {% endif %}
+
+    {% if request.path == '/collections/best-sellers' %}
+      {% section 'bestselling-bestsellers' %}
+    {% endif %}
     
     {{ content_for_layout }}
   </main>

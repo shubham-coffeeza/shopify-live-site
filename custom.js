@@ -15,9 +15,33 @@ document.addEventListener("DOMContentLoaded", function() {
   if (window.location.pathname === '/') {
     document.body.classList.add('custom-homepage');
   }
-  // if (window.location.pathname.includes('/pages') && window.location.pathname !== '/pages/about') {
-  //   document.body.classList.add('different-pages');
-  // }
+
+  if (window.location.pathname === '/collections/coffee-capsules') {
+    document.body.classList.add('custom-capsules');
+  }
+
+  if (window.location.pathname === '/collections/ground-coffee') {
+    document.body.classList.add('custom-ground-coffee');
+  }
+
+  if (window.location.pathname === '/collections/pour-over-coffee-bags') {
+    document.body.classList.add('custom-pour-overs');
+  }
+
+  if (window.location.pathname === '/collections/coffee-machines') {
+    document.body.classList.add('custom-machines');
+  }
+
+  if (window.location.pathname === '/collections/all-accessories') {
+    document.body.classList.add('custom-accessories');
+  }
+  
+  if (window.location.pathname === '/collections/best-sellers') {
+    document.body.classList.add('custom-bestsellers');
+  }
+  if (window.location.pathname.includes('/collections')) {
+    document.body.classList.add('generic-collection-pages');
+  }
   //Custom page marking End
 
   // Window Scroll start
