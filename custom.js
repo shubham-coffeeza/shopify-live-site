@@ -39,8 +39,13 @@ document.addEventListener("DOMContentLoaded", function() {
   if (window.location.pathname === '/collections/best-sellers') {
     document.body.classList.add('custom-bestsellers');
   }
+  
   if (window.location.pathname.includes('/collections')) {
     document.body.classList.add('generic-collection-pages');
+  }
+
+  if (window.location.pathname.includes('/products')) {
+    document.body.classList.add('generic-products-details');
   }
   //Custom page marking End
 
@@ -93,13 +98,16 @@ document.addEventListener("DOMContentLoaded", function() {
   var navWrappers = document.querySelectorAll(".navbar-dropdown-wrapper");
   navWrappers.forEach(function(navWrapper, index) {
     var relatedDiv = document.getElementById("show-nav-" + (index + 1));
+    var relatedNavbar = document.getElementById("navbar-hover-" + (index + 1));
     var parentDiv = document.getElementById("navbar-wrapper-" + (index + 1));
     navWrapper.addEventListener('mouseenter', function() {
         relatedDiv.classList.add('hovered');
+            relatedNavbar.classList.add('active');
         parentDiv.classList.add('hovered');
     });
     navWrapper.addEventListener('mouseleave', function() {
         relatedDiv.classList.remove('hovered');
+        relatedNavbar.classList.remove('active');
         parentDiv.classList.remove('hovered');
     });
   });
@@ -150,6 +158,25 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
 //Must try wrapper end
+
+//Read more description
+  var clicked = false;
+  document.querySelector(".product-description-custom+.read-more-btn").addEventListener("click", function() {
+    
+    var divs = document.querySelector(".product-description-custom");
+    if(!clicked){
+      divs.classList.add("read-more");
+      document.querySelector(".product-description-custom+ .read-more-btn").innerHTML = "Read Less";
+      
+      clicked = true;
+    }
+    else{
+      divs.classList.remove("read-more");
+      document.querySelector(".product-description-custom+ .read-more-btn").innerHTML = "Read More";
+      clicked = false;
+    }
+  });
+//Read more description
   
 });
 
