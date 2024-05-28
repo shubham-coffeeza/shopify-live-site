@@ -37,7 +37,7 @@
               <h1 class="marquee-item_h1">
             {%- endif -%}
             {%- if block.settings.link -%}
-              <a href="{{ block.settings.link }}">
+              <a href="{{ block.settings.link }}" aria-label="Coffeeza in the Press and Offline Stores">
             {%- endif -%}
             {{- text -}}
             {%- if block.settings.link -%}
@@ -57,7 +57,7 @@
           <span class="marquee-item marquee-image" {{ block.shopify_attributes }} id="block-{{ block.id }}">
             {%- if block.settings.link -%}
               {%- assign contains_link = true -%}
-              <a href="{{ block.settings.link }}">
+              <a href="{{ block.settings.link }}" aria-label="Coffeeza in the Press and Offline Stores">
             {%- endif -%}
 
               {%- if block.settings.image != blank -%}

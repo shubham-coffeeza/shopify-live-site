@@ -1,0 +1,243 @@
+ 
+<div class="request_popup">
+  <div class="request_popup_out">
+    <div class="request_popup_inn">
+      <div class="modal relative" id="contact_form">
+  <div class="modal-header">
+    <a class="close" data-dismiss="modal">x</a>
+    <h3>Request for Machine Demo</h3>
+  </div>
+  <div class="modal-body">
+    {% form 'contact' %}
+      {% if form.posted_successfully? %}
+        <p class="success-msg">Thanks for contacting us! We'll get back to you as soon as possible.</p>
+      {% endif %}
+      {% if form.errors %}
+        <p class="error-msg">
+        <ul class="error-list">
+        {% for field in form.errors %}
+          <li>{{ field }} - {{ form.errors.messages[field] }}</li>
+        {% endfor %}
+        </ul>
+        </p>
+      {% endif %} 
+      <ul id="contact-form">
+        <li class="clearfix type-text">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="contact[email]" placeholder="Name" />
+        </li> 
+        <li class="clearfix type-text">
+          <label for="email">Email</label>
+          <input type="email" id="email" class="email" name="contact[email]"  placeholder="Email"/>
+        </li>   
+        <li class="clearfix type-text">
+          <label for="phone">Mobile Number</label>
+          <input type="tel" id="phone" class="phone" name="contact[phone]" placeholder="XXXXXXXXXX"  />
+        </li> 
+        <li class="clearfix type-text">
+          <label for="datetime">Date And Time</label>
+          <input type="datetime-local" id="datetime" class="date" name="contact[date]" />
+        </li> 
+        <li>
+          <input type="hidden" name="contact[demo_type]" value="machine demo" />
+        </li>
+       
+    <div class="options">
+        <li class="clearfix type-submit">
+          <input type="submit" class="submit btn contact_submit" value="Send" />
+        </li>
+    </div>
+      </ul>
+    {% endform %}  
+    </div>    
+  </div>
+</div>
+    </div>
+  </div>
+ <style>
+    p.success-msg {
+    font-size: 14px;
+    color: #1ed71e;
+}
+    .request_popup {
+    position: fixed;
+    z-index: 9999;
+    width: 100%;
+    background: #000000d1;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+}
+.request_popup_out {
+    display: table;
+    height: 100%;
+    width: 100%;
+}
+.request_popup_inn {
+    display: table-cell;
+    height: 100%;
+    vertical-align: middle;
+    text-align: center;
+    color: #00;
+}
+.request_popup div#contact_form {
+    background: #fff;
+    padding: 20px 15px;
+    max-width: 450px;
+    margin: 0 auto;
+text-align: left;
+  
+}
+    .request_popup{display:none;}
+li.clearfix.type-text label {
+    color: #000;
+  font-weight: 500;
+}
+li.clearfix.type-text input {
+    width: 100%;
+    height: 30px;
+    border-radius: 5px;
+  font-size:14px;
+  margin: 2px 5px 10px 0;
+}
+.modal-header a.close {
+    float: right;
+    font-size: 31px;
+    text-decoration: none;
+    cursor: pointer;
+      position: absolute;
+    top: 15px;
+    right: 15px;
+}
+.modal-header h3 {
+    font-size: 16px;
+  font-weight: 600;
+  text-transform: capitalize;
+    margin-bottom: 10px;
+}
+input.submit.btn.contact_submit {
+    border-radius: 5px;
+    margin-top: 10px;
+}
+    .requedtvideo_demo {
+    color: #c00000;
+      cursor:pointer;
+}
+    .ico_text {
+    display: flex;
+    align-items: center;
+}
+.ico_text img {
+    width: 35px;
+    margin-right: 8px;
+}
+.requedtvideo_demo {
+    border: 1px solid #bd9b54;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 1px 3px 5px rgb(0 0 0 / 9%);
+}
+.p_price {
+    text-decoration: none !important;
+    border: 0px solid !important;
+    padding-left: 44px;
+}
+    .stickybar_item{display:none;} 
+    .showing2{display:block;} 
+  .stickybar_item a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration:none;
+}
+     .stickybar_item a img{height:130px;}
+.stickybar_wrap {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    z-index: 99;
+}
+.stickybar_item a img {
+    height: 130px;
+    margin-top: -55px;
+}
+.innersticky {
+    display: flex;
+    align-items: center;
+}
+
+    .innersticky {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    color: #2D2D2D;
+}
+    .innersticky span {
+    display: inline-block;
+    padding: 3px 20px;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+.close-bar {
+    position: absolute;
+    z-index: 99;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+ul.icons_free {
+    display: none;
+    align-items: center;
+    text-align: center;
+  justify-content:center;
+}
+   body.free-machine ul.icons_free {
+    display: flex;
+   }
+ul.icons_free li {
+    padding: 0px 5px;
+}
+ul.icons_free li img {
+    width: 45px;
+    margin: 0 auto;
+    display: table;
+}
+ul.icons_free li span {
+    font-size: 14px;
+    color: #000;
+  line-height: 18px;
+    display: block;
+}
+   div#qty-proxy {
+    max-width: 100px;
+    text-align: center;
+}
+   .large-row.with-payment-buttons {
+    margin-bottom: 0;
+}
+   .cc-filters-container {
+    background: #e5ddd1;
+    padding: 15px 15px;
+}
+@media only screen and (max-width: 767px){
+.stickybar_item a img{
+height:90px;
+margin-top:0px;
+}
+.innersticky{
+font-size:16px;
+line-height:18px;
+}
+.innersticky {
+    max-width: 90%;
+}
+.close-bar{
+left:5px;
+}
+}
+</style>
+
+
+      
+        

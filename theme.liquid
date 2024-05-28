@@ -115,6 +115,9 @@
     <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>
   {%- endif -%}
   {{ content_for_header }}
+
+  <!-- Add the robots meta tag -->
+  <meta name="robots" content="index,follow" />
 </head>
 
 <body id="{{ page_title | handle }}" class="template-{{ template | split: '.' | first }}
@@ -152,7 +155,7 @@
     {% if request.path == '/' %}
 
       <div class="company-intro">
-        <h2 class="intro-title">Savor the essence of refinement with Coffeeza, <br>where each brew is crafted to inspire a daily rendezvous.</h2>
+        <h2 class="intro-title">Coffeeza, A Pioneer In India’s Coffee Scene, Curates A Wide Range Of Unique Blends Using AA Or AAA-Grade Indian Specialty Coffee Across Various Formats.</h2>
       </div>
       
       {% section 'main-categories' %}
@@ -161,13 +164,12 @@
       
       {% section 'must-try' %}
   
-      {% section 'hero-section' %}
+      <!-- {% section 'hero-section' %} -->
   
       {% section 'instagram-reels' %}
     {% endif %}
     
     {% if request.path == '/collections/coffee-capsules' %}
-      {% section 'capsules-slider' %}
       {% section 'bestselling-coffee-capsules' %}
     {% endif %}
 
@@ -194,7 +196,11 @@
     {{ content_for_layout }}
   </main>
 
-  {% section 'testimonial-slide' %}
+  {% if request.path != '/' %}
+    {% section 'instagram-reels' %}
+  {% endif %}
+
+  <!-- {% section 'testimonial-slide' %} -->
   
   {% section 'note-from-founder' %}
   
@@ -214,6 +220,8 @@
     <div class="spinner"></div>
   </div>
 
+  {% render "request-popup" %}
+  
   <script src="{{ 'vendor.min.js' | asset_url }}" defer="defer"></script>
   <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
   <!-- custom file Shubham Sawant -->

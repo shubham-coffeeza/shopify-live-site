@@ -1,0 +1,130 @@
+<a href="{{ product.url }}">
+  <div class="products">
+      <div class="top">
+          <img class="prod-img" loading="lazy" width="300" height="250" src="{{ product.featured_image.src | product_img_url: 'large' }}" alt="Coffeeza Coffee">
+          <p class="label-one">
+            {% if product.metafields.custom.product_sale_label %}
+              {{ product.metafields.custom.product_sale_label }}
+            {% endif %}
+          </p>
+        {% if product.compare_at_price %}
+            {% assign original_price = product.compare_at_price %}
+            {% assign discounted_price = product.price %}
+            {% assign percentage_off = original_price | minus: discounted_price | times: 100 | divided_by: original_price | round %}
+
+            <p class="label-two">
+              {{ percentage_off }}% off
+            </p>
+          {% endif %}
+      </div>
+      <div class="mid">
+          
+          <p class="label-three d-none">{{ product.type }}</p>
+          <h3 class="prod-heading">{{ product.title }}</h3>
+          
+          <p class="prod-desc">{{ product.description | strip_html | slice: 0, 150 }}</p>
+          
+          <button
+              class="btn add-to-cart-wrapper {% if enable_dynamic_payment_button == true %}btn--secondary{% endif %}"
+              type="submit"
+              name="add"
+              data-add-to-cart
+              {% unless product.available %}disabled{% endunless %}
+              onclick="addToCartAndShowPopup({{ product.id }}, 1)">
+                <span data-add-to-cart-text class="cart-label">
+                {%- if product.available -%}
+                 ADD TO CART
+                {%- else -%}
+                  SOLD OUT
+                {%- endif -%}
+              </span>
+              <svg width="30" height="30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg>
+              <div class="price-wrapper">
+                  <p class="price">{{ product.price | money }}</p>
+                  <p class="discount">{{ product.compare_at_price | money }}</p>
+              </div>
+          </button>
+
+          <script>
+            function addToCartAndShowPopup(productId, quantity) {
+              fetch('/cart/add.js', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                  id: productId,
+                  quantity: quantity
+                })
+              })
+              .then(response => response.json())
+              .then(data => {
+                console.log('Product added to cart:', data);
+                showCartPopup();
+              })
+              .catch((error) => {
+                console.error('Error adding product to cart:', error);
+              });
+            }
+          
+            function showCartPopup() {
+              const cartPopup = document.querySelector('.cart-summary');
+              if (cartPopup) {
+                cartPopup.style.opacity = '1';
+                cartPopup.style.visibility = 'visible';
+              }
+            }
+          </script>
+                
+          <div class="star-ratings">
+            {%- if settings.enable_product_reviews_collection and product.metafields.reviews.rating_count != blank -%}
+              {%- assign rating_count = product.metafields.reviews.rating_count | plus: 0 -%}
+              {%- if rating_count > 0 -%}
+                <div class="theme-product-reviews-summary product-block__rating">
+                  {% render 'rating', rating_value: product.metafields.reviews.rating.value %}
+                  <span class="cc-rating-custom-caption">
+                    {{ rating_count }} {{ 'products.product.reviews_link' | t: count: rating_count }}
+                  </span>
+                </div>
+              {%- endif -%}
+            {%- endif -%}
+          </div>
+      </div>
+      <div class="bottom ">
+        <h4 class="bottom-title">
+          {% if product.type == "Coffee Capsules" %}
+              Best Enjoyed As
+          {% elsif product.type == "Capsule Coffee Machine" %}
+              Your Barista At Home
+          {% elsif product.type == "ground coffee" %}
+              Recommended Brewing Style
+          {% elsif product.type == "Pour Over Coffee Bags" %}
+              Single-Serve Specialty Coffees
+          {% else %}
+              Extra Specifications
+          {% endif %}
+        </h4>
+        <div class="more-details-wrapper">
+          <div class="more-details">
+              {% if product.metafields.custom.product_bottom_footer_image_one %}
+                <img loading="lazy" width="35" height="35" src="{{ product.metafields.custom.product_bottom_footer_image_one | img_url: 'large' }}" alt="Coffeeza Coffee">
+              {% endif %}
+              <p>{{ product.metafields.custom.product_footer_label }}</p>
+          </div>
+          <div class="more-details">
+              {% if product.metafields.custom.product_bottom_footer_image_one %}
+                <img loading="lazy" width="35" height="35" src="{{ product.metafields.custom.product_bottom_footer_image_two | img_url: 'large' }}" alt="Coffeeza Coffee">
+              {% endif %}
+              <p>{{ product.metafields.custom.product_footer_label_two }}</p>
+          </div>
+          <div class="more-details">
+              {% if product.metafields.custom.product_bottom_footer_image_one %}
+                <img loading="lazy" width="35" height="35" src="{{ product.metafields.custom.product_bottom_footer_image_three | img_url: 'large' }}" alt="Coffeeza Coffee">
+              {% endif %}
+              <p>{{ product.metafields.custom.product_footer_label_three }}</p>
+          </div>
+        </div>
+      </div>
+  </div>
+</a>

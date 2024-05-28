@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
       loadingOverlay.style.opacity = '0';
       loadingOverlay.style.backgroundColor = 'transparent';
   }
-  hideLoadingOverlay()
+  hideLoadingOverlay();
   //Loading overlay End
 
   //Custom page marking start
@@ -39,8 +39,12 @@ document.addEventListener("DOMContentLoaded", function() {
   if (window.location.pathname === '/collections/best-sellers') {
     document.body.classList.add('custom-bestsellers');
   }
+
+  if (window.location.pathname === '/cart') {
+    document.body.classList.add('custom-cart');
+  }
   
-  if (window.location.pathname.includes('/collections')) {
+  if (window.location.pathname.includes('/collections') && !(window.location.pathname.includes('/products'))) {
     document.body.classList.add('generic-collection-pages');
   }
 
@@ -177,12 +181,69 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 //Read more description
+
+//Add to cart
+  function addToCartAndShowPopup(productId, quantity) {
+    fetch('/cart/add.js', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        id: productId,
+        quantity: quantity
+      })
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Product added to cart:', data);
+      showCartPopup();
+    })
+    .catch((error) => {
+      console.error('Error adding product to cart:', error);
+    });
+  }
   
+  function showCartPopup() {
+    const cartPopup = document.querySelector('.cart-summary');
+    if (cartPopup) {
+      cartPopup.style.opacity = '1';
+      cartPopup.style.visibility = 'visible';
+    }
+  }
+//Add to cart
+
+//Frequently Bought Together
+  document.querySelector('main .cbb-frequently-bought-container').classList.add("o");
+//Frequently Bought Together
+
+//Machine Demo
+  document.querySelector(".requedtvideo_demo").addEventListener("click", function() {
+    document.querySelector(".request_popup").style.display = "block";
+  });
+
+  document.querySelector(".modal-header a.close").addEventListener("click", function() {
+    document.querySelector(".request_popup").style.display = "none";
+  });
+//Machine Demo
+
+
 });
 
 var loadingOverlay = document.getElementById('loading-overlay');
 function showLoadingOverlay() {
-    loadingOverlay.style.display = 'block';
+    loadingOverlay.style.display = 'flex';
     loadingOverlay.style.opacity = '1';
 }
 showLoadingOverlay();
+
+//Aria-label
+  var dialogElement = document.querySelector('.banner-custom .slick-track');
+console.log(dialogElement); // Should log the element or null
+if (dialogElement) {
+    dialogElement.setAttribute('aria-label', 'Descriptive Coffeeza Banner');
+} else {
+    console.error('Element not found');
+}
+//Aria-label
