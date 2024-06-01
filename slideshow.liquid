@@ -1,3 +1,4 @@
+{%- if request.path == '/' -%}
 <div class="banner-custom container--no-mobile-padding full-width-slideshow full-width-background relative section-{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="slideshow">
   {% style %}
   {%- if section.settings.height == 'fixed' -%}
@@ -38,7 +39,7 @@
         {%- else -%}
           {%- assign aspect_ratio = block.settings.image.aspect_ratio -%}
         {%- endif -%}
-        <div class="slide relative avoid-overlaps block-{{ forloop.index }}" {{ block.shopify_attributes }}>
+        <div class="slide shubham relative avoid-overlaps block-{{ forloop.index }}" {{ block.shopify_attributes }} aria-label="Slideshow for Coffeeza Main Banner">
           <div class="avoid-overlaps__mobile-container" {% if forloop.first %} data-cc-animate="zoom-out"{% endif %}>
             {% if block.settings.image_link != blank %}<a href="{{ block.settings.image_link }}">{% endif %}
 
@@ -123,7 +124,10 @@
     {% endif %}
   </div>
 </div>
-
+{% else %}
+<div class="non-banner-page"></div>
+{% endif %}
+            
 {% schema %}
   {
     "name": "Slideshow",

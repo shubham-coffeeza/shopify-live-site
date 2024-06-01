@@ -43,6 +43,14 @@ document.addEventListener("DOMContentLoaded", function() {
   if (window.location.pathname === '/cart') {
     document.body.classList.add('custom-cart');
   }
+
+  if (window.location.pathname === '/blogs') {
+    document.body.classList.add('custom-blog');
+  }
+
+  if (window.location.pathname === '/search') {
+    document.body.classList.add('custom-search');
+  }
   
   if (window.location.pathname.includes('/collections') && !(window.location.pathname.includes('/products'))) {
     document.body.classList.add('generic-collection-pages');
@@ -163,24 +171,6 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 //Must try wrapper end
 
-//Read more description
-  var clicked = false;
-  document.querySelector(".product-description-custom+.read-more-btn").addEventListener("click", function() {
-    
-    var divs = document.querySelector(".product-description-custom");
-    if(!clicked){
-      divs.classList.add("read-more");
-      document.querySelector(".product-description-custom+ .read-more-btn").innerHTML = "Read Less";
-      
-      clicked = true;
-    }
-    else{
-      divs.classList.remove("read-more");
-      document.querySelector(".product-description-custom+ .read-more-btn").innerHTML = "Read More";
-      clicked = false;
-    }
-  });
-//Read more description
 
 //Add to cart
   function addToCartAndShowPopup(productId, quantity) {
@@ -214,10 +204,114 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 //Add to cart
 
+  
+//coffee capsule collection filter wrapper start
+  var filters = document.querySelectorAll(".coffee-capsule-everything-wrapper .inner");
+  filters.forEach(function(filter, index) {
+    filter.addEventListener("click", function() {
+      var relatedFilter = document.getElementById("display-filter-category-" + (index + 1));
+      var allRelatedFilters = document.querySelectorAll('.category-wise-filter');
+      filters.forEach(function(d) {
+        d.classList.remove('active');
+      });
+
+      filter.classList.add('active');
+      
+      allRelatedFilters.forEach(function(element) {
+        if (element === relatedFilter) {
+          element.classList.remove("d-none");
+          element.classList.add("d-block");
+        } else {
+          element.classList.remove("d-block");
+          element.classList.add("d-none");
+        }
+      });
+    });
+  });
+//coffee capsule collection filter wrapper end
+
+//Ground coffee collection filter wrapper start
+  var groundFilters = document.querySelectorAll(".ground-coffee-everything-wrapper .inner");
+  groundFilters.forEach(function(filter, index) {
+    console.log("1");
+    filter.addEventListener("click", function() {
+      var relatedGroundCoffeeFilter = document.getElementById("display-GCoffee-filter-category-" + (index + 1));
+      var allRelatedGroundFilters = document.querySelectorAll('.category-wise-GCoffee-filter');
+      groundFilters.forEach(function(d) {
+        d.classList.remove('active');
+      });
+
+      filter.classList.add('active');
+      
+      allRelatedGroundFilters.forEach(function(element) {
+        if (element === relatedGroundCoffeeFilter) {
+          element.classList.remove("d-none");
+          element.classList.add("d-block");
+        } else {
+          element.classList.remove("d-block");
+          element.classList.add("d-none");
+        }
+      });
+    });
+  });
+//Ground coffee collection filter wrapper end
+
+//Swatches price change dynamically
+  const swatches = document.querySelectorAll('.product-swatch');
+  const discountElement = document.getElementById('discount-percentage');
+
+  swatches.forEach(swatch => {
+    swatch.addEventListener('click', function() {
+      const variantId = this.getAttribute('data-variant-id');
+
+      const variant = getVariantById(variantId); 
+      
+      if (variant && variant.compare_at_price && variant.price) {
+        const originalPrice = variant.compare_at_price;
+        const discountedPrice = variant.price;
+        const percentageOff = Math.round((originalPrice - discountedPrice) * 100 / originalPrice);
+        
+        discountElement.textContent = `${percentageOff}% off`;
+      } else {
+        discountElement.textContent = '';
+      }
+    });
+  });
+
+  function getVariantById(id) {
+    const variants = [
+      {id: '1', compare_at_price: 100, price: 80},
+      {id: '2', compare_at_price: 120, price: 90},
+    ];
+    return variants.find(variant => variant.id === id);
+  }
+//Swatches price change dynamically
+
+
+//Read more description
+  var clicked = false;
+  document.querySelector(".product-description-custom+.read-more-btn").addEventListener("click", function() {
+    
+    var divs = document.querySelector(".product-description-custom");
+    if(!clicked){
+      divs.classList.add("read-more");
+      document.querySelector(".product-description-custom+ .read-more-btn").innerHTML = "Read Less";
+      
+      clicked = true;
+    }
+    else{
+      divs.classList.remove("read-more");
+      document.querySelector(".product-description-custom+ .read-more-btn").innerHTML = "Read More";
+      clicked = false;
+    }
+  });
+//Read more description
+
 //Frequently Bought Together
   document.querySelector('main .cbb-frequently-bought-container').classList.add("o");
 //Frequently Bought Together
 
+  
 //Machine Demo
   document.querySelector(".requedtvideo_demo").addEventListener("click", function() {
     document.querySelector(".request_popup").style.display = "block";
@@ -227,7 +321,6 @@ document.addEventListener("DOMContentLoaded", function() {
     document.querySelector(".request_popup").style.display = "none";
   });
 //Machine Demo
-
 
 });
 
