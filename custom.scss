@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Quicksand';
-       url('{{ 'Quicksand.ttf' | asset_url }}') format('truetype');
+  src: url('{{ 'Quicksand.ttf' | asset_url }}') format('truetype');
   font-weight: 700;
   font-style: normal;
 }
