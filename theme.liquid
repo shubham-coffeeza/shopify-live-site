@@ -1,8 +1,26 @@
 <!doctype html>
 <html class="no-js supports-no-cookies" lang="{{ request.locale.iso_code }}">
 <head>
+  {% render 'gokwik' %}
   <!-- Boost 6.2.1 -->
   {% render 'head-tag' %}
+
+  <script>
+    const imageUrl = "https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Capsule_Banner_Mobile.webp?v=1717673326";
+    const preloadLink = document.createElement("link");
+    preloadLink.rel = "preload";
+    preloadLink.href = imageUrl;
+    preloadLink.as = "image";
+    document.head.appendChild(preloadLink);
+  </script>
+  
+  <style>
+    @media screen and (max-width: 450px){
+      body .banner-custom .slide:first-child .rimage-outer-wrapper {
+          background-image: url('https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Capsule_Banner_Mobile.webp?v=1717673326') !important;
+      }
+    }
+  </style>
 
   {% capture seo_title %}
     {{ page_title }}
@@ -122,6 +140,26 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
   </style>
+
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "mmjvj1aisj");
+  </script>
+
+  <!-- Hotjar Tracking Code for https://coffeeza.in -->
+  <script>
+      (function(h,o,t,j,a,r){
+          h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+          h._hjSettings={hjid:5010659,hjsv:6};
+          a=o.getElementsByTagName('head')[0];
+          r=o.createElement('script');r.async=1;
+          r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+          a.appendChild(r);
+      })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+  </script>
 </head>
 
 <body id="{{ page_title | handle }}" class="template-{{ template | split: '.' | first }}
@@ -159,7 +197,7 @@
     {% if request.path == '/' %}
 
       <div class="company-intro">
-        <h2 class="intro-title">Coffeeza, A Pioneer In India’s Coffee Scene, Curates A Wide Range Of Unique Blends Using AA Or AAA-Grade Indian Specialty Coffee Across Various Formats.</h2>
+        <h2 class="intro-title">Coffeeza, A Pioneer In India’s Coffee Scene, Curates A Wide Range Of Unique Blends <Span>Using AA Or AAA-Grade Indian Specialty Coffee Across Various Formats</Span>.</h2>
       </div>
       
       {% section 'main-categories' %}
@@ -197,7 +235,9 @@
       {% section 'bestselling-bestsellers' %}
     {% endif %}
     
-    {{ content_for_layout }}
+    {% if request.path != '/collections/ground-coffee' %}
+      {{ content_for_layout }}
+    {% endif %}
   </main>
 
   {% if request.path != '/' %}
@@ -225,10 +265,13 @@
   </div>
 
   {% render "request-popup" %}
+
+  {% section 'grind-guid-popup' %}
   
   <script src="{{ 'vendor.min.js' | asset_url }}" defer="defer"></script>
   <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
   <!-- custom file Shubham Sawant -->
   <script src="{{ 'custom.js' | asset_url }}" defer="defer"></script>
+  {% include 'store-credit-launcher' %}
 </body>
 </html>

@@ -1,10 +1,18 @@
-{% assign bestselling-collection = collections['bestseller-coffee-capsules'] %}
-
-{% assign singlestate-collection = collections['single-state-coffee-capsules'] %}
-
+{% assign bestselling-collection = collections['best-sellers-1'] %}
+{% assign without-milk-collection = collections['without-milk-coffee-capsules'] %}
+{% assign with-milk-collection = collections['milk-based-coffee-capsules'] %}
 {% assign allflavours-collection = collections['all-flavours-coffee-capsule'] %}
 
-<img class="collection-banner" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Drip_bag_3.webp?v=1716006193" alt="" width="1000" height="400">
+{% assign espresso_coffee_capsule_collection = collections['espresso-coffee-capsule'] %}
+{% assign cappuccino_coffee_capsules_collection = collections['cappuccino-coffee-capsules'] %}
+{% assign latte_coffee_capsules_collection = collections['latte-coffee-capsules'] %}
+{% assign americano_coffee_capsules_collection = collections['americano-coffee-capsules'] %}
+{% assign iced_latte_coffee_capsules_collection = collections['iced-latte-coffee-capsules'] %}
+
+{% assign all_collections = "bestselling-collection,espresso_coffee_capsule_collection,cappuccino_coffee_capsules_collection,latte_coffee_capsules_collection,americano_coffee_capsules_collection,iced_latte_coffee_capsules_collection" | split: "," %}
+
+<img class="collection-banner desktop" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/capsules_main_banner.webp?v=1717147627" alt="Coffeeza Coffee" width="1000" height="400">
+<img class="collection-banner mobile" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/capsules_main_banner_mobile.webp?v=1717153028" alt="Coffeeza Coffee" width="1000" height="400">
 
 <div class="container custom-breadcrumbs-container breadcrumbs-container">
   <div class="page-width">
@@ -14,46 +22,61 @@
 
 {% render 'capsules-slider' %}
 
-<div class="bestselling-capsules-wrapper collection-show relative container" id="show-1">
-  <!-- <h2 class="collection-title">Bestselling Coffee Capsules</h2>
-      <p class="collection-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-   <div class="relative"></div>      -->
-    <div class="bestselling-capsules  scroll-slider-wrapper">
+{% assign counter = 0 %}
+{% for collection_name in all_collections %}
+{% assign collection = '' %}
+{% case collection_name %}
+  {% when 'bestselling-collection' %}
+    {% assign collection = bestselling-collection %}
+  {% when 'espresso_coffee_capsule_collection' %}
+    {% assign collection = espresso_coffee_capsule_collection %}
+  {% when 'cappuccino_coffee_capsules_collection' %}
+    {% assign collection = cappuccino_coffee_capsules_collection %}
+  {% when 'latte_coffee_capsules_collection' %}
+    {% assign collection = latte_coffee_capsules_collection %}
+  {% when 'americano_coffee_capsules_collection' %}
+    {% assign collection = americano_coffee_capsules_collection %}
+  {% when 'iced_latte_coffee_capsules_collection' %}
+    {% assign collection = iced_latte_coffee_capsules_collection %}
+{% endcase %}
+{% assign counter = counter | plus: 1 %}
+<div class="bestselling-capsules-wrapper coffee-capsule-everything-wrapper collection-show relative category-wise-filter d-none {% if counter == 1 %}d-block{% endif %}" id="display-filter-category-{{ counter }}">
+  <div class="bestselling-capsules container scroll-slider-wrapper">
       <div class="prod-card">
-          {% if bestselling-collection %}
-            {% for product in bestselling-collection.products limit:6 %}
-              {% render 'product-card-grid-list', product: product %}
-            {% endfor %}
-          {% else %}
-            <p>The collection "{{ collection_handle }}" does not exist.</p>
-          {% endif %}
-        </div>
-        <button name="prev_button" class="prev"><svg width="60" height="60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160zm352-160l-160 160c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L301.3 256 438.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0z"/></svg></button>
-        <button name="next_button" class="next"><svg width="60" height="60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M470.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 256 265.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160zm-352 160l160-160c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L210.7 256 73.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0z"/></svg></button>
-    </div> 
-    <div class="view-all-collection d-flex justify-center">
-      <a href="https://coffeeza.in/collections/bestseller-coffee-capsules" >
-        <button type="button" >View All</button>
-      </a>
-    </div>
+        {% if collection and collection.products.size > 0 %}
+          {% for product in collection.products limit:6 %}
+            {% render 'product-card-grid-list', product: product %}
+          {% endfor %}
+        {% else %}
+          <p>The collection does not exist or has no products.</p>
+        {% endif %}
+      </div>
+  </div>
+  <div class="view-all-collection d-flex justify-center">
+    <a href="https://coffeeza.in/collections/{{ collection.handle }}" >
+      <button type="button" >View All</button>
+    </a>
+  </div>
 </div>
+{% endfor %}
 
-<div class="full-width-banner">
-    <img src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/VLCOFFEEPLP-Desktop-2880x700-2.avif?v=1715317859" alt="" width="1000" height="300" >
+<div class="full-width-banner first">
+    <img loading="lazy" class="desktop" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/espresso_1.webp?v=1716957852" alt="" width="1000" height="300" >
+    <img loading="lazy" class="mobile" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/espresso_2c1721e7-51c0-4152-89e6-44dc6bb4490e.webp?v=1717158754" alt="" width="1000" height="300" >
     <div class="collection-data container">    
-      <h2 class="collection-title">Bestselling Ground Coffee</h2>
-      <p class="collection-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>  
+      <h2 class="collection-title">Espresso Excellence</h2>
+      <p class="collection-para">Capsule Crafted for <br>Black Coffee Enthusiasts.</p>  
     </div>
 </div>
           
-<div class="bestselling-capsules-wrapper collection-show relative container" id="show-1">
+<div class="bestselling-capsules-wrapper collection-show relative " id="show-1">
   <!-- <h2 class="collection-title">Single State Coffee Capsules</h2>
       <p class="collection-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
        <div class="relative"></div>    -->
-    <div class="bestselling-capsules  scroll-slider-wrapper">
+    <div class="bestselling-capsules container scroll-slider-wrapper">
       <div class="prod-card">
-          {% if singlestate-collection %}
-            {% for product in singlestate-collection.products limit:6 %}
+          {% if without-milk-collection %}
+            {% for product in without-milk-collection.products limit:6 %}
               {% render 'product-card-grid-list', product: product %}
             {% endfor %}
           {% else %}
@@ -64,25 +87,59 @@
         <button name="next_button" class="next"><svg width="60" height="60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M470.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 256 265.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160zm-352 160l160-160c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L210.7 256 73.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0z"/></svg></button>
     </div>
     <div class="view-all-collection d-flex justify-center">
-      <a href="https://coffeeza.in/collections/bestseller-coffee-capsules" >
+      <a href="https://coffeeza.in/collections/without-milk-coffee-capsules" >
         <button type="button" >View All</button>
       </a>
     </div>
 </div>
 
-<div class="full-width-banner">
-      <img src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/barista-creations-hero-desktop-vl.avif?v=1715317859" alt="" width="" height="">
-      <div class="collection-data container">    
-        <h2 class="collection-title">Bestselling Ground Coffee</h2>
-        <p class="collection-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>  
-      </div>
+<div class="full-width-banner second">
+  <img loading="lazy" class="desktop" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/milk_based_delights.webp?v=1716959243" alt="" width="1000" height="300" >
+  <img loading="lazy" class="mobile" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/milk_based_delights_7a75437c-8f56-427b-a7ba-17fc52a12c40.webp?v=1717158754" alt="" width="1000" height="300" >
+    <div class="collection-data container">    
+      <h2 class="collection-title">Creamy Barista Creations</h2>
+      <p class="collection-para">Capsules Perfect <br>for Milk-Based Delights</p>  
+    </div>
 </div>
           
-<div class="bestselling-capsules-wrapper collection-show relative container" id="show-1">
+<div class="bestselling-capsules-wrapper collection-show relative " id="show-1">
+    <div class="bestselling-capsules container scroll-slider-wrapper">
+      <div class="prod-card">
+          {% if with-milk-collection %}
+            {% for product in with-milk-collection.products limit:6 %}
+              {% render 'product-card-grid-list', product: product %}
+            {% endfor %}
+          {% else %}
+            <p>The collection "{{ collection_handle }}" does not exist.</p>
+          {% endif %}
+        </div>
+        <button name="prev_button" class="prev"><svg width="60" height="60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160zm352-160l-160 160c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L301.3 256 438.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0z"/></svg></button>
+        <button name="next_button" class="next"><svg width="60" height="60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M470.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 256 265.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160zm-352 160l160-160c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L210.7 256 73.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0z"/></svg></button>
+    </div>
+    <div class="view-all-collection d-flex justify-center">
+      <a href="https://coffeeza.in/collections/milk-based-coffee-capsules" >
+        <button type="button" >View All</button>
+      </a>
+    </div>
+</div>
+
+<!-- <a href="https://coffeeza.in/pages/capsule-recycling-program">  -->
+  <div class="full-width-banner third">
+    <img loading="lazy" class="desktop" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/recycling_1.webp?v=1716899200" alt="" width="1000" height="300" >
+    <img loading="lazy" class="mobile" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/recycling.webp?v=1717158754" alt="" width="1000" height="300" >
+    <div class="collection-data container">    
+      <h2 class="collection-title">CAPSULES <br>RECYCLING PROGRAM</h2>
+      <p class="collection-para">Return used Coffeeza Aluminium capsules<br> and we will recycle them for you.<br> Get a reward for every return.</p>  
+      <!-- <p class="learn-more">LEARN MORE</p> -->
+    </div>
+  </div>
+<!-- </a> -->
+          
+<div class="bestselling-capsules-wrapper collection-show relative " id="show-1">
   <!-- <h2 class="collection-title">All Flavours Coffee Capsules</h2>
       <p class="collection-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
       <div class="relative">   -->
-    <div class="bestselling-capsules  scroll-slider-wrapper">
+    <div class="bestselling-capsules container scroll-slider-wrapper">
       <div class="prod-card">
           {% if allflavours-collection %}
             {% for product in allflavours-collection.products limit:6 %}
@@ -96,7 +153,7 @@
         <button name="next_button" class="next"><svg width="60" height="60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M470.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 256 265.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160zm-352 160l160-160c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L210.7 256 73.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0z"/></svg></button>
     </div> 
     <div class="view-all-collection d-flex justify-center">
-      <a href="https://coffeeza.in/collections/bestseller-coffee-capsules" >
+      <a href="https://coffeeza.in/collections/all-flavours-coffee-capsule" >
         <button type="button" >View All</button>
       </a>
     </div>

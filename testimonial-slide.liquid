@@ -1,0 +1,287 @@
+<section class="relative container container--no-mobile-padding section-{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="logo-list">
+	
+  
+  {% style %}
+  
+  .section-{{ section.id }} .testimonial-slider .feather-star {
+      stroke: {{ section.settings.color_star }};
+      fill: {{ section.settings.color_star }};
+    }
+  
+  {% endstyle %}
+ 
+  
+  
+   {%- if section.settings.title != blank %}
+         <h2 class="pre-title heading-2 large-title">{{ section.settings.title | escape }}</h2>
+        {% endif %}
+  
+  <div class="testimonial-slider" style="">
+    {% for block in section.blocks %}
+    <div class="slide-test">
+    	<div>
+        <div class="testimonial-image">
+          <img src="{{ block.settings.image |  img_url: '300x300' }}" width="100%" alt="Coffeeza Coffee">
+          </div>
+          <h3 class="influencer-name">-{{block.settings.author-name}}</h3>
+          
+          <div class="testimonial-stars">
+            {% for i in (1..block.settings.star_rating) %}
+              <span class="icon feather-icon testimonial-star">{% render 'feather-star' %}</span>
+            {% endfor %}
+          </div>
+          <h4 class="influencer-review"><span>"</span>{{block.settings.review-text}}<span>" </span></h4>
+          <h5>{{block.settings.author-info}}</h5>
+          
+        </div>
+    </div>
+    {% endfor %}
+    
+    
+  </div>
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <script type="text/javascript" src="https://kenwheeler.github.io/slick/slick/slick.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function(){
+      
+      
+      $('.testimonial-slider').slick({
+  dots: false,
+  arrows: true,
+  speed: 300,
+  infinite:true,
+  autoplay: true,
+  autoplaySpeed: 2000,
+  slidesToShow: 4,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 4,
+        
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        infinite:false,
+        slidesToShow: 1.2,
+        arrows: false,
+        slidesToScroll: 1
+      }
+    }
+  ]
+});
+    });
+  </script>
+  
+  
+  </section>
+
+
+  
+
+{% schema %}
+{
+  "name": "Testimonial Slides",
+  "class": "section-logo-list",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Testimonials"
+    },
+	
+	{
+        "type": "color",
+        "id": "color_star",
+        "label": "Stars color",
+        "default": "#ffdd00"
+      }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Testimonial Slide",
+      "settings": [
+
+		{
+            "type": "range",
+            "id": "star_rating",
+            "min": 0,
+            "max": 5,
+            "step": 1,
+            "label": "Star rating",
+            "default": 5
+          },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        
+        {
+          "type": "text",
+          "id": "review-text",
+          "label": "Review"
+        },
+        {
+          "type": "text",
+          "id": "author-name",
+          "label": "Author Name",
+          "info": "Optional"
+        },
+		{
+          "type": "text",
+          "id": "author-info",
+          "label": "Author Info",
+          "info": "Optional"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonial Slide",
+      "category": "Advanced",
+      "blocks": [
+        {
+          "type": "logo"
+        },
+        {
+          "type": "logo"
+        },
+        {
+          "type": "logo"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+ <style>
+  *, *::before, *::after {
+    box-sizing: border-box;
+}
+   
+   .heading-2{
+    	text-align: center;
+     	padding: 20px;
+   }
+  .testimonial-slider{
+  	max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  	.slide-test{
+    	height: 100%;
+        text-align: center;
+        background-color: #ccc;
+        margin: 10px;
+        padding: 20px;
+    }
+	
+	.slick-prev:before, .slick-next:before {
+  color: #09529b !important;
+}
+
+	.slick-prev{
+		left: 25px !important;
+		z-index: 10000;
+        
+        color: green;
+       background-color: #F4EBE0;
+      border-radius: 50px;
+	}
+	.slick-next{
+		right: 25px !important;
+       background-color: #F4EBE0;
+      border-radius: 50px;
+		
+	}
+    .slick-next::before, .slick-prev::before {
+      color: #B99C5F !important;
+    }
+    
+    .testimonial-slider .slick-slide{
+    
+    display: inline-block;
+    vertical-align: middle;
+    padding: 5px 0px;
+    margin: 15px;
+    background-color: white;
+    transition: all 0.3s ease;
+    height: auto;
+    text-align: center;
+    }
+    
+    
+    
+    .slide-test img{
+    	padding: 0px;
+        border-radius: 15px;
+    }
+    .slide-test h4, .slide-test h5, .slide-test h3{
+    	padding: 0px 10px;
+        color: #2e524a;
+    }
+    
+    .slide-test .testimonial-image{
+    	border-radius: 20px;
+    }
+   
+   .slide-test h4{
+     font-size: 1.1rem;
+    line-height: 2.5rem;
+     color: black;
+   }
+   
+   .slide-test h3{
+     margin-top: 1.7rem;
+    font-size: 1.3rem;
+    line-height: 1.5rem;
+    font-weight: 600; 
+     color: #BD9B54;
+   }
+   
+   .slide-test h5{
+    margin-top: .875rem;
+    font-size: 1rem;
+    line-height: 1.25rem; 
+   }
+   
+   .testimonial-stars{
+     padding: 15px; 
+   }
+   
+   .testimonial-slider .slick-prev:before {
+  content: "<";
+  color: red;
+  font-size: 30px;
+     
+}
+
+ .testimonial-slider .slick-next:before {
+  content: ">";
+  color: red;
+  font-size: 30px;
+   
+}
+   
+   .slick-prev:hover, .slick-prev:focus, .slick-next:hover, .slick-next:focus{
+     color: green;
+      background-color: aliceblue;
+   }
+  
+  </style>

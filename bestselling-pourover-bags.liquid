@@ -1,73 +1,40 @@
 {% assign bestselling-collection-1 = collections['pour-over-coffee-bags'] %}
 
+<img class="collection-banner desktop" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Drip_bag_5.webp?v=1717132523" alt="Coffeeza Coffee" width="1000" height="400">
+<img class="collection-banner mobile" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Drip_Bag_Mobile.webp?v=1717153018" alt="Coffeeza Coffee" width="1000" height="400">
 
-<h2 class="collection-title-outer container">Bestselling Pour Over Bags</h2>
-<p class="collection-para-outer container">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>  
+<div class="container custom-breadcrumbs-container breadcrumbs-container">
+  <div class="page-width">
+    {%- render 'breadcrumbs', show_next_prev: true -%}
+  </div>
+</div>
+
+<h2 class="collection-title-outer container">Portable Pour-Over Coffee Bags</h2>
+<p class="collection-para-outer container">Enjoy specialty coffee on-the-go with our NEW range of 100% Arabica, Pour-Over Coffee Bags. Compact and lightweight, they're perfect to carry around. Just Tear, Anchor, Pour & Sip</p>  
 
 <div class="full-width-banner">
-      <img src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/offer-quick-hassle_1366x_26034fb1-d24a-4995-8566-2594c38dbf6e.webp?v=1715420983" alt="" width="1000" height="300" >
+      <img loading="lazy" class="desktop" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/imgpsh_fullsize_anim_11_-min.jpg?v=1717671274" alt="Coffeeza Coffee" width="1000" height="300" >
+      <img loading="lazy" class="mobile" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/imgpsh_fullsize_anim_13_-min.png?v=1717671274" alt="Coffeeza Coffee" width="1000" height="300" >
 </div>
 <div class="bestselling-pourover-wrapper collection-show relative container" id="show-1">
-    <div class="bestselling-pourover  scroll-slider-wrapper">
+    <div class="bestselling-pourover scroll-slider-wrapper">
         <div class="prod-card">
           {% if bestselling-collection-1 %}
             {% for product in bestselling-collection-1.products limit:3 %}
-              <a href="{{ product.url }}">
-                <div class="products">
-                    <div class="top">
-                        <img class="prod-img" loading="lazy" width="300" height="250" src="{{ product.featured_image.src | product_img_url: 'large' }}" alt="">
-                        <p class="label-one">
-                          {% if product.label-one %}
-                            {{ product.label-one }}
-                          {% else %}
-                            Newly Launched
-                          {% endif %}
-                        </p>
-                        <p class="label-two">
-                          {% if product.label-two %}
-                            {{ product.label-two }}
-                          {% else %}
-                            Deals
-                          {% endif %}
-                        </p>
-                    </div>
-                    <div class="mid">
-                        <p class="label-three d-none">{{ product.type }}</p>
-                        <h3 class="prod-heading">{{ product.title }}</h3>
-                        <p class="prod-desc">{{ product.description | strip_html | slice: 0, 150 }}</p>
-                        <div class="add-to-cart-wrapper">
-                            <p class="cart-label">Add to cart</p>
-                            <svg width="30" height="30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg>
-                            <div class="price-wrapper">
-                                <p class="price">{{ product.price | money }}</p>
-                                <p class="discount">{{ product.compare_at_price | money }}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bottom more-details-wrapper">
-                        <div class="more-details">
-                            <img loading="lazy" width="35" height="35" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/taste-note1.png?v=1715149005" alt="">
-                            <p>Caramel</p>
-                        </div>
-                        <div class="more-details">
-                            <img loading="lazy" width="35" height="35" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/taste-note2.png?v=1715149006" alt="">
-                            <p>Wood</p>
-                        </div>
-                        <div class="more-details">
-                            <img loading="lazy" width="35" height="35" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/taste-note3.png?v=1715149006 alt="">
-                            <p>Spices</p>
-                        </div>
-                    </div>
-                </div>
-              </a>
+              {% render 'product-card-grid-list', product: product %}
             {% endfor %}
           {% else %}
             <p>The collection "{{ collection_handle }}" does not exist.</p>
           {% endif %}
         </div>
                               
-      <button name="prev_button" class="prev">❮</button>
-      <button name="next_button" class="next">❯</button>
+      <button name="prev_button" class="prev"><svg width="60" height="60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160zm352-160l-160 160c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L301.3 256 438.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0z"/></svg></button>
+      <button name="next_button" class="next"><svg width="60" height="60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M470.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 256 265.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160zm-352 160l160-160c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L210.7 256 73.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0z"/></svg></button>
+    </div>
+    <div class="view-all-collection d-flex justify-center">
+      <a href="https://coffeeza.in/collections/pour-over-coffee-bags" >
+        <button type="button" >View All</button>
+      </a>
     </div>
 </div>
 

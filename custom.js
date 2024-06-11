@@ -169,43 +169,62 @@ document.addEventListener("DOMContentLoaded", function() {
       });
     });
   });
-//Must try wrapper end
+  //Must try wrapper end
 
 
-//Add to cart
-  function addToCartAndShowPopup(productId, quantity) {
-    fetch('/cart/add.js', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify({
-        id: productId,
-        quantity: quantity
+  //Add to cart
+    document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('add-to-cart-form');
+    const submitButton = form.querySelector('button[type="submit"]');
+  
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+  
+      const formData = new FormData(form);
+  
+      fetch('/cart/add.js', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest'
+        }
       })
-    })
-    .then(response => response.json())
-    .then(data => {
-      console.log('Product added to cart:', data);
-      showCartPopup();
-    })
-    .catch((error) => {
-      console.error('Error adding product to cart:', error);
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok ' + response.statusText);
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log('Product added to cart:', data);
+        showCartPopup();
+      })
+      .catch(error => {
+        console.error('Error adding product to cart:', error);
+      });
+      function showCartPopup() {
+        const cartPopup = document.querySelector('.cart-summary');
+        if (cartPopup) {
+          cartPopup.style.opacity = '1';
+          cartPopup.style.visibility = 'visible';
+        }
+      }
     });
-  }
-  
-  function showCartPopup() {
-    const cartPopup = document.querySelector('.cart-summary');
-    if (cartPopup) {
-      cartPopup.style.opacity = '1';
-      cartPopup.style.visibility = 'visible';
-    }
-  }
-//Add to cart
+  });
+  //Add to cart
 
+  //whatsapp widget hide
   
-//coffee capsule collection filter wrapper start
+  const images = document.querySelectorAll('body img');
+  images.forEach((img, index) => {
+    console.log("shubham");
+      img.alt = `Coffeeza Coffee1`;
+  });
+  //whatsapp widget hide
+  
+  
+  //coffee capsule collection filter wrapper start
   var filters = document.querySelectorAll(".coffee-capsule-everything-wrapper .inner");
   filters.forEach(function(filter, index) {
     filter.addEventListener("click", function() {
@@ -228,9 +247,9 @@ document.addEventListener("DOMContentLoaded", function() {
       });
     });
   });
-//coffee capsule collection filter wrapper end
+  //coffee capsule collection filter wrapper end
 
-//Ground coffee collection filter wrapper start
+  //Ground coffee collection filter wrapper start
   var groundFilters = document.querySelectorAll(".ground-coffee-everything-wrapper .inner");
   groundFilters.forEach(function(filter, index) {
     console.log("1");
@@ -254,9 +273,9 @@ document.addEventListener("DOMContentLoaded", function() {
       });
     });
   });
-//Ground coffee collection filter wrapper end
+  //Ground coffee collection filter wrapper end
 
-//Swatches price change dynamically
+  //Swatches price change dynamically
   const swatches = document.querySelectorAll('.product-swatch');
   const discountElement = document.getElementById('discount-percentage');
 
@@ -285,34 +304,66 @@ document.addEventListener("DOMContentLoaded", function() {
     ];
     return variants.find(variant => variant.id === id);
   }
-//Swatches price change dynamically
+  //Swatches price change dynamically
 
 
-//Read more description
-  var clicked = false;
-  document.querySelector(".product-description-custom+.read-more-btn").addEventListener("click", function() {
-    
-    var divs = document.querySelector(".product-description-custom");
-    if(!clicked){
-      divs.classList.add("read-more");
-      document.querySelector(".product-description-custom+ .read-more-btn").innerHTML = "Read Less";
-      
-      clicked = true;
+  //Percent off in product desc
+  // Function to calculate the percentage off
+  function calculatePercentageOff(originalPrice, discountedPrice) {
+    if (originalPrice > discountedPrice) {
+      return Math.round(((originalPrice - discountedPrice) / originalPrice) * 100);
     }
-    else{
-      divs.classList.remove("read-more");
-      document.querySelector(".product-description-custom+ .read-more-btn").innerHTML = "Read More";
-      clicked = false;
+    return 0;
+  }
+
+  // Function to update the percentage off in the DOM
+  function updatePercentageOff(originalPrice, discountedPrice) {
+    const percentageOffElement = document.getElementById('price-off-perc');
+    if (percentageOffElement) {
+      const percentageOff = calculatePercentageOff(originalPrice, discountedPrice);
+      if (percentageOff > 0) {
+        percentageOffElement.textContent = `${percentageOff}% off`;
+      } else {
+        percentageOffElement.textContent = '';
+      }
     }
+  }
+  
+  // Example of event listener for swatch change
+  document.querySelectorAll('.custom-swatches').forEach(function(swatch) {
+    swatch.addEventListener('click', function() {
+      console.log("SHubham");
+      // Fetch the new variant prices
+      const newOriginalPrice = parseFloat(swatch.getAttribute('data-compare-price'));
+      const newDiscountedPrice = parseFloat(swatch.getAttribute('data-product-price'));
+      console.log("a:",newOriginalPrice, "b:",newDiscountedPrice);
+      // Update the percentage off
+      updatePercentageOff(newOriginalPrice, newDiscountedPrice);
+    });
   });
-//Read more description
+  //Percent off in product desc
 
-//Frequently Bought Together
+
+  //Grind Guide
+  const grindGuideBtn = document.querySelector(".grind_guide_btn_new");
+  const grindGuideWrapper = document.querySelector("div#shopify-section-grind-guid-popup");
+  const grindGuideClose = document.querySelector(".guide_closs_btn");
+  
+  grindGuideBtn.addEventListener("click", function(){
+      grindGuideWrapper.style.display = "block";
+  })
+
+  grindGuideClose.addEventListener("click", function(){
+      grindGuideWrapper.style.display = "none";
+  })
+  //Grind Guide
+  
+  //Frequently Bought Together
   document.querySelector('main .cbb-frequently-bought-container').classList.add("o");
-//Frequently Bought Together
+  //Frequently Bought Together
 
   
-//Machine Demo
+  //Machine Demo
   document.querySelector(".requedtvideo_demo").addEventListener("click", function() {
     document.querySelector(".request_popup").style.display = "block";
   });
@@ -320,8 +371,59 @@ document.addEventListener("DOMContentLoaded", function() {
   document.querySelector(".modal-header a.close").addEventListener("click", function() {
     document.querySelector(".request_popup").style.display = "none";
   });
-//Machine Demo
+  //Machine Demo
 
+  //lazy loading
+  let lazyImages = [].slice.call(document.querySelectorAll("img.lazyload"));
+    
+  if ("IntersectionObserver" in window) {
+    let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          let lazyImage = entry.target;
+          lazyImage.src = lazyImage.dataset.src;
+          lazyImage.classList.remove("lazyload");
+          lazyImageObserver.unobserve(lazyImage);
+        }
+      });
+    });
+
+    lazyImages.forEach(function(lazyImage) {
+      lazyImageObserver.observe(lazyImage);
+    });
+  } else {
+    // Fallback for older browsers
+    let lazyLoadThrottleTimeout;
+    function lazyload() {
+      if (lazyLoadThrottleTimeout) {
+        clearTimeout(lazyLoadThrottleTimeout);
+      }
+
+      lazyLoadThrottleTimeout = setTimeout(function() {
+        let scrollTop = window.pageYOffset;
+        lazyImages.forEach(function(img) {
+          if (img.offsetTop < (window.innerHeight + scrollTop)) {
+            img.src = img.dataset.src;
+            img.classList.remove('lazyload');
+          }
+        });
+        if (lazyImages.length == 0) {
+          document.removeEventListener("scroll", lazyload);
+          window.removeEventListener("resize", lazyload);
+          window.removeEventListener("orientationChange", lazyload);
+        }
+      }, 20);
+    }
+
+    document.addEventListener("scroll", lazyload);
+    window.addEventListener("resize", lazyload);
+    window.addEventListener("orientationChange", lazyload);
+  }
+  //lazy loading
+
+  
+  
+  
 });
 
 var loadingOverlay = document.getElementById('loading-overlay');
@@ -332,8 +434,7 @@ function showLoadingOverlay() {
 showLoadingOverlay();
 
 //Aria-label
-  var dialogElement = document.querySelector('.banner-custom .slick-track');
-console.log(dialogElement); // Should log the element or null
+var dialogElement = document.querySelector('.banner-custom .slick-track');
 if (dialogElement) {
     dialogElement.setAttribute('aria-label', 'Descriptive Coffeeza Banner');
 } else {

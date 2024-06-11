@@ -3,8 +3,7 @@
 
 <div class="hero-section-wrapper">
   <div class="video">
-      <video src="https://cdn.shopify.com/videos/c/o/v/6dd3fabb876249a78286d17f711e2eea.mp4" playsinline="true" autoplay="autoplay" muted="muted" loop="loop" poster="" >
-      </video>
+      <img src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/side1_gif.gif?v=1716187317" alt="Coffeeza Coffee" height="" width="">
   </div>
   <div class="data">
     <!-- <h3 class="">Coffee Machines for Every Need:<br> Rent, Contract, or Purchase</h3> -->
@@ -17,115 +16,81 @@
     {%- render 'breadcrumbs', show_next_prev: true -%}
   </div>
 </div>
-
-<h2 class="collection-title-outer container">Bestselling Pour Over Bags</h2>
+<!-- 
+<h2 class="collection-title-outer container">Bestselling Coffee Machines</h2>
 <p class="collection-para-outer container">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>  
-
+ -->
 <div class="bestselling-machines-wrapper collection-show relative" id="show-1">
     <div class="bestselling-machines  scroll-slider-wrapper">
         <div class="prod-card">
           {% if bestselling-collection-1 %}
             {% for product in bestselling-collection-1.products limit:6 %}
-              <a href="{{ product.url }}" class="container">
-                <div class="products">
-                  <div class="top">
-                      <img class="prod-img" loading="lazy" width="420" height="250" src="{{ product.featured_image.src | product_img_url: 'large' }}" alt="">
-                      <p class="label-one">
-                        {% if product.label-one %}
-                          {{ product.label-one }}
-                        {% else %}
-                          Newly Launched
-                        {% endif %}
-                      </p>
-                  </div>
-                  <div class="data-right">
-                      <p class="label-two">
-                        {% if product.label-two %}
-                          {{ product.label-two }}
-                        {% else %}
-                          Deals
-                        {% endif %}
-                      </p>
-                    <div class="mid">
-                        <p class="label-three d-none">{{ product.type }}</p>
-                        <h3 class="prod-heading">{{ product.title }}</h3>
-                        <p class="prod-desc">{{ product.description | strip_html | slice: 0, 150 }}</p>
-                        <div class="price-wrapper">
-                            <p class="price">{{ product.price | money }}</p>
-                            <p class="discount">{{ product.compare_at_price | money }}</p>
-                        </div>
-                        <div class="add-to-cart-wrapper">
-                            <p class="cart-label">Add to cart</p>
-                            <svg width="30" height="30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg>
-                            
-                        </div>
-                    </div>
-                    <div class="bottom more-details-wrapper">
-                        <div class="more-details">
-                            <img loading="lazy" width="35" height="35" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/taste-note1.png?v=1715149005" alt="">
-                            <p>Caramel</p>
-                        </div>
-                        <div class="more-details">
-                            <img loading="lazy" width="35" height="35" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/taste-note2.png?v=1715149006" alt="">
-                            <p>Wood</p>
-                        </div>
-                        <div class="more-details">
-                            <img loading="lazy" width="35" height="35" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/taste-note3.png?v=1715149006 alt="">
-                            <p>Spices</p>
-                        </div>
-                    </div>
-                  </div>
-                </div>
-              </a>
+              {% render 'machine-card-grid-list', product: product %}
+              
               {% if forloop.index == 1 %}
                 <div class="full-width-banner">
-                  <img src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/vpop-vl-plpbanner_800x300.avif?v=1715575744" alt="" width="1000" height="300" >
-                  <div class="collection-data container">    
-                    <h2 class="collection-title">Bestselling Machine</h2>
-                    <p class="collection-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>  
+                  <img loading="lazy" class="desktop" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/finero.webp?v=1716464135" alt="Coffeeza Coffee" width="1000" height="300" >
+                  <img loading="lazy" class="mobile" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/finero_ead57374-8bef-4247-b5c1-8687c0f0d263.webp?v=1717158754" alt="Coffeeza Coffee" width="1000" height="300" >
+                  <div class="collection-data container first">    
+                    <!-- <h2 class="collection-title">Bestselling Machine</h2> -->
+                    <p class="collection-para">Experience the Joy of Brewing Cafe-style Coffee, at Home.</p>  
                   </div>
                 </div>
               {% endif %}
 
               {% if forloop.index == 2 %}
-                <div class="inbetween-banner-wrapper">
+                <!-- <div class="inbetween-banner-wrapper">
                   <div class="container d-grid">
                     <div class="flex d-flex align-center justify-start">
-                      <img src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/image_d694ccda-fc4c-4869-bfac-29aa73fe014f.svg?v=1715575744" alt="" width="35" height="35">
+                      <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/image_d694ccda-fc4c-4869-bfac-29aa73fe014f.svg?v=1715575744" alt="Coffeeza Coffee" width="35" height="35">
                       <h4>PREMIUM COFFEE SELECTIONS</h4>
                       <p>Whether you prefer dark and strong or mild and smooth, there's a Nespresso coffee capsule to fit every taste and mood.</p>
                     </div>
                     <div class="flex d-flex align-center justify-start">
-                      <img src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/image_d694ccda-fc4c-4869-bfac-29aa73fe014f.svg?v=1715575744" alt="" width="35" height="35">
+                      <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/image_d694ccda-fc4c-4869-bfac-29aa73fe014f.svg?v=1715575744" alt="Coffeeza Coffee" width="35" height="35">
                       <h4>PREMIUM COFFEE SELECTIONS</h4>
                       <p>Whether you prefer dark and strong or mild and smooth, there's a Nespresso coffee capsule to fit every taste and mood.</p>
                     </div>
                     <div class="flex d-flex align-center justify-start">
-                      <img src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/image_2.svg?v=1715575744" alt="" width="35" height="35">
+                      <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/image_2.svg?v=1715575744" alt="Coffeeza Coffee" width="35" height="35">
                       <h4>PREMIUM COFFEE SELECTIONS</h4>
                       <p>Whether you prefer dark and strong or mild and smooth, there's a Nespresso coffee capsule to fit every taste and mood.</p>
                     </div>
                   </div>
+                </div> -->
+                <div class="full-width-banner">
+                  <img loading="lazy" class="desktop"  src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/combo.webp?v=1716464134" alt="Coffeeza Coffee" width="1000" height="300" >
+                  <img loading="lazy" class="mobile"  src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/combo_c93888fe-a31e-4e4f-a125-d3dea99f176f.webp?v=1717158754" alt="Coffeeza Coffee" width="1000" height="300" >
+                  <!-- <div class="collection-data container">    
+                    <h2 class="collection-title">Bestselling Machine</h2>
+                    <p class="collection-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>  
+                  </div> -->
                 </div>
               {% endif %}
 
               {% if forloop.index == 3 %}
+                  
                 <div class="inbetween-banner-wrapper">
                   <div class="container d-grid">
                     <div class="flex d-flex align-center justify-start">
-                      <img src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/VertuoVnextBrew-min.jpg?v=1715575745" alt="" width="125" height="125">
-                      <h4>EXCEPTIONAL COFFEE QUALITY</h4>
-                      <p>The Vertuo coffee experience combines a smooth taste, full body and rich crema in a big or small cup.</p>
+                      <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/1_Year_Warranty.webp?v=1717133713" alt="Coffeeza Coffee" width="100" height="100">
+                      <h4>1 Year Warranty</h4>
+                      <p></p>
                     </div>
                     <div class="flex d-flex align-center justify-start">
-                      <img src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/vertuo-brewing.webp?v=1715575745" alt="" width="125" height="125">
-                      <h4>BLEND SPECIFIC BREWING</h4>
-                      <p>The Vertuo coffee experience combines a smooth taste, full body and rich crema in a big or small cup.</p>
+                      <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Hassle_Free_Service.webp?v=1717133714" alt="Coffeeza Coffee" width="100" height="100">
+                      <h4>Hassle Free Service</h4>
+                      
                     </div>
                     <div class="flex d-flex align-center justify-start">
-                      <img src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/vertuo-ultimate.webp?v=1715575745" alt="" width="125" height="125">
-                      <h4>ULTIMATE SIMPLICITY</h4>
-                      <p>The Vertuo coffee experience combines a smooth taste, full body and rich crema in a big or small cup.</p>
+                      <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Express_Delivery.webp?v=1717133714" alt="Coffeeza Coffee" width="100" height="100">
+                      <h4>Express Delivery</h4>
+                      
+                    </div>
+                    <div class="flex d-flex align-center justify-start">
+                      <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Easy_Maintenance.webp?v=1717133714" alt="Coffeeza Coffee" width="100" height="100">
+                      <h4>Easy Maintenance</h4>
+                      
                     </div>
                   </div>
                 </div>
@@ -133,20 +98,22 @@
 
               {% if forloop.index == 4 %}
                 <div class="full-width-banner">
-                  <img src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/vpop-vl-plpbanner_800x300.avif?v=1715575744" alt="" width="1000" height="300" >
-                  <div class="collection-data container">    
+                  <img loading="lazy"  class="desktop" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/coffee_brewing3.webp?v=1717129369" alt="Coffeeza Coffee" width="1000" height="300" >
+                  <img loading="lazy"  class="mobile" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/machine_steps.webp?v=1717234562" alt="Coffeeza Coffee" width="1000" height="300" >
+                  <!-- <div class="collection-data container">    
                     <h2 class="collection-title">Bestselling Machine</h2>
                     <p class="collection-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>  
-                  </div>
+                  </div> -->
                 </div>
               {% endif %}
 
               {% if forloop.index == 5 %}
                 <div class="full-width-banner">
-                  <img src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/vpop-vl-plpbanner_800x300.avif?v=1715575744" alt="" width="1000" height="300" >
+                  <img loading="lazy"  class="desktop" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/coffee_sipping.webp?v=1716464134" alt="Coffeeza Coffee" width="1000" height="300" >
+                  <img loading="lazy"  class="mobile" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/coffee_sipping_8ae65bd0-09b3-4f4c-b457-65b73b98a951.webp?v=1717158754" alt="Coffeeza Coffee" width="1000" height="300" >
                   <div class="collection-data container">    
-                    <h2 class="collection-title">Bestselling Machine</h2>
-                    <p class="collection-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>  
+                    <!-- <h2 class="collection-title">Elevate your at-home coffee brewing game with compact and easy to use coffee machines</h2> -->
+                    <p class="collection-para">Elevate your at-home coffee brewing game with compact and easy to use coffee machines</p>  
                   </div>
                 </div>
               {% endif %}
@@ -162,8 +129,8 @@
           {% endif %}
         </div>
                               
-      <button name="prev_button" class="prev">❮</button>
-      <button name="next_button" class="next">❯</button>
+      <button name="prev_button" class="prev"><svg width="60" height="60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160zm352-160l-160 160c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L301.3 256 438.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0z"/></svg></button>
+      <button name="next_button" class="next"><svg width="60" height="60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M470.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 256 265.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160zm-352 160l160-160c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L210.7 256 73.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0z"/></svg></button>
     </div>
 </div>
 

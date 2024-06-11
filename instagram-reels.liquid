@@ -1,99 +1,472 @@
-<div class="main-div container instagram-reels container" id="seven">
+<div class="main-div instagram-reels" id="seven">
     <div class="main-div-inside">
-        <h2>Say Hello On Instagram!</h2>
-        <p>Tag us in your stories to get featured in ours</p>
-        <p>Follow us at <span>@Coffeezaindia</span></p>
-        <div class="insta-wrapper">
+        <h2>Watch & Shop Our Coffee Collection!</h2>
+        <!-- <p>Tag us in your stories to get featured in ours</p>
+        <p>Follow us at <span>@Coffeezaindia</span></p> -->
+        <div class="insta-wrapper relative">
+          {%- if product.type == "ground coffee" or request.path == '/collections/ground-coffee' -%}
             <div class="insta-post">
-              <video src="https://cdn.shopify.com/videos/c/o/v/baea50ea17dd414687a080bc89d9dbc2.mp4" playsinline="true" autoplay="autoplay" muted="muted" loop="loop" poster="" ></video>
-              <a href="#" class="product-wrapper d-flex justify-start align-center">
+              <video loading="lazy" src="https://cdn.shopify.com/videos/c/o/v/6dd79c7276c84f4fa411a2317ff95f32.mp4" playsinline="true" autoplay="autoplay" muted="muted" loop="loop" poster="" ></video>
+              <a href="https://coffeeza.in/products/classico-ground-coffee" class="product-wrapper d-flex justify-start align-center">
                 <div class="product-img">
-                  <img class="" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/hazelnutfront_1728x_ddd6774d-d8fe-45d0-82ee-ad17a0308c4b.webp?v=1715088300" width="35" height="35">
+                  <img class="lazyload" alt="Coffeeza Coffee" class="" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/classico_front_264027de-962c-4d37-b400-bd46674a0f20.webp?v=1717734353" width="35" height="35">
                 </div>
                 <div class="data">
-                  <h2 class="product-title">Monsooned Malabar Monsooned Malabar</h2>
-                  <div class="product-price-wrapper d-flex justify-start align-end">
+                  <h2 class="product-title">Classico 100% Arabica Ground Coffee</h2>
+                  <!-- <div class="product-price-wrapper d-flex justify-start align-end">
                     <p class="product-price">Rs. 5000</p>
                     <span>Rs. 6000</span>
-                  </div>
+                  </div> -->
                 </div>
               </a>
             </div>
             <div class="insta-post">
-              <video src="https://cdn.shopify.com/videos/c/o/v/954a39cf5b5a4c6bae31de9d38c40b95.mp4" playsinline="true" autoplay="autoplay" muted="muted" loop="loop" poster="" ></video>
-                <a href="#" class="product-wrapper d-flex justify-start align-center">
+              <video loading="lazy" src="https://cdn.shopify.com/videos/c/o/v/b670b96cd6b5413dabbe0ccaeadb2408.mp4" playsinline="true" autoplay="autoplay" muted="muted" loop="loop" poster="" ></video>
+                <a href="https://coffeeza.in/collections/ground-coffee/products/mysore-nuggets-ground-coffee" class="product-wrapper d-flex justify-start align-center">
                   <div class="product-img">
-                    <img class="" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/hazelnutfront_1728x_ddd6774d-d8fe-45d0-82ee-ad17a0308c4b.webp?v=1715088300" width="35" height="35">
+                    <img class="lazyload" alt="Coffeeza Coffee" class="" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Mysore_Nuggets_Front.webp?v=1717734377" width="35" height="35">
                   </div>
                   <div class="data">
-                    <h2 class="product-title">Monsooned Malabar Monsooned Malabar</h2>
-                    <div class="product-price-wrapper d-flex justify-start align-end">
+                    <h2 class="product-title">Mysore Nuggets Ground Coffee - Specialty Coffee</h2>
+                    <!-- <div class="product-price-wrapper d-flex justify-start align-end">
                       <p class="product-price">Rs. 5000</p>
                       <span>Rs. 6000</span>
-                    </div>
+                    </div> -->
                   </div>
                 </a>
             </div>
             <div class="insta-post">
-              <video src="https://cdn.shopify.com/videos/c/o/v/caeeb46655164861bf1bc388ed29a030.mp4" playsinline="true" autoplay="autoplay" muted="muted" loop="loop" poster="" ></video>
-                <a href="#" class="product-wrapper d-flex justify-start align-center">
+              <video loading="lazy" src="https://cdn.shopify.com/videos/c/o/v/d8da99cc4f0a4b3886897bb4686b03a4.mp4" playsinline="true" autoplay="autoplay" muted="muted" loop="loop" poster="" ></video>
+                <a href="https://coffeeza.in/collections/ground-coffee/products/monsooned-malabar-ground-coffee-aa-arabica-coffee" class="product-wrapper d-flex justify-start align-center">
                   <div class="product-img">
-                    <img class="" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/hazelnutfront_1728x_ddd6774d-d8fe-45d0-82ee-ad17a0308c4b.webp?v=1715088300" width="35" height="35">
+                    <img class="lazyload" alt="Coffeeza Coffee" class="" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Monsooned_Malabar_front.webp?v=1717734372" width="35" height="35">
                   </div>
                   <div class="data">
-                    <h2 class="product-title">Monsooned Malabar Monsooned Malabar</h2>
-                    <div class="product-price-wrapper d-flex justify-start align-end">
+                    <h2 class="product-title">Monsooned Malabar Ground Coffee</h2>
+                    <!-- <div class="product-price-wrapper d-flex justify-start align-end">
                       <p class="product-price">Rs. 5000</p>
                       <span>Rs. 6000</span>
-                    </div>
+                    </div> -->
                   </div>
                 </a>
             </div>
             <div class="insta-post">
-              <video src="https://cdn.shopify.com/videos/c/o/v/d3acd50280ed4cf0ac5e9cc9aa14db14.mp4" playsinline="true" autoplay="autoplay" muted="muted" loop="loop" poster="" ></video>
-                <a href="#" class="product-wrapper d-flex justify-start align-center">
+              <video loading="lazy" src="https://cdn.shopify.com/videos/c/o/v/2f54892a4a2f4039a7902cf8f0e65f88.mp4" playsinline="true" autoplay="autoplay" muted="muted" loop="loop" poster="" ></video>
+                <a href="https://coffeeza.in/products/classico-ground-coffee" class="product-wrapper d-flex justify-start align-center">
                   <div class="product-img">
-                    <img class="" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/hazelnutfront_1728x_ddd6774d-d8fe-45d0-82ee-ad17a0308c4b.webp?v=1715088300" width="35" height="35">
+                    <img class="lazyload" alt="Coffeeza Coffee" class="" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/classico_front_264027de-962c-4d37-b400-bd46674a0f20.webp?v=1717734353" width="35" height="35">
                   </div>
                   <div class="data">
-                    <h2 class="product-title">Monsooned Malabar Monsooned Malabar</h2>
-                    <div class="product-price-wrapper d-flex justify-start align-end">
+                    <h2 class="product-title">Classico 100% Arabica Ground Coffee</h2>
+                    <!-- <div class="product-price-wrapper d-flex justify-start align-end">
                       <p class="product-price">Rs. 5000</p>
                       <span>Rs. 6000</span>
-                    </div>
+                    </div> -->
                   </div>
                 </a>
             </div>
             <div class="insta-post">
-              <video src="https://cdn.shopify.com/videos/c/o/v/a4ea9d3c67ff4613abebafa095d2fc0f.mp4" playsinline="true" autoplay="autoplay" muted="muted" loop="loop" poster="" ></video>
-                <a href="#" class="product-wrapper d-flex justify-start align-center">
+              <video loading="lazy" src="https://cdn.shopify.com/videos/c/o/v/f529f94d8e8c4910a11129823b84dce4.mp4" playsinline="true" autoplay="autoplay" muted="muted" loop="loop" poster="" ></video>
+                <a href="https://coffeeza.in/collections/ground-coffee/products/mysore-nuggets-ground-coffee" class="product-wrapper d-flex justify-start align-center">
                   <div class="product-img">
-                    <img class="" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/hazelnutfront_1728x_ddd6774d-d8fe-45d0-82ee-ad17a0308c4b.webp?v=1715088300" width="35" height="35">
+                    <img class="lazyload" alt="Coffeeza Coffee" class="" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Mysore_Nuggets_Front.webp?v=1717734377" width="35" height="35">
                   </div>
                   <div class="data">
-                    <h2 class="product-title">Monsooned Malabar Monsooned Malabar</h2>
-                    <div class="product-price-wrapper d-flex justify-start align-end">
+                    <h2 class="product-title">Mysore Nuggets Ground Coffee - Specialty Coffee</h2>
+                    <!-- <div class="product-price-wrapper d-flex justify-start align-end">
                       <p class="product-price">Rs. 5000</p>
                       <span>Rs. 6000</span>
-                    </div>
+                    </div> -->
                   </div>
                 </a>
             </div>
             <div class="insta-post">
-              <video src="https://cdn.shopify.com/videos/c/o/v/954a39cf5b5a4c6bae31de9d38c40b95.mp4" playsinline="true" autoplay="autoplay" muted="muted" loop="loop" poster="" ></video>
-                <a href="#" class="product-wrapper d-flex justify-start align-center">
+              <video loading="lazy" src="https://cdn.shopify.com/videos/c/o/v/f67ee9d9f217476780aa423e419d2108.mp4" playsinline="true" autoplay="autoplay" muted="muted" loop="loop" poster="" ></video>
+                <a href="https://coffeeza.in/products/cremoso-ground-coffee" class="product-wrapper d-flex justify-start align-center">
                   <div class="product-img">
-                    <img class="" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/hazelnutfront_1728x_ddd6774d-d8fe-45d0-82ee-ad17a0308c4b.webp?v=1715088300" width="35" height="35">
+                    <img class="lazyload" alt="Coffeeza Coffee" class="" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Cremoso_front_fd53093c-08c7-4ad4-a8ed-54ea3245a4ce.webp?v=1717734361" width="35" height="35">
                   </div>
                   <div class="data">
-                    <h2 class="product-title">Monsooned Malabar Monsooned Malabar</h2>
-                    <div class="product-price-wrapper d-flex justify-start align-end">
+                    <h2 class="product-title">Cremoso Ground Coffee</h2>
+                    <!-- <div class="product-price-wrapper d-flex justify-start align-end">
                       <p class="product-price">Rs. 5000</p>
                       <span>Rs. 6000</span>
-                    </div>
+                    </div> -->
                   </div>
                 </a>
             </div>
+          {%- endif -%}
+          {%- if product.type == "Capsule Coffee Machine" or request.path == '/collections/coffee-machines' -%}
+            <div class="insta-post">
+              <video loading="lazy" src="https://cdn.shopify.com/videos/c/o/v/b856f69c568641d29a137be29f15d51d.mp4" playsinline="true" autoplay="autoplay" muted="muted" loop="loop" poster="" ></video>
+              <a href="https://coffeeza.in/collections/coffee-machines/products/finero-next-capsule-coffee-machine" class="product-wrapper d-flex justify-start align-center">
+                <div class="product-img">
+                  <img class="lazyload" alt="Coffeeza Coffee" class="" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Desktop_Nav_bar_products-Finero.webp?v=1717735760" width="35" height="35">
+                </div>
+                <div class="data">
+                  <h2 class="product-title">Finero Next Coffee Machine + Free 10 Assorted Capsules</h2>
+                  <!-- <div class="product-price-wrapper d-flex justify-start align-end">
+                    <p class="product-price">Rs. 5000</p>
+                    <span>Rs. 6000</span>
+                  </div> -->
+                </div>
+              </a>
+            </div>
+            <div class="insta-post">
+              <video loading="lazy" src="https://cdn.shopify.com/videos/c/o/v/b4e73d53b5e948f28aef6cce38a22afd.mp4" playsinline="true" autoplay="autoplay" muted="muted" loop="loop" poster="" ></video>
+                <a href="https://coffeeza.in/collections/coffee-machines/products/frothimo-milk-frother" class="product-wrapper d-flex justify-start align-center">
+                  <div class="product-img">
+                    <img class="lazyload" alt="Coffeeza Coffee" class="" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Desktop_Nav_bar_products-Frothimo.webp?v=1717735760" width="35" height="35">
+                  </div>
+                  <div class="data">
+                    <h2 class="product-title">Frothimo Milk Frother & Heater</h2>
+                    <!-- <div class="product-price-wrapper d-flex justify-start align-end">
+                      <p class="product-price">Rs. 5000</p>
+                      <span>Rs. 6000</span>
+                    </div> -->
+                  </div>
+                </a>
+            </div>
+            <div class="insta-post">
+              <video loading="lazy" src="https://cdn.shopify.com/videos/c/o/v/020b77e4b8704839984c867f41409e32.mp4" playsinline="true" autoplay="autoplay" muted="muted" loop="loop" poster="" ></video>
+                <a href="https://coffeeza.in/collections/coffee-machines/products/finero-next-coffee-machine-milk-frother" class="product-wrapper d-flex justify-start align-center">
+                  <div class="product-img">
+                    <img class="lazyload" alt="Coffeeza Coffee" class="" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Deskstop_Nav_bar_products-_Machines_Combo.webp?v=1717735760" width="35" height="35">
+                  </div>
+                  <div class="data">
+                    <h2 class="product-title">Finero Next Coffee Machine + Milk Frother (10 Assorted Capsules Included)</h2>
+                    <!-- <div class="product-price-wrapper d-flex justify-start align-end">
+                      <p class="product-price">Rs. 5000</p>
+                      <span>Rs. 6000</span>
+                    </div> -->
+                  </div>
+                </a>
+            </div>
+            <div class="insta-post">
+              <video loading="lazy" src="https://cdn.shopify.com/videos/c/o/v/64871c24e23f4986881d2e3fae1d2dfd.mp4" playsinline="true" autoplay="autoplay" muted="muted" loop="loop" poster="" ></video>
+                <a href="https://coffeeza.in/collections/coffee-machines/products/finero-next-coffee-machine-milk-frother" class="product-wrapper d-flex justify-start align-center">
+                  <div class="product-img">
+                  <img class="lazyload" alt="Coffeeza Coffee" class="" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Desktop_Nav_bar_products-Finero.webp?v=1717735760" width="35" height="35">
+                </div>
+                <div class="data">
+                  <h2 class="product-title">Finero Next Coffee Machine + Free 10 Assorted Capsules</h2>
+                  <!-- <div class="product-price-wrapper d-flex justify-start align-end">
+                    <p class="product-price">Rs. 5000</p>
+                    <span>Rs. 6000</span>
+                  </div> -->
+                </div>
+                </a>
+            </div>
+            <div class="insta-post">
+              <video loading="lazy" src="https://cdn.shopify.com/videos/c/o/v/b856f69c568641d29a137be29f15d51d.mp4" playsinline="true" autoplay="autoplay" muted="muted" loop="loop" poster="" ></video>
+                <a href="https://coffeeza.in/collections/ground-coffee/products/monsooned-malabar-ground-coffee-aa-arabica-coffee" class="product-wrapper d-flex justify-start align-center">
+                  
+                  <div class="product-img">
+                    <img class="lazyload" alt="Coffeeza Coffee" class="" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Deskstop_Nav_bar_products-_Machines_Combo.webp?v=1717735760" width="35" height="35">
+                  </div>
+                  <div class="data">
+                    <h2 class="product-title">Finero Next Coffee Machine + Milk Frother (10 Assorted Capsules Included)</h2>
+                    <!-- <div class="product-price-wrapper d-flex justify-start align-end">
+                      <p class="product-price">Rs. 5000</p>
+                      <span>Rs. 6000</span>
+                    </div> -->
+                  </div>
+                </a>
+            </div>
+            <div class="insta-post">
+              <video loading="lazy" src="https://cdn.shopify.com/videos/c/o/v/f90354e78fe643f78066504c36a7d9f7.mp4" playsinline="true" autoplay="autoplay" muted="muted" loop="loop" poster="" ></video>
+                <a href="https://coffeeza.in/collections/ground-coffee/products/mysore-nuggets-ground-coffee" class="product-wrapper d-flex justify-start align-center">
+                  <div class="product-img">
+                    <img class="lazyload" alt="Coffeeza Coffee" class="" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Deskstop_Nav_bar_products-_Machines_Combo.webp?v=1717735760" width="35" height="35">
+                  </div>
+                  <div class="data">
+                    <h2 class="product-title">Finero Next Coffee Machine + Milk Frother (10 Assorted Capsules Included)</h2>
+                    <!-- <div class="product-price-wrapper d-flex justify-start align-end">
+                      <p class="product-price">Rs. 5000</p>
+                      <span>Rs. 6000</span>
+                    </div> -->
+                  </div>
+                </a>
+            </div>
+          {%- endif -%}
+          {%- if product.type == "Pour Over Coffee Bags" or request.path == '/collections/pour-over-coffee-bags' -%}
+            <div class="insta-post">
+              <video loading="lazy" src="https://cdn.shopify.com/videos/c/o/v/d3afe228718e43189f0b605e508b4544.mp4" playsinline="true" autoplay="autoplay" muted="muted" loop="loop" poster="" ></video>
+              <a href="https://coffeeza.in/collections/pour-over-coffee-bags/products/mysore-nuggets-arabica-pour-over-coffee-bags" class="product-wrapper d-flex justify-start align-center">
+                <div class="product-img">
+                  <img class="lazyload" alt="Coffeeza Coffee" class="" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/mysore_front.webp?v=1717734232" width="35" height="35">
+                </div>
+                <div class="data">
+                  <h2 class="product-title">Mysore Nuggets 100% AAA Arabica Pour-Over Coffee Bags | No Equipment Needed</h2>
+                  <!-- <div class="product-price-wrapper d-flex justify-start align-end">
+                    <p class="product-price">Rs. 5000</p>
+                    <span>Rs. 6000</span>
+                  </div> -->
+                </div>
+              </a>
+            </div>
+            <div class="insta-post">
+              <video loading="lazy" src="https://cdn.shopify.com/videos/c/o/v/7e7e62bd02544cd8b42acd6eb6c36adf.mp4" playsinline="true" autoplay="autoplay" muted="muted" loop="loop" poster="" ></video>
+                <a href="https://coffeeza.in/collections/pour-over-coffee-bags/products/monsooned-malabar-arabica-pour-over-coffee-bags-no-equipment-needed" class="product-wrapper d-flex justify-start align-center">
+                  <div class="product-img">
+                    <img class="lazyload" alt="Coffeeza Coffee" class="" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/monsooned_front.webp?v=1717734232" width="35" height="35">
+                  </div>
+                  <div class="data">
+                    <h2 class="product-title">Monsooned Malabar 100% AA Arabica Pour-Over Coffee Bags | No Equipment Needed</h2>
+                    <!-- <div class="product-price-wrapper d-flex justify-start align-end">
+                      <p class="product-price">Rs. 5000</p>
+                      <span>Rs. 6000</span>
+                    </div> -->
+                  </div>
+                </a>
+            </div>
+            <div class="insta-post">
+              <video loading="lazy" src="https://cdn.shopify.com/videos/c/o/v/fb7df391821c44b08d965e630946df35.mp4" playsinline="true" autoplay="autoplay" muted="muted" loop="loop" poster="" ></video>
+                <a href="https://coffeeza.in/collections/pour-over-coffee-bags/products/classico-arabica-easy-pour-over-coffee-bags-no-equipment" class="product-wrapper d-flex justify-start align-center">
+                  <div class="product-img">
+                    <img class="lazyload" alt="Coffeeza Coffee" class="" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/classico_front.webp?v=1717734231" width="35" height="35">
+                  </div>
+                  <div class="data">
+                    <h2 class="product-title">Classico - 100% AA Arabica Pour-Over Coffee Bags | No Equipment Needed</h2>
+                    <!-- <div class="product-price-wrapper d-flex justify-start align-end">
+                      <p class="product-price">Rs. 5000</p>
+                      <span>Rs. 6000</span>
+                    </div> -->
+                  </div>
+                </a>
+            </div>
+            <div class="insta-post">
+              <video loading="lazy" src="https://cdn.shopify.com/videos/c/o/v/f67ee9d9f217476780aa423e419d2108.mp4" playsinline="true" autoplay="autoplay" muted="muted" loop="loop" poster="" ></video>
+                <a href="https://coffeeza.in/collections/ground-coffee/products/cremoso-ground-coffee" class="product-wrapper d-flex justify-start align-center">
+                  <div class="product-img">
+                    <img class="lazyload" alt="Coffeeza Coffee" class="" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Cremoso_front_fd53093c-08c7-4ad4-a8ed-54ea3245a4ce.webp?v=1717734361" width="35" height="35">
+                  </div>
+                  <div class="data">
+                    <h2 class="product-title">Cremoso Ground Coffee</h2>
+                    <!-- <div class="product-price-wrapper d-flex justify-start align-end">
+                      <p class="product-price">Rs. 5000</p>
+                      <span>Rs. 6000</span>
+                    </div> -->
+                  </div>
+                </a>
+            </div>
+            <div class="insta-post">
+              <video loading="lazy" src="https://cdn.shopify.com/videos/c/o/v/b670b96cd6b5413dabbe0ccaeadb2408.mp4" playsinline="true" autoplay="autoplay" muted="muted" loop="loop" poster="" ></video>
+                <a href="https://coffeeza.in/collections/ground-coffee/products/mysore-nuggets-ground-coffee" class="product-wrapper d-flex justify-start align-center">
+                  <div class="product-img">
+                    <img class="lazyload" alt="Coffeeza Coffee" class="" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Mysore_Nuggets_Front.webp?v=1717734377" width="35" height="35">
+                  </div>
+                  <div class="data">
+                    <h2 class="product-title">Mysore Nuggets Ground Coffee - Specialty Coffee</h2>
+                    <!-- <div class="product-price-wrapper d-flex justify-start align-end">
+                      <p class="product-price">Rs. 5000</p>
+                      <span>Rs. 6000</span>
+                    </div> -->
+                  </div>
+                </a>
+            </div>
+            <div class="insta-post">
+              <video loading="lazy" src="https://cdn.shopify.com/videos/c/o/v/d8da99cc4f0a4b3886897bb4686b03a4.mp4" playsinline="true" autoplay="autoplay" muted="muted" loop="loop" poster="" ></video>
+                <a href="https://coffeeza.in/collections/ground-coffee/products/monsooned-malabar-ground-coffee-aa-arabica-coffee" class="product-wrapper d-flex justify-start align-center">
+                  <div class="product-img">
+                    <img class="lazyload" alt="Coffeeza Coffee" class="" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Monsooned_Malabar_front.webp?v=1717734372" width="35" height="35">
+                  </div>
+                  <div class="data">
+                    <h2 class="product-title">Monsooned Malabar Ground Coffee - AA Arabica Coffee</h2>
+                    <!-- <div class="product-price-wrapper d-flex justify-start align-end">
+                      <p class="product-price">Rs. 5000</p>
+                      <span>Rs. 6000</span>
+                    </div> -->
+                  </div>
+                </a>
+            </div>
+          {%- endif -%}
+          {%- if product.type == "Coffee Capsules" or request.path == '/collections/coffee-capsules' -%}
+            <div class="insta-post">
+              <video loading="lazy" src="https://cdn.shopify.com/videos/c/o/v/67ebf6bfe01a45948f353d74ae84b2e3.mp4" playsinline="true" autoplay="autoplay" muted="muted" loop="loop" poster="" ></video>
+              <a href="https://coffeeza.in/products/intenso-coffee-pods" class="product-wrapper d-flex justify-start align-center">
+                <div class="product-img">
+                  <img class="lazyload" alt="Coffeeza Coffee" class="" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/intenso_front.webp?v=1717734329" width="35" height="35">
+                </div>
+                <div class="data">
+                  <h2 class="product-title">Intenso Aluminium Coffee Capsules</h2>
+                  <!-- <div class="product-price-wrapper d-flex justify-start align-end">
+                    <p class="product-price">Rs. 5000</p>
+                    <span>Rs. 6000</span>
+                  </div> -->
+                </div>
+              </a>
+            </div>
+            <div class="insta-post">
+              <video loading="lazy" src="https://cdn.shopify.com/videos/c/o/v/2246f8f9819049caa9897d3000215126.mp4" playsinline="true" autoplay="autoplay" muted="muted" loop="loop" poster="" ></video>
+                <a href="https://coffeeza.in/products/caramel-flavoured-aluminium-coffee-capsules" class="product-wrapper d-flex justify-start align-center">
+                  <div class="product-img">
+                    <img class="lazyload" alt="Coffeeza Coffee" class="" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/caramel_front.webp?v=1717734329" width="35" height="35">
+                  </div>
+                  <div class="data">
+                    <h2 class="product-title">Caramel 100% Arabica Flavoured Aluminium Coffee Capsules</h2>
+                    <!-- <div class="product-price-wrapper d-flex justify-start align-end">
+                      <p class="product-price">Rs. 5000</p>
+                      <span>Rs. 6000</span>
+                    </div> -->
+                  </div>
+                </a>
+            </div>
+            <div class="insta-post">
+              <video loading="lazy" src="https://cdn.shopify.com/videos/c/o/v/fe02062518bd40d5b1337d923c42a970.mp4" playsinline="true" autoplay="autoplay" muted="muted" loop="loop" poster="" ></video>
+                <a href="https://coffeeza.in/products/variety-pack-of-5-blends" class="product-wrapper d-flex justify-start align-center">
+                  <div class="product-img">
+                    <img class="lazyload" alt="Coffeeza Coffee" class="" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/vp5_720x_1.webp?v=1717738454" width="35" height="35">
+                  </div>
+                  <div class="data">
+                    <h2 class="product-title">Variety Pack Of 5 Blends</h2>
+                    <!-- <div class="product-price-wrapper d-flex justify-start align-end">
+                      <p class="product-price">Rs. 5000</p>
+                      <span>Rs. 6000</span>
+                    </div> -->
+                  </div>
+                </a>
+            </div>
+            <div class="insta-post">
+              <video loading="lazy" src="https://cdn.shopify.com/videos/c/o/v/5baf5edf52004d4690a74a0ecb7d6756.mp4" playsinline="true" autoplay="autoplay" muted="muted" loop="loop" poster="" ></video>
+                <a href="https://coffeeza.in/products/cremoso-coffee-capsules" class="product-wrapper d-flex justify-start align-center">
+                  <div class="product-img">
+                    <img class="lazyload" alt="Coffeeza Coffee" class="" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/cremoso_front.webp?v=1717734329" width="35" height="35">
+                  </div>
+                  <div class="data">
+                    <h2 class="product-title">Cremoso Aluminium Coffee Capsules</h2>
+                    <!-- <div class="product-price-wrapper d-flex justify-start align-end">
+                      <p class="product-price">Rs. 5000</p>
+                      <span>Rs. 6000</span>
+                    </div> -->
+                  </div>
+                </a>
+            </div>
+            <div class="insta-post">
+              <video loading="lazy" src="https://cdn.shopify.com/videos/c/o/v/6cb6f9f648c14d2b841c88a06d2e52e7.mp4" playsinline="true" autoplay="autoplay" muted="muted" loop="loop" poster="" ></video>
+                <a href="https://coffeeza.in/products/forte-coffee-capsule" class="product-wrapper d-flex justify-start align-center">
+                  <div class="product-img">
+                    <img class="lazyload" alt="Coffeeza Coffee" class="" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/forte_front.webp?v=1717734329" width="35" height="35">
+                  </div>
+                  <div class="data">
+                    <h2 class="product-title">Forte Aluminium Coffee Capsules</h2>
+                    <!-- <div class="product-price-wrapper d-flex justify-start align-end">
+                      <p class="product-price">Rs. 5000</p>
+                      <span>Rs. 6000</span>
+                    </div> -->
+                  </div>
+                </a>
+            </div>
+            <div class="insta-post">
+              <video loading="lazy" src="https://cdn.shopify.com/videos/c/o/v/86397d99e69e46049f35301e549f7533.mp4" playsinline="true" autoplay="autoplay" muted="muted" loop="loop" poster="" ></video>
+                <a href="https://coffeeza.in/collections/coffee-capsules/products/vanilla-flavoured-aluminium-coffee-capsules" class="product-wrapper d-flex justify-start align-center">
+                  <div class="product-img">
+                    <img class="lazyload" alt="Coffeeza Coffee" class="" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/vanilla_front.webp?v=1717734329" width="35" height="35">
+                  </div>
+                  <div class="data">
+                    <h2 class="product-title">Vanilla 100% Arabica Flavoured Aluminium Coffee Capsules</h2>
+                    <!-- <div class="product-price-wrapper d-flex justify-start align-end">
+                      <p class="product-price">Rs. 5000</p>
+                      <span>Rs. 6000</span>
+                    </div> -->
+                  </div>
+                </a>
+            </div>
+          {%- endif -%}
+          {%- if request.path == '/' or request.path == '/collections/best-sellers' or request.path == '/collections/all-accessories' -%}
+            <div class="insta-post">
+              <video loading="lazy" src="https://cdn.shopify.com/videos/c/o/v/5952981943c04c15a5595eb063ab743c.mp4" playsinline="true" autoplay="autoplay" muted="muted" loop="loop" poster="" ></video>
+              <a href="https://coffeeza.in/collections/coffee-capsules/products/variety-pack-of-5-blends" class="product-wrapper d-flex justify-start align-center">
+                <div class="product-img">
+                  <img class="lazyload" alt="Coffeeza Coffee" class="" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Deskstop_Nav_bar_products-capsules.jpg?v=1715939123" width="35" height="35">
+                </div>
+                <div class="data">
+                  <h2 class="product-title">Coffee Capsules Variety Pack Of 5 Blends</h2>
+                  <!-- <div class="product-price-wrapper d-flex justify-start align-end">
+                    <p class="product-price">Rs. 5000</p>
+                    <span>Rs. 6000</span>
+                  </div> -->
+                </div>
+              </a>
+            </div>
+            <div class="insta-post">
+              <video loading="lazy" src="https://cdn.shopify.com/videos/c/o/v/b554e30ef0d64a218ea4eaa8a2517563.mp4" playsinline="true" autoplay="autoplay" muted="muted" loop="loop" poster="" ></video>
+                <a href="https://coffeeza.in/collections/coffee-machines/products/finero-next-coffee-machine-milk-frother" class="product-wrapper d-flex justify-start align-center">
+                  <div class="product-img">
+                    <img class="lazyload" alt="Coffeeza Coffee" class="" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Desktop_Nav_bar_products-Finero.webp?v=1717735760" width="35" height="35">
+                  </div>
+                  <div class="data">
+                    <h2 class="product-title">Finero Next Coffee Machine + Milk Frother + 10 Assorted Capsules</h2>
+                    <!-- <div class="product-price-wrapper d-flex justify-start align-end">
+                      <p class="product-price">Rs. 5000</p>
+                      <span>Rs. 6000</span>
+                    </div> -->
+                  </div>
+                </a>
+            </div>
+            <div class="insta-post">
+              <video loading="lazy" src="https://cdn.shopify.com/videos/c/o/v/b4e73d53b5e948f28aef6cce38a22afd.mp4" playsinline="true" autoplay="autoplay" muted="muted" loop="loop" poster="" ></video>
+                <a href="https://coffeeza.in/collections/coffee-machines/products/frothimo-milk-frother" class="product-wrapper d-flex justify-start align-center">
+                  <div class="product-img">
+                    <img class="lazyload" alt="Coffeeza Coffee" class="" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Desktop_Nav_bar_products-Frothimo.webp?v=1717735760" width="35" height="35">
+                  </div>
+                  <div class="data">
+                    <h2 class="product-title">Frothimo Milk Frother & Heater</h2>
+                    <!-- <div class="product-price-wrapper d-flex justify-start align-end">
+                      <p class="product-price">Rs. 5000</p>
+                      <span>Rs. 6000</span>
+                    </div> -->
+                  </div>
+                </a>
+            </div>
+            <div class="insta-post">
+              <video loading="lazy" src="https://cdn.shopify.com/videos/c/o/v/2246f8f9819049caa9897d3000215126.mp4" playsinline="true" autoplay="autoplay" muted="muted" loop="loop" poster="" ></video>
+                <a href="https://coffeeza.in/collections/coffee-machines/products/finero-next-capsule-coffee-machine" class="product-wrapper d-flex justify-start align-center">
+                  <div class="product-img">
+                    <img class="lazyload" alt="Coffeeza Coffee" class="" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Desktop_Nav_bar_products-Finero.webp?v=1717735760" width="35" height="35">
+                  </div>
+                  <div class="data">
+                    <h2 class="product-title">Finero Next Coffee Machine</h2>
+                    <!-- <div class="product-price-wrapper d-flex justify-start align-end">
+                      <p class="product-price">Rs. 5000</p>
+                      <span>Rs. 6000</span>
+                    </div> -->
+                  </div>
+                </a>
+            </div>
+            <div class="insta-post">
+              <video loading="lazy" src="https://cdn.shopify.com/videos/c/o/v/f67ee9d9f217476780aa423e419d2108.mp4" playsinline="true" autoplay="autoplay" muted="muted" loop="loop" poster="" ></video>
+                <a href="https://coffeeza.in/collections/ground-coffee/products/cremoso-ground-coffee" class="product-wrapper d-flex justify-start align-center">
+                  <div class="product-img">
+                    <img class="lazyload" alt="Coffeeza Coffee" class="" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Cremoso_front_fd53093c-08c7-4ad4-a8ed-54ea3245a4ce.webp?v=1717734361" width="35" height="35">
+                  </div>
+                  <div class="data">
+                    <h2 class="product-title">Cremoso Ground Coffee</h2>
+                    <!-- <div class="product-price-wrapper d-flex justify-start align-end">
+                      <p class="product-price">Rs. 5000</p>
+                      <span>Rs. 6000</span>
+                    </div> -->
+                  </div>
+                </a>
+            </div>
+            <div class="insta-post">
+              <video loading="lazy" src="https://cdn.shopify.com/videos/c/o/v/fb7df391821c44b08d965e630946df35.mp4" playsinline="true" autoplay="autoplay" muted="muted" loop="loop" poster="" ></video>
+                <a href="https://coffeeza.in/collections/pour-over-coffee-bags/products/classico-arabica-easy-pour-over-coffee-bags-no-equipment" class="product-wrapper d-flex justify-start align-center">
+                  <div class="product-img">
+                    <img class="lazyload" alt="Coffeeza Coffee" class="" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/classico_front.webp?v=1717734231" width="35" height="35">
+                  </div>
+                  <div class="data">
+                    <h2 class="product-title">Pour Over Classico Coffee Bags</h2>
+                    <!-- <div class="product-price-wrapper d-flex justify-start align-end">
+                      <p class="product-price">Rs. 5000</p>
+                      <span>Rs. 6000</span>
+                    </div> -->
+                  </div>
+                </a>
+            </div>
+          {%- endif -%}
+          <button name="prev_button" class="prev"><svg width="60" height="60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160zm352-160l-160 160c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L301.3 256 438.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0z"/></svg></button>
+          <button name="next_button" class="next"><svg width="60" height="60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M470.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 256 265.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160zm-352 160l160-160c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L210.7 256 73.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0z"/></svg></button>
         </div>
     </div>
 </div>

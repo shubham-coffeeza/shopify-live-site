@@ -39,24 +39,22 @@
         {%- endif -%}
       </a>
 
-      {%- if quickbuy -%}
-        <div class="product-block__quicklook-btn-container md-down-hidden">
-          <a class="product-block__quicklook-btn btn--quicklook btn btn--primary js-quickbuy-button" href="{{ product.url }}">{{ 'products.quickbuy.quick_buy' | t }}</a>
-          {% render 'quick-buy-placeholder', product: product %}
-        </div>
-      {%- endif -%}
     </div>
-    <p class="label-two">
-                          
-        Deals
-      
-    </p>
+    {% if product.compare_at_price %}
+      {% assign original_price = product.compare_at_price %}
+      {% assign discounted_price = product.price %}
+      {% assign percentage_off = original_price | minus: discounted_price | times: 100 | divided_by: original_price | round %}
+
+      <p class="label-two">
+        {{ percentage_off }}% off
+      </p>
+    {% endif %}
   </div>
 
   <div class="mid">
     <div class="product-block__title">
-    <a href="{{ product.url | within: collection }}" class="product-block__title-link">{{ product.title }}</a>
-  </div>
+      <a href="{{ product.url | within: collection }}" class="product-block__title-link">{{ product.title }}</a>
+    </div>
 
     <p class="prod-desc">{{ product.description | strip_html | slice: 0, 150 }}</p>
 
@@ -91,8 +89,8 @@
           {% endif %}
       
           {% if product.available %}
-            {% if cheapest_variant.compare_at_price > cheapest_variant.price and settings.sale_label_enabled %}
-              <span class="product-label product-label--on-sale global-border-radius">{{ 'products.product.on_sale' | t }}</span>
+            {% if product.metafields.custom.product_sale_label %}
+              <span class="product-label product-label--on-sale global-border-radius">{{ product.metafields.custom.product_sale_label }}</span>
             {% endif %}
           {% elsif settings.sold_label_enabled %}
             <span class="product-label product-label--sold-out global-border-radius">{{ 'products.product.sold_out' | t }}</span>

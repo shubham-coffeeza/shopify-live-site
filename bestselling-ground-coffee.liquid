@@ -2,222 +2,124 @@
 {% assign bestselling-collection-2 = collections['ground-coffee-tier-2'] %}
 {% assign bestselling-collection-3 = collections['ground-coffee-tier-3'] %}
 
+{% assign espresso-ground-coffee-collection = collections['espresso-ground-coffee'] %}
+{% assign moka-pot-ground-coffee-collection = collections['moka-pot-ground-coffee'] %}
+{% assign aeropress-collection = collections['aeropress'] %}
+{% assign french-press-ground-coffee-collection = collections['french-press-ground-coffee'] %}
+{% assign pour-over-ground-coffee-collection = collections['pour-over-ground-coffee'] %}
+{% assign cold-brew-ground-coffee-collection = collections['cold-brew-ground-coffee'] %}
+{% assign filter-ground-coffee-collection = collections['filter-ground-coffee'] %}
 
-  <h2 class="collection-title-outer container">Bestselling Ground Coffee</h2>
-      <p class="collection-para-outer container">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>  
+{% assign all_collections = "bestselling-collection-1,espresso-ground-coffee-collection,moka-pot-ground-coffee-collection,aeropress-collection,french-press-ground-coffee-collection,pour-over-ground-coffee-collection,cold-brew-ground-coffee-collection,filter-ground-coffee-collection" | split: "," %}
 
-<div class="full-width-banner">
-      <img src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/VLCOFFEEPLP-Desktop-2880x700-2.avif?v=1715317859" alt="" width="1000" height="300" >
-      <div class="collection-data container">    
-        <h2 class="collection-title">Bestselling Ground Coffee</h2>
-        <p class="collection-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>  
+
+<img class="collection-banner desktop" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/imgpsh_fullsize_anim_7.jpg?v=1717051311" alt="Coffeeza Coffee" width="1000" height="400">
+<img class="collection-banner mobile" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Ground_Coffee_Mobile.webp?v=1717153018" alt="Coffeeza Coffee" width="1000" height="400">
+
+<div class="container custom-breadcrumbs-container breadcrumbs-container">
+  <div class="page-width">
+    {%- render 'breadcrumbs', show_next_prev: true -%}
+  </div>
+</div>
+
+{% render 'ground-coffee-slider' %}
+
+{% assign GCoffeecounter = 0 %}
+{% for collection_name in all_collections %}
+{% assign collection = '' %}
+{% case collection_name %}
+  {% when 'bestselling-collection-1' %}
+    {% assign collection = bestselling-collection-1 %}
+  {% when 'espresso-ground-coffee-collection' %}
+    {% assign collection = espresso-ground-coffee-collection %}
+  {% when 'moka-pot-ground-coffee-collection' %}
+    {% assign collection = moka-pot-ground-coffee-collection %}
+  {% when 'aeropress-collection' %}
+    {% assign collection = aeropress-collection %}
+  {% when 'french-press-ground-coffee-collection' %}
+    {% assign collection = french-press-ground-coffee-collection %}
+  {% when 'pour-over-ground-coffee-collection' %}
+    {% assign collection = pour-over-ground-coffee-collection %}
+  {% when 'cold-brew-ground-coffee-collection' %}
+    {% assign collection = cold-brew-ground-coffee-collection %}
+  {% when 'filter-ground-coffee-collection' %}
+    {% assign collection = filter-ground-coffee-collection %}
+{% endcase %}
+{% assign GCoffeecounter = GCoffeecounter | plus: 1 %}
+<div class="bestselling-capsules-wrapper bestselling-groundcoffee-wrapper ground-coffee-everything-wrapper collection-show relative category-wise-GCoffee-filter d-none {% if GCoffeecounter == 1 %}d-block{% endif %}" id="display-GCoffee-filter-category-{{ GCoffeecounter }}">
+  <div class="bestselling-groundcoffee container scroll-slider-wrapper">
+      <div class="prod-card">
+        {% if collection and collection.products.size > 0 %}
+          {% for product in collection.products %}
+            {% render 'product-card-grid-list', product: product %}
+          {% endfor %}
+        {% else %}
+          <p>The collection does not exist or has no products.</p>
+        {% endif %}
       </div>
+  </div>
+  <div class="view-all-collection d-flex justify-center">
+    <a href="#show-all-ground-coffee" >
+      <button type="button" >View All</button>
+    </a>
+  </div>
 </div>
-<div class="bestselling-groundcoffee-wrapper collection-show relative container" id="show-1">
-    <div class="bestselling-groundcoffee  scroll-slider-wrapper">
-        <div class="prod-card">
-          {% if bestselling-collection-1 %}
-            {% for product in bestselling-collection-1.products limit:3 %}
-              <a href="{{ product.url }}">
-                <div class="products">
-                    <div class="top">
-                        <img class="prod-img" loading="lazy" width="300" height="250" src="{{ product.featured_image.src | product_img_url: 'large' }}" alt="">
-                        <p class="label-one">
-                          {% if product.label-one %}
-                            {{ product.label-one }}
-                          {% else %}
-                            Newly Launched
-                          {% endif %}
-                        </p>
-                        <p class="label-two">
-                          {% if product.label-two %}
-                            {{ product.label-two }}
-                          {% else %}
-                            Deals
-                          {% endif %}
-                        </p>
-                    </div>
-                    <div class="mid">
-                        <p class="label-three d-none">{{ product.type }}</p>
-                        <h3 class="prod-heading">{{ product.title }}</h3>
-                        <p class="prod-desc">{{ product.description | strip_html | slice: 0, 150 }}</p>
-                        <div class="add-to-cart-wrapper">
-                            <p class="cart-label">Add to cart</p>
-                            <svg width="30" height="30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg>
-                            <div class="price-wrapper">
-                                <p class="price">{{ product.price | money }}</p>
-                                <p class="discount">{{ product.compare_at_price | money }}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bottom more-details-wrapper">
-                        <div class="more-details">
-                            <img loading="lazy" width="35" height="35" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/taste-note1.png?v=1715149005" alt="">
-                            <p>Caramel</p>
-                        </div>
-                        <div class="more-details">
-                            <img loading="lazy" width="35" height="35" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/taste-note2.png?v=1715149006" alt="">
-                            <p>Wood</p>
-                        </div>
-                        <div class="more-details">
-                            <img loading="lazy" width="35" height="35" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/taste-note3.png?v=1715149006 alt="">
-                            <p>Spices</p>
-                        </div>
-                    </div>
-                </div>
-              </a>
-            {% endfor %}
-          {% else %}
-            <p>The collection "{{ collection_handle }}" does not exist.</p>
-          {% endif %}
-        </div>
-                              
-      <button name="prev_button" class="prev">❮</button>
-      <button name="next_button" class="next">❯</button>
-    </div>
-</div>
+{% endfor %}
 
 
 <div class="full-width-banner">
-      <img src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/vpop-vl-plpbanner_2880x700.avif?v=1715317860" alt="" width="1000" height="300">
-      <div class="collection-data container">    
+      <img class="desktop" loading="lazy" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/imgpsh_fullsize_anim_14_1.png?v=1717670681" alt="Coffeeza Coffee" width="1000" height="300">
+      <img class="mobile" loading="lazy" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Ground_Coffee_Mobile.webp?v=1717673326" alt="Coffeeza Coffee" width="1000" height="300">
+      <!-- <div class="collection-data container">    
         <h2 class="collection-title">Bestselling Ground Coffee</h2>
         <p class="collection-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>  
-      </div>
+      </div> -->
 </div>
                               
 <div class="bestselling-groundcoffee-wrapper collection-show relative container" id="show-1">
-    <div class="bestselling-groundcoffee  scroll-slider-wrapper">
+    <div class="bestselling-groundcoffee scroll-slider-wrapper">
         <div class="prod-card">
           {% if bestselling-collection-2 %}
             {% for product in bestselling-collection-1.products limit:3 %}
-              <a href="{{ product.url }}">
-                <div class="products">
-                    <div class="top">
-                        <img class="prod-img" loading="lazy" width="300" height="250" src="{{ product.featured_image.src | product_img_url: 'large' }}" alt="">
-                        <p class="label-one">
-                          {% if product.label-one %}
-                            {{ product.label-one }}
-                          {% else %}
-                            Newly Launched
-                          {% endif %}
-                        </p>
-                        <p class="label-two">
-                          {% if product.label-two %}
-                            {{ product.label-two }}
-                          {% else %}
-                            Deals
-                          {% endif %}
-                        </p>
-                    </div>
-                    <div class="mid">
-                        <p class="label-three d-none">{{ product.type }}</p>
-                        <h3 class="prod-heading">{{ product.title }}</h3>
-                        <p class="prod-desc">{{ product.description | strip_html | slice: 0, 150 }}</p>
-                        <div class="add-to-cart-wrapper">
-                            <p class="cart-label">Add to cart</p>
-                            <svg width="30" height="30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg>
-                            <div class="price-wrapper">
-                                <p class="price">{{ product.price | money }}</p>
-                                <p class="discount">{{ product.compare_at_price | money }}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bottom more-details-wrapper">
-                        <div class="more-details">
-                            <img loading="lazy" width="35" height="35" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/taste-note1.png?v=1715149005" alt="">
-                            <p>Caramel</p>
-                        </div>
-                        <div class="more-details">
-                            <img loading="lazy" width="35" height="35" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/taste-note2.png?v=1715149006" alt="">
-                            <p>Wood</p>
-                        </div>
-                        <div class="more-details">
-                            <img loading="lazy" width="35" height="35" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/taste-note3.png?v=1715149006 alt="">
-                            <p>Spices</p>
-                        </div>
-                    </div>
-                </div>
-              </a>
+              {% render 'product-card-grid-list', product: product %}
             {% endfor %}
           {% else %}
             <p>The collection "{{ collection_handle }}" does not exist.</p>
           {% endif %}
         </div>
                               
-      <button name="prev_button" class="prev">❮</button>
-      <button name="next_button" class="next">❯</button>
+      <button name="prev_button" class="prev"><svg width="60" height="60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160zm352-160l-160 160c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L301.3 256 438.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0z"/></svg></button>
+      <button name="next_button" class="next"><svg width="60" height="60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M470.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 256 265.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160zm-352 160l160-160c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L210.7 256 73.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0z"/></svg></button>
+    </div>
+    <div class="view-all-collection d-flex justify-center">
+      <a href="#show-all-ground-coffee" >
+        <button type="button" >View All</button>
+      </a>
     </div>
 </div>
 
 <div class="full-width-banner">
-      <img src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/barista-creations-hero-desktop-vl.avif?v=1715317859" alt="" width="" height="">
-      <div class="collection-data container">    
+      <img loading="lazy" class="desktop" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/coffee_farm_1_1c0cef21-c259-4ac0-934c-596aa6093198.webp?v=1717392833" alt="Coffeeza Coffee" width="" height="">
+      <img loading="lazy" class="mobile" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/coffee_farm_2a7699ed-0831-4abb-9dff-3d242db8e132.webp?v=1717392832" alt="Coffeeza Coffee" width="" height="">
+      <!-- <div class="collection-data container">    
         <h2 class="collection-title">Bestselling Ground Coffee</h2>
         <p class="collection-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>  
-      </div>
+      </div> -->
 </div>
                               
-<div class="bestselling-groundcoffee-wrapper collection-show relative container" id="show-1">
-    <div class="bestselling-groundcoffee  scroll-slider-wrapper">
+<div class="bestselling-groundcoffee-wrapper collection-show relative container" id="show-all-ground-coffee">
+    <div class="bestselling-groundcoffee scroll-slider-wrapper">
         <div class="prod-card">
           {% if bestselling-collection-3 %}
-            {% for product in bestselling-collection-2.products limit:3 %}
-              <a href="{{ product.url }}">
-                <div class="products">
-                    <div class="top">
-                        <img class="prod-img" loading="lazy" width="300" height="250" src="{{ product.featured_image.src | product_img_url: 'large' }}" alt="">
-                        <p class="label-one">
-                          {% if product.label-one %}
-                            {{ product.label-one }}
-                          {% else %}
-                            Newly Launched
-                          {% endif %}
-                        </p>
-                        <p class="label-two">
-                          {% if product.label-two %}
-                            {{ product.label-two }}
-                          {% else %}
-                            Deals
-                          {% endif %}
-                        </p>
-                    </div>
-                    <div class="mid">
-                        <p class="label-three d-none">{{ product.type }}</p>
-                        <h3 class="prod-heading">{{ product.title }}</h3>
-                        <p class="prod-desc">{{ product.description | strip_html | slice: 0, 150 }}</p>
-                        <div class="add-to-cart-wrapper">
-                            <p class="cart-label">Add to cart</p>
-                            <svg width="30" height="30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg>
-                            <div class="price-wrapper">
-                                <p class="price">{{ product.price | money }}</p>
-                                <p class="discount">{{ product.compare_at_price | money }}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bottom more-details-wrapper">
-                        <div class="more-details">
-                            <img loading="lazy" width="35" height="35" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/taste-note1.png?v=1715149005" alt="">
-                            <p>Caramel</p>
-                        </div>
-                        <div class="more-details">
-                            <img loading="lazy" width="35" height="35" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/taste-note2.png?v=1715149006" alt="">
-                            <p>Wood</p>
-                        </div>
-                        <div class="more-details">
-                            <img loading="lazy" width="35" height="35" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/taste-note3.png?v=1715149006 alt="">
-                            <p>Spices</p>
-                        </div>
-                    </div>
-                </div>
-              </a>
+            {% for product in bestselling-collection-2.products %}
+              {% render 'product-card-grid-list', product: product %}
             {% endfor %}
           {% else %}
             <p>The collection "{{ collection_handle }}" does not exist.</p>
           {% endif %}
         </div>
                               
-      <button name="prev_button" class="prev">❮</button>
-      <button name="next_button" class="next">❯</button>
+      <button name="prev_button" class="prev"><svg width="60" height="60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160zm352-160l-160 160c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L301.3 256 438.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0z"/></svg></button>
+      <button name="next_button" class="next"><svg width="60" height="60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M470.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 256 265.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160zm-352 160l160-160c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L210.7 256 73.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0z"/></svg></button>
     </div>
 </div>

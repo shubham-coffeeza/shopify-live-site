@@ -22,7 +22,7 @@
     {%- endif -%}
 
     {%- if settings.variant_style == 'dropdown' -%}
-      <div class="option-selector" data-single-option-selector data-selector-type="dropdown" data-index="option{{ option.position }}">
+      <div class="option-selector"  data-single-option-selector data-selector-type="dropdown" data-index="option{{ option.position }}">
         {% render 'custom-select',
           id: option_id,
           label: option.name,
@@ -33,38 +33,176 @@
         %}
       </div>
     {%- else -%}
-      <fieldset class="option-selector" data-single-option-selector data-selector-type="listed" data-index="option{{ option.position }}">
+      <fieldset  class="option-selector"  data-single-option-selector data-selector-type="listed" data-index="option{{ option.position }}">
+      {% if product.template_suffix contains 'swatches' and option.name=='Grind' %}
+<div class="label_wrap" >
+<legend class="label">
+          {{- option.name -}}{% if swatches %} - <span class="js-option-title">{{ option.selected_value }}</span>{% endif %}
+        </legend>
+        <div class="grind_guide_btn_new">Grind Guide <img src="//cdn.shopify.com/s/files/1/1308/0907/t/239/assets/question.svg?v=29412005784520030971660282224" alt=""></div>
+</div>
+        {% else %}
         <legend class="label">
           {{- option.name -}}{% if swatches %} - <span class="js-option-title">{{ option.selected_value }}</span>{% endif %}
         </legend>
-        <div class="option-selector__btns">
+{% endif %}
+{% if product.template_suffix contains 'swatches' and option.name=='Grind' %}
+        <div   class="option-selector__btns option-selector__btns_img">
+          {%- for value in option.values -%}
+            <div class="picker_wrap_custom">
+            <input class="opt-btn js-option" type="radio" name="{{ option_id }}-option" id="{{ option_id }}-opt-{{ forloop.index0 }}" value="{{ value | escape }}"{% if option.selected_value == value %} checked{% endif %}>
+            
+            {% assign labelimg =  value | handle | append:".webp"  %}
+            <label style="background:url({{ labelimg | asset_url }})" class="{{ value | handle}} opt-label{% if swatches == true %}{% if settings.swatch_method == 'image' %} opt-swatch--image{% else %} opt-swatch--dot{% endif %}{% endif %}"
+                  {% if swatches == true %} data-swatch="{{ value | downcase | replace: '"', ''}}"{% endif %} for="{{ option_id }}-opt-{{ forloop.index0 }}"></label>
+            <span class="picker_caption">{{ value }}</span>
+            </div> 
+          {%- endfor -%}
+        </div>
+
+<script>
+// var handle = '{{product.handle}}';
+// jQuery.getJSON('/products/'+handle+'.js', function(product) {
+
+// var newarry =[]
+// for(let x of product.variants){
+// var newobj = {"optionName":x.option2,"optionSrc":x.featured_image.src};
+// newarry.push(newobj);
+
+
+// }
+
+// const uniqueIds = new Set();
+// const unique = newarry.filter(element => {
+//   const isDuplicate = uniqueIds.has(element.optionName);
+//   uniqueIds.add(element.optionName);
+
+//   if (!isDuplicate) {
+//     return true;
+//   }
+
+//   return false;
+// });
+
+// console.log(unique);
+// for(let x of unique){
+//   var name = x.optionName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-$/, '').replace(/^-/, '');
+//   var src = x.optionSrc;
+// console.log(name,src);
+// $("."+name).css("background-image", "url(" + src + ")");
+// }
+// } );
+
+</script>
+ 
+<style>
+  .grind_guide_btn_new {
+    background: #f2ae00;
+    border-radius: 50px;
+    padding: 5px 15px;
+    color: #333;
+    text-align: center;
+    max-width: fit-content;
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    font-weight:500;
+}
+.label_wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.grind_guide_btn_new img {
+    padding-left: 5px;
+}
+.option-selector__btns.option-selector__btns_img label {
+    background-size: cover !IMPORTANT;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 75px !important;
+    border-radius: 5px;
+    display: inline-block;
+    margin: 0;
+}
+.picker_wrap_custom {
+    position: relative;
+    text-align: center;
+    margin-top: 15px;
+    margin-right: 10px;
+    /* width: calc(25% - 10px); */
+    border: 1px solid #eee;
+    border-radius: 5px;
+    box-shadow: 0px 1px 5px rgb(0 0 0 / 9%);
+}
+span.picker_caption {
+        display: block;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 700;
+    max-width: 100%;
+    line-height: 15px;
+    margin: 0 !important;
+    padding: 10px 0px 7px 0px;
+}
+ .picker_wrap_custom .opt-btn:checked+.opt-label{position:relative;}
+ .picker_wrap_custom .opt-btn:checked+.opt-label:after {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    z-index: 9;
+    /* background: red; */
+    content: '';
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: 50%;
+    transform: translateY(-50%);
+    background: url(https://cdn.shopify.com/s/files/1/0069/2446/8314/t/31/assets/tick.png?v=1660817422);
+    background-repeat: no-repeat;
+}
+.option-selector__btns {
+    margin-right: -10px;
+}
+  .picker_wrap_custom .is-unavailable+.opt-label:after {
+    border-top: 2px solid #fff !important;
+    opacity:1 !important;
+}
+  .picker_wrap_custom .opt-btn:checked+.opt-label {
+    border: 2px solid #f2ae00 !important;
+}
+</style>
+{% else %}
+        <div  class="option-selector__btns">
           {%- for value in option.values -%}
             <input class="opt-btn js-option" type="radio" name="{{ option_id }}-option" id="{{ option_id }}-opt-{{ forloop.index0 }}" value="{{ value | escape }}"{% if option.selected_value == value %} checked{% endif %}>
             <div class="custom-swatches relative">
               <label class="opt-label{% if swatches == true %}{% if settings.swatch_method == 'image' %} opt-swatch--image{% else %} opt-swatch--dot{% endif %}{% endif %}"
                   {% if swatches == true %} data-swatch="{{ value | downcase | replace: '"', ''}}"{% endif %} for="{{ option_id }}-opt-{{ forloop.index0 }}">{{ value }}</label>
               <!-- <span class="swatch-inner-label">88% Off</span> -->
-                <span class="price-off-perc swatch-inner-label">
+                <!-- <span class="price-off-perc swatch-inner-label">
                   {% if variant.compare_at_price %}
                     {% assign original_price = variant.compare_at_price %}
                     {% assign discounted_price = variant.price %}
                     {% assign percentage_off = original_price | minus: discounted_price | times: 100 | divided_by: original_price | round %}
   
-                    <!-- <p class="label"> -->
                       {{ percentage_off }}% off
-                    <!-- </p> -->
                     {% else %}
                     0% Off
                   {% endif %}
-                </span>
+                </span> -->
             </div>
           {%- endfor -%}
         </div>
+{% endif %}
       </fieldset>
+      {%- if show_size_chart == true and option.name == block.settings.size_chart_option_name -%}
+        <a href="{{ size_chart_page.url }}" class="standard-link tiny-text size-chart-link js-size-chart-open">{{ 'products.product.show_size_chart' | t }}</a>
+      {%- endif -%}
     {%- endif -%}
-    
-    {%- if show_size_chart == true and option.name == block.settings.size_chart_option_name -%}
-      <a href="{{ size_chart_page.url }}" class="standard-link tiny-text size-chart-link js-size-chart-open">{{ 'products.product.show_size_chart' | t }}</a>
-    {%- endif -%}
+
   </div>
 {% endfor %}

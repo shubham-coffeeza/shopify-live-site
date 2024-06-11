@@ -33,7 +33,8 @@
     <meta itemprop="name" content="{{ shop.name }}">
     {%- if section.settings.logo != blank -%}
       {%- capture img_size -%}{{ section.settings.logo_width | times: 2 }}x{%- endcapture -%}
-      <img src="{{ section.settings.logo | img_url: img_size }}" alt="{{ section.settings.logo.alt | default: shop.name | escape }}" itemprop="logo" width="{{ section.settings.logo_width | times: 2 }}" height="{{ section.settings.logo_width | times: 2 | divided_by: section.settings.logo.aspect_ratio | round }}">
+      <img alt="Coffeeza Coffee" class="logo-white-oultined" src="{{ section.settings.logo | img_url: img_size }}" alt="{{ section.settings.logo.alt | default: shop.name | escape }}" itemprop="logo" width="{{ section.settings.logo_width | times: 2 }}" height="{{ section.settings.logo_width | times: 2 | divided_by: section.settings.logo.aspect_ratio | round }}">
+      <img alt="Coffeeza Coffee" class="logo-black-oultined" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Coffeeza_Logo.png?v=1614315844" alt="{{ section.settings.logo.alt | default: shop.name | escape }}" itemprop="logo" width="{{ section.settings.logo_width | times: 2 }}" height="{{ section.settings.logo_width | times: 2 | divided_by: section.settings.logo.aspect_ratio | round }}">
     {%- else -%}
       {{ shop.name }}
     {%- endif -%}
@@ -156,7 +157,8 @@
 {%- else -%}
 
   <div class="site-header {% if section.settings.dock_nav %}docking-header{% endif %}" data-section-id="{{ section.id }}" data-section-type="header" role="banner">
-    <header class="header-content container">
+    <header class="header-content">
+     <div class="">
       <div class="page-header page-width">
 
         {%- if section.settings.desktop_layout == 'left' or section.settings.logo_position_mobile == 'own_row' -%}
@@ -173,12 +175,14 @@
           <button class="btn btn--plain burger-icon js-mobile-menu-icon hide-for-search" aria-label="{{ 'general.accessibility_labels.menu_toggle' | t }}">
             {% render 'icon' with 'menu' %}
           </button>
+          
           <button class="btn btn--plain close-mobile-menu js-close-mobile-menu" aria-label="{{ 'general.accessibility_labels.close' | t }}">
             <span class="feather-icon icon--header">
               {% render 'feather-x' %}
             </span>
           </button>
 
+  
           {%- if section.settings.desktop_layout == 'center' -%}
             {{ desktop_search_icon_html }}
             {{ desktop_search_html }}
@@ -196,7 +200,10 @@
       
           <section class="header-navigation container">
             <nav class="navigation__container page-width {% if section.settings.show_search_bar_mobile == true %}mobile-nav-no-margin-top{% endif %}">
-      
+              
+              
+              <!-- <img alt="Coffeeza" height="" width="160" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/subs_logo.png?v=1659421049" class="docked-mobile-navbar-logo"> -->
+  
               <!-- DOCKED NAV SEARCH CENTER LAYOUT-->
               {%- if section.settings.dock_nav and section.settings.desktop_layout == 'center' -%}
                 <div class="docking-header__utils docking-header__center-layout-search">
@@ -230,52 +237,56 @@
                 {% render 'search-bar-mobile', settings_class: 'mobile-menu-search', search_id: 'mobile-menu-search' %}
               </div> -->
 
-              <img class="mobile-nav-top-banner" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Nav_web_TM_po48.webp?v=1714996046" alt="" width="" height="" >
+              <a href="https://coffeeza.in/collections/ground-coffee" class="">
+                    <img loading="lazy" class="mobile-nav-top-banner"  width="300" height="115" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Ground_Coffee_300x180_a37c0bf6-4adc-430e-af19-4d2e7575c867.webp?v=1716310105" alt="Coffeeza Coffee">
+                  </a>
 
               <div class="top-nav-menubar-wrapper">
                 <div class="menubar-wrapper-inner">
-                  <h2>BESTSELLERS</h2>
-                  <h2>COFFEE COMBO's<span class="new-tag">NEW</span></h2>
+                  <a href="https://coffeeza.in/collections/best-sellers"><h2>BESTSELLERS</h2></a>
+                  <a href="https://coffeeza.in/products/finero-next-coffee-machine-milk-frother"><h2>COFFEE COMBO's<span class="new-tag">NEW</span></h2></a>
                 </div>
               </div>
 
               <div class="og-menu-category-wrapper">
                 <div class="category-wrapper-inner">
-                    <a class="deals" href="https://coffeeza.in/pages/sale">
-                        <img src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/stock-vector-big-deals-banner-special-offer-poster-for-promotion-and-publication-colorful-abstract-geometric-1509398783.jpg?v=1715021745" alt="" width="450" height="150">
-                    </a>
-                    <a class="category-wrapper d-flex justify-start align-center" href="https://coffeeza.in/collections/coffee-capsules">
-                        <img src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/SummerMango_CapsuleBack.jpg?v=1713242612" alt="" width="120" height="120">
-                        <div class="detail">
-                            <h2 class="detail-title">Coffee</h2>
-                            <h2 class="detail-title-sec">Capsules</h2>
-                            <p class="detail-desc">Premium Aluminium Coffee Capsules</p>
-                        </div>
-                    </a>
-                    <a class="category-wrapper d-flex justify-start align-center" href="https://coffeeza.in/collections/pour-over-coffee-bags">
-                        <img src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/classicopouring_1512x_a5617bf6-1a60-4e9b-9b03-0cdf3df47a7d.webp?v=1713506220" alt="" width="120" height="120">
-                        <div class="detail">
-                            <h2 class="detail-title">Drip</h2>
-                          <h2 class="detail-title-sec">Bags</h2>
-                            <p class="detail-desc">Easy to brew coffee bag</p>
-                        </div>
-                    </a>
+                    <!-- <a class="deals" href="https://coffeeza.in/pages/sale">
+                        <img class="lazyload"  data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/navbar_deals_banner.webp?v=1716356399" alt="Coffeeza Coffee" width="450" height="150">
+                    </a> -->
+                  
                     <a class="category-wrapper d-flex justify-start align-center" href="https://coffeeza.in/collections/coffee-machines">
-                        <img src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/imgpsh_fullsize_anim.jpg?v=1713335382" alt="" width="120" height="120">
+                        <img class="lazyload"  data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Mobile_Nav_bar_products-Machines.jpg?v=1715939152" alt="Coffeeza Coffee" width="120" height="120">
                         <div class="detail">
                             <h2 class="detail-title">Coffee</h2>
                           <h2 class="detail-title-sec">Machine</h2>
                             <p class="detail-desc">Premium Coffee Machines</p>
                         </div>
                     </a>
-                    <a class="category-wrapper d-flex justify-start align-center" href="https://coffeeza.in/collections/ground-coffee">
-                        <img src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/imgpsh_fullsize_anim.png?v=1713335384" alt="" width="120" height="120">
+                    <a class="category-wrapper d-flex justify-start align-center" href="https://coffeeza.in/collections/coffee-capsules">
+                        <img class="lazyload"  data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Mobile_Nav_bar_products-Capsules.png?v=1715939153" alt="Coffeeza Coffee" width="120" height="120">
+                        <div class="detail">
+                            <h2 class="detail-title">Coffee</h2>
+                            <h2 class="detail-title-sec">Capsules</h2>
+                            <p class="detail-desc">Premium Aluminium Coffee Capsules</p>
+                        </div>
+                    </a>
+                  <a class="category-wrapper d-flex justify-start align-center" href="https://coffeeza.in/collections/ground-coffee">
+                        <img class="lazyload"  data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Mobile_Nav_bar_products-Ground_Coffee.jpg?v=1715939153" alt="Coffeeza Coffee" width="120" height="120">
                         <div class="detail">
                             <h2 class="detail-title">Ground</h2>
                           <h2 class="detail-title-sec">Coffee</h2>
                             <p class="detail-desc">Premium Ground Coffee</p>
                         </div>
                     </a>
+                    <a class="category-wrapper d-flex justify-start align-center" href="https://coffeeza.in/collections/pour-over-coffee-bags">
+                        <img class="lazyload"  data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Mobile_Nav_bar_products-Drip_bags.jpg?v=1715939153" alt="Coffeeza Coffee" width="120" height="120">
+                        <div class="detail">
+                            <h2 class="detail-title">Drip</h2>
+                          <h2 class="detail-title-sec">Bags</h2>
+                            <p class="detail-desc">Easy to brew coffee bag</p>
+                        </div>
+                    </a>
+                    
                 </div>
               </div>
   
@@ -693,6 +704,9 @@
                     </div>
 
                     <a class="btn btn--primary btn--small btn--fullwidth cart-summary__button" href="{{ routes.cart_url }}">{{ 'layout.cart.go_to_cart' | t }}</a>
+                    <div class="shopify-payment-button">
+                      {% render 'gokwik-buy-now' %}
+                      </div>
                   </div>
                 </div>
               {% endunless %}
@@ -708,112 +722,150 @@
         </div>
         {% endif %}
       </div>
-  
+     </div>
     </header>
   
       <div class="navbar-dropdown-wrapper" id="navbar-wrapper-1">
           <div class="our-coffee-wrapper container navbar-show" id="show-nav-1">
-              <div class="offers-deals-wrapper">
-                  <img width="300" height="115" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/TM_FR_48_Nav_Desk_1.webp?v=1715088229" alt="">
-                  <img width="300" height="80" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/stock-vector-big-deals-banner-special-offer-poster-for-promotion-and-publication-colorful-abstract-geometric-1509398783_2068ce38-d34a-462a-8680-ff2a8d256c5a.jpg?v=1715088229" alt="">
-                  <!-- <img width="300" height="80" src="./homepage/easter-sale-long-banner-template-shop-now-2AP4J5J.jpg" alt=""> -->
+              <div class="offers-deals-wrapper main-tab">
+                  <a href="https://coffeeza.in/collections/ground-coffee">
+                    <img class="lazyload"  width="300" height="115" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Ground_Coffee_300x180_a37c0bf6-4adc-430e-af19-4d2e7575c867.webp?v=1716310105" alt="Coffeeza Coffee">
+                  </a>
+                  <!-- <img width="300" height="80" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/navbar_deals_banner_web.webp?v=1716358110" alt="Coffeeza Coffee"> -->
+                  <!-- <img width="300" height="80" src="./homepage/easter-sale-long-banner-template-shop-now-2AP4J5J.jpg" alt="Coffeeza Coffee"> -->
               </div>
-              <div class="coffee-varities-wrapper">
-                  <div>
-                      <div class="variety" id="variety-1">
-                          <img  width="90" height="90" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/hazelnutfront_1728x_ddd6774d-d8fe-45d0-82ee-ad17a0308c4b.webp?v=1715088300" alt="">
-                          <div class="details">
-                              <h2 class="detail-title">COFFEE</h2>
-                              <h2 class="detail-title-sec">CAPSULES</h2>
-                              <p class="detail-desc">Premium Aluminium Coffee Capsules</p>
-                          </div>
-                      </div>
-                      <div class="variety" id="variety-2">
-                          <img  width="90" height="90" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/DSC_0014_360x_b4b5be76-ffc2-4238-a366-9e90cc43e647.webp?v=1715088299" alt="">
-                          <div class="details">
-                              <h2 class="detail-title">GROUND</h2>
-                              <h2 class="detail-title-sec">COFFEE</h2>
-                              <p class="detail-desc">Premium exotic Ground Coffee</p>
-                          </div>
-                      </div>
-                      <div class="variety" id="variety-3">
-                          <img  width="90" height="90" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/classicofront_360x_b698b859-5a99-4344-9983-9ad03e0c7538.webp?v=1715088299" alt="">
-                          <div class="details">
-                              <h2 class="detail-title">POUR OVER</h2>
-                              <h2 class="detail-title-sec">BAGS</h2>
-                              <p class="detail-desc">Easy to brew coffee bags</p>
-                          </div>
-                      </div>
+              <div class="coffee-varities-wrapper main-tab">
+                  <div class="coffee-varities-wrapper-inner justify-between">
+                      <a href="https://coffeeza.in/collections/coffee-capsules">
+                        <div class="variety" id="variety-1">
+                            <img class="lazyload"   width="90" height="90" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Deskstop_Nav_bar_products-capsules.jpg?v=1715939123" alt="Coffeeza Coffee">
+                            <div class="details">
+                                <h2 class="detail-title">COFFEE</h2>
+                                <h2 class="detail-title-sec">CAPSULES</h2>
+                                <p class="detail-desc">Premium Aluminium Coffee Capsules</p>
+                            </div>
+                        </div>
+                      </a>
+                      <a href="https://coffeeza.in/collections/ground-coffee">
+                        <div class="variety" id="variety-2">
+                            <img class="lazyload"   width="90" height="90" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Deskstop_Nav_bar_products-Ground_coffee.jpg?v=1715939123" alt="Coffeeza Coffee">
+                            <div class="details">
+                                <h2 class="detail-title">GROUND</h2>
+                                <h2 class="detail-title-sec">COFFEE</h2>
+                                <p class="detail-desc">Premium exotic Ground Coffee</p>
+                            </div>
+                        </div>
+                      </a>
+                      <a href="https://coffeeza.in/collections/pour-over-coffee-bags">
+                        <div class="variety" id="variety-3">
+                            <img class="lazyload"   width="90" height="90" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Deskstop_Nav_bar_products-_Drip_bags.png?v=1715939124" alt="Coffeeza Coffee">
+                            <div class="details">
+                                <h2 class="detail-title">POUR OVER</h2>
+                                <h2 class="detail-title-sec">BAGS</h2>
+                                <p class="detail-desc">Easy to brew coffee bags</p>
+                            </div>
+                        </div>
+                      </a>
                   </div>
               </div>
-              <div class="shop-by-flavours">
-                  <h3>Shop By Flavours</h3>
+              <div class="shop-by-flavours main-tab">
+                  <h3>Shop By Blends</h3>
                   <div>
                       <div class="capsule-flavour flavours" id="flavour-display-1">
+                        <a href="https://coffeeza.in/collections/coffee-capsules/products/coffeeza-classico-coffee-capsule">
                           <div class="flavour-wrapper">
-                              <img src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/3.webp?v=1715088449"width="50" height="50" alt="">
+                              <img  class="lazyload" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/classico.webp?v=1715836586"width="50" height="50" alt="Coffeeza Coffee">
                               <h2>Classico</h2>
                           </div>
+                        </a>
+                        <a href="https://coffeeza.in/collections/coffee-capsules/products/intenso-coffee-pods">
                           <div class="flavour-wrapper">
-                              <img src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/4.avif?v=1715088448" width="50" height="50" alt="">
-                              <h2>Vanilla</h2>
+                              <img  class="lazyload" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/intenso.webp?v=1715836586" width="50" height="50" alt="Coffeeza Coffee">
+                              <h2>Intenso</h2>
                           </div>
+                        </a>
+                        <a href="https://coffeeza.in/collections/coffee-capsules/products/hazelnut-flavoured-aluminium-coffee-capsules">
                           <div class="flavour-wrapper">
-                              <img src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/6.avif?v=1715088448" width="50" height="50" alt="">
+                              <img  class="lazyload" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/capsule_icons_Hazelnut.webp?v=1715836578" width="50" height="50" alt="Coffeeza Coffee">
                               <h2>Hazelnut </h2>
                           </div>
+                        </a>
+                        <a href="https://coffeeza.in/collections/coffee-capsules/products/vanilla-flavoured-aluminium-coffee-capsules">
                           <div class="flavour-wrapper">
-                              <img src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/8.avif?v=1715088448" width="50" height="50" alt="">
-                              <h2>Caramel</h2>
-                          </div>
-                          <div class="flavour-wrapper">
-                              <img src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/7.avif?v=1715088448" width="50" height="50" alt="">
-                              <h2>Intenso</h2>
-                          </div>
-                          <div class="flavour-wrapper">
-                              <img src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/10.webp?v=1715088449" width="50" height="50" alt="">
-                              <h2>Cremoso</h2>
-                          </div>
-                      </div>
-                      <div class="ground-coffee-flavour flavours" id="flavour-display-2">
-                          <div class="flavour-wrapper">
-                              <img src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/DSC_0014_360x_b4b5be76-ffc2-4238-a366-9e90cc43e647.webp?v=1715088299"width="50" height="50" alt="">
-                              <h2>Classico</h2>
-                          </div>
-                          <div class="flavour-wrapper">
-                              <img src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/DSC_0014_360x_b4b5be76-ffc2-4238-a366-9e90cc43e647.webp?v=1715088299"width="50" height="50" alt="">
-                              <h2>Cremoso</h2>
-                          </div>
-                          <div class="flavour-wrapper">
-                              <img src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/DSC_0014_360x_b4b5be76-ffc2-4238-a366-9e90cc43e647.webp?v=1715088299"width="50" height="50" alt="">
-                              <h2>Intenso</h2>
-                          </div>
-                          <div class="flavour-wrapper">
-                              <img src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/DSC_0014_360x_b4b5be76-ffc2-4238-a366-9e90cc43e647.webp?v=1715088299"width="50" height="50" alt="">
+                              <img  class="lazyload" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/capsule_icons_Vanilla.webp?v=1715836578" width="50" height="50" alt="Coffeeza Coffee">
                               <h2>Vanilla</h2>
                           </div>
+                        </a>
+                        <a href="https://coffeeza.in/collections/coffee-capsules/products/caramel-flavoured-aluminium-coffee-capsules">
                           <div class="flavour-wrapper">
-                              <img src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/DSC_0014_360x_b4b5be76-ffc2-4238-a366-9e90cc43e647.webp?v=1715088299"width="50" height="50" alt="">
+                              <img  class="lazyload" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/capsule_icons_Caramel.webp?v=1715836578" width="50" height="50" alt="Coffeeza Coffee">
                               <h2>Caramel</h2>
                           </div>
+                        </a>
+                        <a href="https://coffeeza.in/collections/coffee-capsules/products/forte-coffee-capsule">
                           <div class="flavour-wrapper">
-                              <img src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/DSC_0014_360x_b4b5be76-ffc2-4238-a366-9e90cc43e647.webp?v=1715088299"width="50" height="50" alt="">
+                              <img  class="lazyload" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/forte.webp?v=1715836587" width="50" height="50" alt="Coffeeza Coffee">
+                              <h2>Forte</h2>
+                          </div>
+                        </a>
+                      </div>
+                      <div class="ground-coffee-flavour flavours" id="flavour-display-2">
+                        <a href="https://coffeeza.in/collections/ground-coffee/products/intenso-ground-coffee">
+                          <div class="flavour-wrapper">
+                              <img  class="lazyload" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Intenso_front_d2397e4d-5961-4956-8681-97dd9a51db6e.webp?v=1717734366"width="50" height="50" alt="Coffeeza Coffee">
+                              <h2>Intenso</h2>
+                          </div>
+                        </a>
+                        <a href="https://coffeeza.in/collections/ground-coffee/products/cremoso-ground-coffee">
+                          <div class="flavour-wrapper">
+                              <img  class="lazyload" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Cremoso_front_fd53093c-08c7-4ad4-a8ed-54ea3245a4ce.webp?v=1717734361"width="50" height="50" alt="Coffeeza Coffee">
+                              <h2>Cremoso</h2>
+                          </div>
+                        </a>
+                        <a href="https://coffeeza.in/collections/ground-coffee/products/caramel-flavoured-ground-coffee">
+                          <div class="flavour-wrapper">
+                              <img class="lazyload"  data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/caramelGC250gfront_720x_1.webp?v=1717735537"width="50" height="50" alt="Coffeeza Coffee">
+                              <h2>Caramel</h2>
+                          </div>
+                        </a>
+                        <a href="https://coffeeza.in/collections/ground-coffee/products/hazelnut-flavoured-ground-coffee">
+                          <div class="flavour-wrapper">
+                              <img class="lazyload"  data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/hazelnutGC250gfront_720x_1.webp?v=1717735537"width="50" height="50" alt="Coffeeza Coffee">
                               <h2>Hazelnut</h2>
                           </div>
-                      </div>
-                      <div class="pour-over-flavour flavours" id="flavour-display-3">
+                        </a>
+                        <a href="https://coffeeza.in/collections/ground-coffee/products/mysore-nuggets-ground-coffee">
                           <div class="flavour-wrapper">
-                              <img src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/classicofront_360x_b698b859-5a99-4344-9983-9ad03e0c7538.webp?v=1715088299"width="50" height="50" alt="">
-                              <h2>Classico</h2>
-                          </div>
-                          <div class="flavour-wrapper">
-                              <img src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/classicofront_360x_b698b859-5a99-4344-9983-9ad03e0c7538.webp?v=1715088299"width="50" height="50" alt="">
-                              <h2>Monsooned Malabar</h2>
-                          </div>
-                          <div class="flavour-wrapper">
-                              <img src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/classicofront_360x_b698b859-5a99-4344-9983-9ad03e0c7538.webp?v=1715088299"width="50" height="50" alt="">
+                              <img class="lazyload"  data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Mysore_Nuggets_Front.webp?v=1717734377"width="50" height="50" alt="Coffeeza Coffee">
                               <h2>Mysore Nuggets</h2>
                           </div>
+                        </a>
+                        <a href="https://coffeeza.in/collections/ground-coffee/products/monsooned-malabar-ground-coffee-aa-arabica-coffee">
+                          <div class="flavour-wrapper">
+                              <img  class="lazyload" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Monsooned_Malabar_front.webp?v=1717734372"width="50" height="50" alt="Coffeeza Coffee">
+                              <h2>Monsooned Malabar</h2>
+                          </div>
+                        </a>
+                      </div>
+                      <div class="pour-over-flavour flavours" id="flavour-display-3">
+                        <a href="https://coffeeza.in/collections/pour-over-coffee-bags/products/classico-arabica-easy-pour-over-coffee-bags-no-equipment">
+                          <div class="flavour-wrapper">
+                              <img class="lazyload"  data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/classico_front.webp?v=1717734231" width="50" height="50" alt="Coffeeza Coffee">
+                              <h2>Classico</h2>
+                          </div>
+                        </a>
+                        <a href="https://coffeeza.in/collections/pour-over-coffee-bags/products/monsooned-malabar-arabica-pour-over-coffee-bags-no-equipment-needed">
+                          <div class="flavour-wrapper">
+                              <img class="lazyload"  data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/monsooned_front.webp?v=1717734232" width="50" height="50" alt="Coffeeza Coffee">
+                              <h2>Monsooned Malabar</h2>
+                          </div>
+                        </a>
+                        <a href="https://coffeeza.in/collections/pour-over-coffee-bags/products/mysore-nuggets-arabica-pour-over-coffee-bags">
+                          <div class="flavour-wrapper">
+                              <img class="lazyload"  data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/mysore_front.webp?v=1717734232" width="50" height="50" alt="Coffeeza Coffee">
+                              <h2>Mysore Nuggets</h2>
+                          </div>
+                        </a>
                       </div>
                   </div>
               </div>
@@ -821,169 +873,220 @@
       </div>
       <div class="navbar-dropdown-wrapper" id="navbar-wrapper-2">
           <div class="coffee-machine-wrapper container navbar-show" id="show-nav-2">
-              <div class="offers-deals-wrapper">
-                  <img width="300" height="115" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/TM_FR_48_Nav_Desk_1.webp?v=1715088229" alt="">
-                  <img width="300" height="80" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/stock-vector-big-deals-banner-special-offer-poster-for-promotion-and-publication-colorful-abstract-geometric-1509398783_2068ce38-d34a-462a-8680-ff2a8d256c5a.jpg?v=1715088229" alt="">
-                  <!-- <img width="300" height="80" src="./homepage/easter-sale-long-banner-template-shop-now-2AP4J5J.jpg" alt=""> -->
+              <div class="offers-deals-wrapper main-tab">
+                  <a href="https://coffeeza.in/collections/ground-coffee">
+                    <img class="lazyload"  width="300" height="115" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Ground_Coffee_300x180_a37c0bf6-4adc-430e-af19-4d2e7575c867.webp?v=1716310105" alt="Coffeeza Coffee">
+                  </a>
+                  <!-- <img width="300" height="80" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/navbar_deals_banner_web.webp?v=1716358110" alt="Coffeeza Coffee"> -->
+                  <!-- <img width="300" height="80" src="./homepage/easter-sale-long-banner-template-shop-now-2AP4J5J.jpg" alt="Coffeeza Coffee"> -->
               </div>
-              <div class="coffee-varities-wrapper">
-                  <div>
+              <div class="coffee-varities-wrapper main-tab">
+                  <div class="coffee-varities-wrapper-inner justify-between">
+                    <a href="https://coffeeza.in/collections/coffee-machines/products/finero-next-capsule-coffee-machine">
                       <div class="variety">
-                          <img  width="90" height="90" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/machine_2.jpg?v=1614308600" alt="">
+                          <img class="lazyload"   width="90" height="90" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Desktop_Nav_bar_products-Finero.webp?v=1717735760" alt="Coffeeza Coffee">
                           <div class="details">
                               <h2>Finero Next Coffee Machine</h2>
-                              <p>Premium Aluminium Coffee Capsules</p>
+                              <p>Premium Capsule Coffee Machine</p>
                           </div>
                       </div>
+                    </a>
+                    <a href="https://coffeeza.in/collections/coffee-machines/products/finero-next-coffee-machine-milk-frother">
                       <div class="variety">
-                          <img  width="90" height="90" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/products/coffeeza-bundles-save-upto-27-on-capsules-machine-nespresso-compatible-5504786268250.jpg?v=1561568254" alt="">
+                          <img class="lazyload"   width="90" height="90" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Deskstop_Nav_bar_products-_Machines_Combo.webp?v=1717735760" alt="Coffeeza Coffee">
                           <div class="details">
-                              <h2>Machine Combos</h2>
-                              <p>Premium exotic Ground Coffee</p>
+                              <h2>Finero Next Coffee Machine Combo</h2>
+                              <p>Premium Capsule Coffee Machine with Milk Frother</p>
                           </div>
                       </div>
+                    </a>
+                    <a href="https://coffeeza.in/collections/coffee-machines/products/frothimo-milk-frother">
                       <div class="variety">
-                          <img  width="90" height="90" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/products/coffeeza-coffee-machine-descaler-pack-of-4-sachets-nespresso-compatible-ads-001-5504785678426.jpg?v=1561568321" alt="">
+                          <img class="lazyload"   width="90" height="90" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Desktop_Nav_bar_products-Frothimo.webp?v=1717735760" alt="Coffeeza Coffee">
                           <div class="details">
                               <h2>Frothimo Milk Frother</h2>
-                              <p>Easy to brew coffee bags</p>
+                              <p>Automatic Milk Frother</p>
                           </div>
                       </div>
+                    </a>
                   </div>
               </div>
-              <div class="coffee-varities-wrapper">
-                  <div>
+              <div class="coffee-varities-wrapper main-tab">
+                  <div class="coffee-varities-wrapper-inner justify-start">
+                    <a href="https://coffeeza.in/collections/coffee-machines/products/refurbished-finero-next-coffee-machine">
                       <div class="variety">
-                          <img  width="90" height="90" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/products/coffeeza-coffee-machine-descaler-pack-of-4-sachets-nespresso-compatible-ads-001-5504785678426.jpg?v=1561568321" alt="">
+                          <img class="lazyload"   width="90" height="90" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Desktop_Nav_bar_products-Finero_Refurbished_Machines.webp?v=1717735760" alt="Coffeeza Coffee">
                           <div class="details">
                               <h2><span class="label">Refurbished</span>Finero Next Coffee Machine</h2>
                               <p></p>
                           </div>
                       </div>
+                    </a>
+                    <a href="https://coffeeza.in/collections/coffee-machines/products/refurbished-frothimo-milk-frother-heater" style="margin-top: 30px">
                       <div class="variety">
-                          <img  width="90" height="90" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/products/coffeeza-coffee-machine-descaler-pack-of-4-sachets-nespresso-compatible-ads-001-5504785678426.jpg?v=1561568321" alt="">
+                          <img  class="lazyload"  width="90" height="90" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Desktop_Nav_bar_products-Frothimo_Refurbished.webp?v=1717735760" alt="Coffeeza Coffee">
                           <div class="details">
                               <h2><span class="label">Refurbished</span>Frothimo Milk Frother & Heater</h2>
                               <p></p>
                           </div>
                       </div>
+                    </a>
                   </div>
               </div>
           </div>
       </div>
       <div class="navbar-dropdown-wrapper" id="navbar-wrapper-3">
           <div class="coffee-machine-wrapper container navbar-show" id="show-nav-3">
-              <div class="offers-deals-wrapper">
-                  <img width="300" height="115" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/TM_FR_48_Nav_Desk_1.webp?v=1715088229" alt="">
-                  <img width="300" height="80" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/stock-vector-big-deals-banner-special-offer-poster-for-promotion-and-publication-colorful-abstract-geometric-1509398783_2068ce38-d34a-462a-8680-ff2a8d256c5a.jpg?v=1715088229" alt="">
-                  <!-- <img width="300" height="80" src="./homepage/easter-sale-long-banner-template-shop-now-2AP4J5J.jpg" alt=""> -->
+              <div class="offers-deals-wrapper main-tab">
+                 <a href="https://coffeeza.in/collections/ground-coffee">
+                    <img class="lazyload"  width="300" height="115" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Ground_Coffee_300x180_a37c0bf6-4adc-430e-af19-4d2e7575c867.webp?v=1716310105" alt="Coffeeza Coffee">
+                  </a>
+                  <!-- <img width="300" height="80" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/navbar_deals_banner_web.webp?v=1716358110" alt="Coffeeza Coffee"> -->
+                  <!-- <img width="300" height="80" src="./homepage/easter-sale-long-banner-template-shop-now-2AP4J5J.jpg" alt="Coffeeza Coffee"> -->
               </div>
-              <div class="coffee-varities-wrapper">
-                  <div>
+              <div class="coffee-varities-wrapper main-tab">
+                  <div class="coffee-varities-wrapper-inner justify-between">
+                    <a href="https://coffeeza.in/products/finero-next-capsule-coffee-machine">
                       <div class="variety">
-                          <img  width="90" height="90" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/machine_2.jpg?v=1614308600" alt="">
+                          <img class="lazyload"   width="90" height="90" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Desktop_Nav_bar_products-Finero.webp?v=1717735760" alt="Coffeeza Coffee">
                           <div class="details">
                               <h2>Finero Next Coffee Machine</h2>
+                              <p>Premium Coffee Capsules Machine</p>
+                          </div>
+                      </div>
+                    </a>
+                    <a href="https://coffeeza.in/collections/coffee-capsules/products/intenso-coffee-pods">
+                      <div class="variety">
+                          <img  class="lazyload"  width="90" height="90" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/intenso_front.webp?v=1717734329" alt="Coffeeza Coffee">
+                          <div class="details">
+                              <h2>INTENSO COFFEE CAPSULES</h2>
                               <p>Premium Aluminium Coffee Capsules</p>
                           </div>
                       </div>
+                    </a>
+                    <a href="https://coffeeza.in/collections/coffee-capsules/products/coffeeza-classico-coffee-capsule">
                       <div class="variety">
-                          <img  width="90" height="90" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/products/coffeeza-bundles-save-upto-27-on-capsules-machine-nespresso-compatible-5504786268250.jpg?v=1561568254" alt="">
+                          <img  class="lazyload"  width="90" height="90" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/classico_front_c489b45a-b85c-486b-994a-4ab3fee63f40.webp?v=1717734329" alt="Coffeeza Coffee">
                           <div class="details">
-                              <h2>Machine Combos</h2>
-                              <p>Premium exotic Ground Coffee</p>
+                              <h2>CLASSICO COFFEE CAPSULES</h2>
+                              <p>Premium Aluminium Coffee Capsules</p>
                           </div>
                       </div>
-                      <div class="variety">
-                          <img  width="90" height="90" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/products/coffeeza-coffee-machine-descaler-pack-of-4-sachets-nespresso-compatible-ads-001-5504785678426.jpg?v=1561568321" alt="">
-                          <div class="details">
-                              <h2>Frothimo Milk Frother</h2>
-                              <p>Easy to brew coffee bags</p>
-                          </div>
-                      </div>
+                    </a>
                   </div>
               </div>
-              <div class="coffee-varities-wrapper">
-                  <div>
+              <div class="coffee-varities-wrapper main-tab">
+                  <div class="coffee-varities-wrapper-inner justify-between">
+                    <a href="https://coffeeza.in/products/classico-ground-coffee">
                       <div class="variety">
-                          <img  width="90" height="90" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/products/coffeeza-coffee-machine-descaler-pack-of-4-sachets-nespresso-compatible-ads-001-5504785678426.jpg?v=1561568321" alt="">
+                          <img  class="lazyload"  width="90" height="90" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/classico_front_264027de-962c-4d37-b400-bd46674a0f20.webp?v=1717734353" alt="Coffeeza Coffee">
                           <div class="details">
-                              <h2><span class="label">Refurbished</span>Finero Next Coffee Machine</h2>
-                              <p></p>
+                              <h2>CLASSICO GROUND COFFEE</h2>
+                              <p>Premium Exotic Ground Coffee</p>
                           </div>
                       </div>
+                    </a>
+                    <a href="https://coffeeza.in/products/classico-ground-coffee">
                       <div class="variety">
-                          <img  width="90" height="90" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/products/coffeeza-coffee-machine-descaler-pack-of-4-sachets-nespresso-compatible-ads-001-5504785678426.jpg?v=1561568321" alt="">
+                          <img  class="lazyload"  width="90" height="90" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Cremoso_front_fd53093c-08c7-4ad4-a8ed-54ea3245a4ce.webp?v=1717734361" alt="Coffeeza Coffee">
                           <div class="details">
-                              <h2><span class="label">Refurbished</span>Frothimo Milk Frother & Heater</h2>
-                              <p></p>
+                              <h2>CREMOSO GROUND COFFEE</h2>
+                              <p>Premium Exotic Ground Coffee</p>
                           </div>
                       </div>
+                    </a>
+                    <a href="https://coffeeza.in/products/monsooned-malabar-arabica-pour-over-coffee-bags-no-equipment-needed">
+                      <div class="variety">
+                          <img class="lazyload"   width="90" height="90" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/monsooned_front.webp?v=1717734232" alt="Coffeeza Coffee">
+                          <div class="details">
+                              <h2>MONSOONED MALABAR GROUND COFFEE</h2>
+                              <p>Premium Exotic Ground Coffee</p>
+                          </div>
+                      </div>
+                    </a>
                   </div>
               </div>
           </div>
       </div>
       <div class="navbar-dropdown-wrapper" id="navbar-wrapper-4">
           <div class="accessorie-wrapper container navbar-show" id="show-nav-4">
-              <div class="offers-deals-wrapper">
-                  <img width="300" height="115" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/TM_FR_48_Nav_Desk_1.webp?v=1715088229" alt="">
-                  <img width="300" height="80" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/stock-vector-big-deals-banner-special-offer-poster-for-promotion-and-publication-colorful-abstract-geometric-1509398783_2068ce38-d34a-462a-8680-ff2a8d256c5a.jpg?v=1715088229" alt="">
-                  <!-- <img width="300" height="80" src="./homepage/easter-sale-long-banner-template-shop-now-2AP4J5J.jpg" alt=""> -->
+              <div class="offers-deals-wrapper main-tab">
+                  <a href="https://coffeeza.in/collections/ground-coffee">
+                    <img class="lazyload"  width="300" height="115" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Ground_Coffee_300x180_a37c0bf6-4adc-430e-af19-4d2e7575c867.webp?v=1716310105" alt="Coffeeza Coffee">
+                  </a>
+                  <!-- <img width="300" height="80" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/navbar_deals_banner_web.webp?v=1716358110" alt="Coffeeza Coffee"> -->
+                  <!-- <img width="300" height="80" data-src="./homepage/easter-sale-long-banner-template-shop-now-2AP4J5J.jpg" alt="Coffeeza Coffee"> -->
               </div>
-              <div class="coffee-varities-wrapper">
-                  <div>
+              <div class="coffee-varities-wrapper main-tab">
+                  <div class="coffee-varities-wrapper-inner justify-between">
+                    <a href="https://coffeeza.in/collections/all-accessories/products/coffeeza-capsule-storage-drawer-sliding-tray">
                       <div class="variety">
-                          <img  width="70" height="70" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/hjkhgjk.webp?v=1715092846" alt="">
+                          <img class="lazyload"   width="70" height="70" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/hjkhgjk.webp?v=1715092846" alt="Coffeeza Coffee">
                           <div class="details">
                               <h2>Coffeeza Capsule Storage Drawer - Sliding Tray</h2>
                           </div>
                       </div>
+                    </a>
+                    <a href="https://coffeeza.in/collections/all-accessories/products/coffee-machine-descaler">
                       <div class="variety">
-                          <img  width="70" height="70" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/descalerback_360x_2aa7a38b-593b-41ef-ba45-ffacb72043ef.webp?v=1715092846" alt="">
+                          <img class="lazyload"   width="70" height="70" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/descalerback_360x_2aa7a38b-593b-41ef-ba45-ffacb72043ef.webp?v=1715092846" alt="Coffeeza Coffee">
                           <div class="details">
                               <h2>Coffee Machine Descaler</h2>
                           </div>
                       </div>
+                    </a>
+                    <a href="https://coffeeza.in/collections/all-accessories/products/coffeeza-capsule-holder-with-rotating-stand">
                       <div class="variety">
-                          <img  width="70" height="70" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/holder1_360x_5299d857-486a-4abf-b3d4-4fa00ff441cb.webp?v=1715092846" alt="">
+                          <img class="lazyload"   width="70" height="70" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/holder1_360x_5299d857-486a-4abf-b3d4-4fa00ff441cb.webp?v=1715092846" alt="Coffeeza Coffee">
                           <div class="details">
-                              <h2>Coffeeza Capsule Holder </h2>
+                              <h2>Coffeeza Capsule Holder with Rotating Stand</h2>
                           </div>
                       </div>
+                    </a>
+                    <a href="https://coffeeza.in/collections/all-accessories/products/espresso-cup-saucer-set-of-2-thermic-glass-made-in-italy">
                       <div class="variety">
-                          <img  width="70" height="70" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Thermalglassespresso2_360x_abdf599b-77ed-47db-8d9b-087caf3758a1.webp?v=1715092938" alt="">
+                          <img class="lazyload"   width="70" height="70" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Thermalglassespresso2_360x_abdf599b-77ed-47db-8d9b-087caf3758a1.webp?v=1715092938" alt="Coffeeza Coffee">
                           <div class="details">
                               <h2>Espresso Coffee Cup & Saucer Set of 2</h2>
                           </div>
                       </div>
+                    </a>
                   </div>
               </div>
-              <div class="coffee-varities-wrapper">
-                  <div>
+              <div class="coffee-varities-wrapper main-tab">
+                  <div class="coffee-varities-wrapper-inner justify-between">
+                    <a href="https://coffeeza.in/collections/all-accessories/products/coffee-capsule-holder">
                       <div class="variety">
-                          <img  width="70" height="70" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/bowl1_360x_dbe2310b-2017-4454-b7db-2b6af754a8aa.webp?v=1715092846" alt="">
+                          <img  width="70" height="70" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/bowl1_360x_dbe2310b-2017-4454-b7db-2b6af754a8aa.webp?v=1715092846" alt="Coffeeza Coffee">
                           <div class="details">
                               <h2>Coffee Capsules Holder Glass Bowl</h2>
                           </div>
                       </div>
+                    </a>
+                    <a href="https://coffeeza.in/collections/all-accessories/products/french-press-coffee-maker-350ml">
                       <div class="variety">
-                          <img  width="70" height="70" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Artboard1_360x_c3ff7c33-d181-4183-ab25-81085fbbc11d.webp?v=1715092846" alt="">
+                          <img class="lazyload"   width="70" height="70" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Artboard1_360x_c3ff7c33-d181-4183-ab25-81085fbbc11d.webp?v=1715092846" alt="Coffeeza Coffee">
                           <div class="details">
                               <h2>French Press Coffee Maker - 350ML</h2>
                           </div>
                       </div>
+                    </a>
+                    <a href="https://coffeeza.in/collections/all-accessories/products/hario-v60-plastic-dripper-transparent">
                       <div class="variety">
-                          <img  width="70" height="70" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/IMG_1222_360x_a73890a9-972c-4b6d-9e63-ca7deea8e280.webp?v=1715092846" alt="">
+                          <img class="lazyload"   width="70" height="70" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/IMG_1222_360x_a73890a9-972c-4b6d-9e63-ca7deea8e280.webp?v=1715092846" alt="Coffeeza Coffee">
                           <div class="details">
                               <h2>Hario V60 Plastic Dripper- Transparent</h2>
                           </div>
                       </div>
+                    </a>
+                    <a href="https://coffeeza.in/collections/all-accessories/products/channi">
                       <div class="variety">
-                          <img  width="70" height="70" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/IMG_1229_360x_7b1c34dd-85e8-419e-8ff0-fc99fc680915.webp?v=1715092846" alt="">
+                          <img  class="lazyload"  width="70" height="70" data-src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/IMG_1229_360x_7b1c34dd-85e8-419e-8ff0-fc99fc680915.webp?v=1715092846" alt="Coffeeza Coffee">
                           <div class="details">
                               <h2>Coffee Filter/Channi</h2>
                           </div>
                       </div>
+                    </a>
                   </div>
               </div>
           </div>
@@ -991,7 +1094,7 @@
       <div class="navbar-dropdown-wrapper" id="navbar-wrapper-5">
           <div class="know-more-wrapper container navbar-show" id="show-nav-5">
               <div class="coffee-varities-wrapper">
-                  <div>
+                  <div class="coffee-varities-wrapper-inner justify-start">
                       <div class="variety">
                           <div class="details">
                             <a href="https://coffeeza.in/pages/our-story">
@@ -1010,7 +1113,7 @@
                       </div>
                       <div class="variety">
                           <div class="details">
-                            <a href="https://coffeeza.in/pages/coffeeza-press-releasest15">
+                            <a href="https://coffeeza.in/pages/pages-coffeeza-press-releasest15">
                               <h2>PRESS RELEASES</h2>
                               
                             </a>
@@ -1027,7 +1130,7 @@
                   </div>
               </div>
               <div class="coffee-varities-wrapper">
-                  <div>
+                  <div class="coffee-varities-wrapper-inner justify-start">
                       <div class="variety">
                           <div class="details">
                             <a href="https://coffeeza.in/blogs/coffeeza-blog">
@@ -1054,7 +1157,7 @@
                       </div>
                       <div class="variety">
                           <div class="details">
-                            <a href="https://coffeeza.in/pages/offer">
+                            <a href="https://coffeeza.in/pages/sale">
                               <h2>OFFERS</h2>
                               
                             </a>
@@ -1063,7 +1166,7 @@
                   </div>
               </div>
               <div class="coffee-varities-wrapper">
-                  <div>
+                  <div class="coffee-varities-wrapper-inner justify-start">
                       <div class="variety">
                         <div class="details">
                             <a href="https://coffeeza.wiq.app/">
@@ -1092,6 +1195,14 @@
                           <div class="details">
                             <a href="https://coffeeza.in/apps/help-center">
                               <h2>FAQ</h2>
+                              
+                            </a>
+                          </div>
+                      </div>
+                    <div class="variety">
+                          <div class="details">
+                            <a href="https://coffeeza.in/pages/hirings">
+                              <h2>CAREERS</h2>
                               
                             </a>
                           </div>
