@@ -16,27 +16,35 @@ document.addEventListener("DOMContentLoaded", function() {
     document.body.classList.add('custom-homepage');
   }
 
-  if (window.location.pathname === '/collections/coffee-capsules') {
+  if (window.location.pathname === '/collections/coffee-capsules' || window.location.pathname.includes('/collections/coffee-capsules') && !(window.location.pathname.includes('/products'))) {
     document.body.classList.add('custom-capsules');
   }
 
-  if (window.location.pathname === '/collections/ground-coffee') {
+  if (window.location.pathname === '/collections/ground-coffee' || window.location.pathname.includes('/collections/ground-coffee') && !(window.location.pathname.includes('/products')) && !(window.location.pathname.includes('/ground-coffee-'))) {
     document.body.classList.add('custom-ground-coffee');
   }
 
-  if (window.location.pathname === '/collections/pour-over-coffee-bags') {
+  if (window.location.pathname === '/collections/pour-over-coffee-bags' || window.location.pathname.includes('/collections/pour-over-coffee-bags') && !(window.location.pathname.includes('/products'))) {
     document.body.classList.add('custom-pour-overs');
   }
 
-  if (window.location.pathname === '/collections/coffee-machines') {
+  if (window.location.pathname === '/collections/coffee-machines' || window.location.pathname.includes('/collections/coffee-machines') && !(window.location.pathname.includes('/products'))) {
     document.body.classList.add('custom-machines');
   }
 
-  if (window.location.pathname === '/collections/all-accessories') {
+  if (window.location.pathname === '/collections/all-accessories' || window.location.pathname.includes('/collections/all-accessories') && !(window.location.pathname.includes('/products'))) {
     document.body.classList.add('custom-accessories');
   }
+
+  if (window.location.pathname === '/collections/whole-coffee-beans' || window.location.pathname.includes('/collections/whole-coffee-beans') && !(window.location.pathname.includes('/products'))) {
+    document.body.classList.add('custom-whole-beans');
+  }
+
+  if (window.location.pathname.includes('/products')) {
+    document.body.classList.add('custom-accessories-desc');
+  }
   
-  if (window.location.pathname === '/collections/best-sellers') {
+  if (window.location.pathname === '/collections/best-sellers' || window.location.pathname.includes('/collections/best-sellers') && !(window.location.pathname.includes('/products')) && !(window.location.pathname.includes('/best-sellers-'))) {
     document.body.classList.add('custom-bestsellers');
   }
 
@@ -58,6 +66,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
   if (window.location.pathname.includes('/products')) {
     document.body.classList.add('generic-products-details');
+  }
+
+  if (window.location.pathname.includes('/policies') || (window.location.pathname === '/pages/warranty-policy') || (window.location.pathname === '/pages/shipping-policy')) {
+    document.body.classList.add('custom-policy-page');
   }
   //Custom page marking End
 
@@ -167,7 +179,24 @@ document.addEventListener("DOMContentLoaded", function() {
           element.classList.add("d-none");
         }
       });
+      if (window.matchMedia("(max-width: 450px)").matches) {
+        window.scrollTo({top: 1550, behavior: 'smooth'});
+      } else {
+        window.scrollTo({top: 2700, behavior: 'smooth'});
+      }
     });
+  });
+
+  document.addEventListener('scroll', function() {
+      const target = document.querySelector('.multi-tabs');
+      const stickyCCFilters = document.querySelector('.multi-tabs .tabs-primary');
+      const targetPosition = target.getBoundingClientRect().top;
+  
+      if (targetPosition <= 0) {
+          stickyCCFilters.classList.add('scrolled-past-must-try');
+      } else {
+          stickyCCFilters.classList.remove('scrolled-past-must-try');
+      }
   });
   //Must try wrapper end
 
@@ -213,16 +242,6 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
   //Add to cart
-
-  //whatsapp widget hide
-  
-  const images = document.querySelectorAll('body img');
-  images.forEach((img, index) => {
-    console.log("shubham");
-      img.alt = `Coffeeza Coffee1`;
-  });
-  //whatsapp widget hide
-  
   
   //coffee capsule collection filter wrapper start
   var filters = document.querySelectorAll(".coffee-capsule-everything-wrapper .inner");
@@ -245,7 +264,20 @@ document.addEventListener("DOMContentLoaded", function() {
           element.classList.add("d-none");
         }
       });
+      window.scrollTo({top: 450, behavior: 'smooth'});
     });
+  });
+
+  document.addEventListener('scroll', function() {
+      const target = document.querySelector('.everything-wrapper');
+      const stickyCCFilters = document.querySelector('.everything-wrapper .main-div-inside');
+      const targetPosition = target.getBoundingClientRect().top;
+  
+      if (targetPosition <= 0) {
+          stickyCCFilters.classList.add('sticky-coffee-capsule-everything');
+      } else {
+          stickyCCFilters.classList.remove('sticky-coffee-capsule-everything');
+      }
   });
   //coffee capsule collection filter wrapper end
 
@@ -271,10 +303,28 @@ document.addEventListener("DOMContentLoaded", function() {
           element.classList.add("d-none");
         }
       });
+      window.scrollTo({top: 450, behavior: 'smooth'});
     });
   });
   //Ground coffee collection filter wrapper end
 
+  //try
+  function updateMoneySaved() {
+    var selectedVariant = Shopify.Product.current_variant;
+    if (selectedVariant && selectedVariant.compare_at_price && selectedVariant.price) {
+      var compareAtPrice = selectedVariant.compare_at_price / 100;
+      var price = selectedVariant.price / 100;
+      var moneySaved = (compareAtPrice - price).toFixed(2);
+      document.getElementById('money-saved').innerText = moneySaved;
+    }
+  }
+  document.querySelectorAll('.option-selector__btns .opt-btn').forEach(function(input) {
+    input.addEventListener('change', updateMoneySaved);
+  });
+  updateMoneySaved();
+  //try
+
+  
   //Swatches price change dynamically
   const swatches = document.querySelectorAll('.product-swatch');
   const discountElement = document.getElementById('discount-percentage');
@@ -421,7 +471,14 @@ document.addEventListener("DOMContentLoaded", function() {
   }
   //lazy loading
 
-  
+  //Aria-label
+var dialogElement = document.querySelector('.banner-custom .slick-track');
+if (dialogElement) {
+    dialogElement.setAttribute('aria-label', 'Descriptive Coffeeza Banner');
+} else {
+    console.error('Element not found');
+}
+//Aria-label
   
   
 });
@@ -433,11 +490,42 @@ function showLoadingOverlay() {
 }
 showLoadingOverlay();
 
-//Aria-label
-var dialogElement = document.querySelector('.banner-custom .slick-track');
-if (dialogElement) {
-    dialogElement.setAttribute('aria-label', 'Descriptive Coffeeza Banner');
-} else {
-    console.error('Element not found');
-}
-//Aria-label
+
+document.addEventListener("DOMContentLoaded", function() {
+    //Aria-label
+    var dialogElement = document.getElementByClassname('.slick-track');
+    if (dialogElement) {
+        dialogElement.setAttribute('aria-label', 'Descriptive Coffeeza Banner');
+    } else {
+        console.error('Element not found 1');
+    }
+    //Aria-label
+  });
+
+document.addEventListener("DOMContentLoaded", function() {
+    const lazyloadedImages = document.querySelectorAll('.slide .rimage-outer-wrapper img');
+  console.log("Number of lazyloaded images foundd:", lazyloadedImages.length);
+    lazyloadedImages.forEach(function(image) {
+        image.classList.add('new-class'); 
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    let lazyDiv = document.getElementById('lazyDiv');
+    let lazyDivInside = document.querySelector('#lazyDiv .main-div-inside');
+    let options = {
+        root: null, 
+        rootMargin: '0px',
+        threshold: 0.1
+    };
+    let observer = new IntersectionObserver(function(entries, observer) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && lazyDiv.getAttribute('data-loaded') === 'false') {
+                lazyDivInside.style.display = 'block';
+                lazyDiv.setAttribute('data-loaded', 'true');
+                observer.unobserve(lazyDiv);
+            }
+        });
+    }, options);
+    observer.observe(lazyDiv);
+});

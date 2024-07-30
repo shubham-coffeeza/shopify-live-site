@@ -16,7 +16,7 @@
 -%}
 
 <div data-section-id="{{ section.id }}" data-section-type="product" data-enable-history-state="true" data-components="accordion,custom-select">
-  <div class="container product-detail very-large-row-under" data-product-id="{{ product.id }}">
+  <div class="container product-detail very-large-row-under  {% if product.title contains 'Decaf'  %} launching-soon-prod-desc {% endif %}" data-product-id="{{ product.id }}">
     <div class="page-width">
       <div class="product-layout-grid product-layout-grid--{{ section.settings.media_size }}">
         <div class="product-layout-grid__images layout--{{ section.settings.media_layout }}{% if product.media.size > 1 %} has-multiple-images{% endif %}" data-product-image-layout="{{ section.settings.media_layout | split: '-' | first }}">
@@ -147,22 +147,43 @@
 
                       {% render 'unit-price', variant: current_variant %}
 
-                      <!-- <span class="price-off-perc"  id="price-off-perc">
+                      <span class="price-off-perc"  id="price-off-perc">
                         {% if current_variant.compare_at_price %}
                           {% assign original_price = current_variant.compare_at_price %}
                           {% assign discounted_price = current_variant.price %}
                           {% assign percentage_off = original_price | minus: discounted_price | times: 100 | divided_by: original_price | round %}
 
-                          <p class="label">
-                            {{ percentage_off }}% off
-                          </p>
+                          <!-- <p class="label"> -->
+                            <span id="product-discount-off">{{ percentage_off }}</span>% off
+                          <!-- </p> -->
                         {% endif %}
-                      </span> -->
+                      </span>
                     </div>
+
+                    {% assign money_saved = original_price | minus: discounted_price  %}
                     
-                    {% assign money_saved = current_variant.compare_at_price | minus: current_variant.price | divided_by: 100 %}
-                    <div class="money-saved">You saved Rs {{ money_saved }}</div>
-                    
+                    <div class="money-saved" >
+                      {% if current_variant.price %}
+                        You saved Rs <span id="money-saved">{{ money_saved | divided_by:100 }}</span>
+                      {% endif %}
+                    </div>
+                    <script>
+                      var product_compare_at_price_variable = {{ product.variants | map: 'compare_at_price' | json }};
+                      var product_price_variable = {{ product.variants | map: 'price' | json }};
+                      document.addEventListener("DOMContentLoaded", function() {
+                        const custom_swatches = document.querySelectorAll(".option-selector__btns .opt-btn");
+                        custom_swatches.forEach(function(custom_swatch, index) {
+                          custom_swatch.addEventListener("click", function(){
+                            const compareAtPrice = product_compare_at_price_variable[index] / 100;
+                            const price = product_price_variable[index] / 100;
+                            const percentageOff = Math.floor(((compareAtPrice - price) * 100) / compareAtPrice);
+                            
+                            document.getElementById("money-saved").innerText = ((product_compare_at_price_variable[index]/100) - (product_price_variable[index]/100));
+                            document.getElementById("product-discount-off").innerText = percentageOff;
+                          });
+                        });
+                      });
+                    </script>
 
                     {%- form 'product', product, id: installments_form_id, class: form_class -%}
                       <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" data-product-secondary-select>
@@ -241,9 +262,10 @@
                     {% if product.type == "Coffee Capsules" %}
                       <div class="d-flex row coffee-capsules-compatibility align-center">
                         <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/nesp_comp.jpg?v=1717670585" alt="Coffeeza Coffee" height="50" width="50">
-                        <p><b>Compatible with all Coffeeza & all *Nespresso® original line machines</b></p>
+                        <p><b>Compatible with all Coffeeza & *Nespresso® original line machines</b></p>
                       </div>
                     {% endif %}
+                    
                     <div class="product-detail__options row" {{ block.shopify_attributes }}>
                       {%- assign show_size_chart = false -%}
                       {% for option in product.options_with_values %}
@@ -341,6 +363,8 @@
                           {% endif %}
                         </div>
                       {%- endif -%} -->
+
+                      
 
                       {%- if block.settings.show_quantity_selector -%}
                         {% render 'quantity-selector', variant: current_variant %}
@@ -490,9 +514,6 @@
                       {% endif %}
 
                     {%- else -%}
-                      <!-- <div class="rte rte--expanded-images clearfix row {% if block.settings.full_width == false %} product-description__no-expand{% endif %}">
-                        {{ product.description }}
-                      </div> -->
                     {%- endif -%}
                   {%- endcapture -%}
 
@@ -769,6 +790,12 @@
         <img loading="lazy" class="mobile" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/english_rose_b9340e6b-ba93-4891-a6b8-86920ccac545.webp?v=1717500178" alt="Coffeeza Coffee" width="100" height="350">
       </div>
     {%- endif -%}
+    {%- if product.id == 8656062415062 -%}
+      <div class="brewing-suggestion">
+        <img loading="lazy" class="desktop" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/turmeric_blend_details.webp?v=1720176358" alt="Coffeeza Coffee" width="100" height="350">
+        <img loading="lazy" class="mobile" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/turmeric_1.webp?v=1720180149" alt="Coffeeza Coffee" width="100" height="350">
+      </div>
+    {%- endif -%}
     {%- if product.id == 8215660724438 -%}
       <div class="brewing-suggestion">
         <img loading="lazy" class="desktop" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/turkish_baklava.webp?v=1717500163" alt="Coffeeza Coffee" width="100" height="350">
@@ -776,6 +803,20 @@
       </div>
     {%- endif -%}
     {%- if product.id == 4570526974042 -%}
+      <div class="brewing-suggestion">
+        <img loading="lazy" class="desktop" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/classico_27e9616f-da6b-4712-aeb0-9fe10cc71f3d.webp?v=1717393196" alt="Coffeeza Coffee" width="100" height="350">        
+        <img loading="lazy" class="mobile" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/classico_71ef98b7-30ef-428f-84cc-d9d540259f1e.webp?v=1717500179" alt="Coffeeza Coffee" width="100" height="350">        
+        <img loading="lazy" class="desktop" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/cremoso_91d7b6f1-33e0-4207-b63c-e78b96e372c8.webp?v=1717393196" alt="Coffeeza Coffee" width="100" height="350">
+        <img loading="lazy" class="mobile" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/cremoso_decfe119-c868-41d2-b599-7d2eae694d36.webp?v=1717417009" alt="Coffeeza Coffee" width="100" height="350">
+        <img loading="lazy" class="desktop" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/forte_b49d4ba3-f3f1-42e5-bcf3-b8210a5a59d8.webp?v=1717393196" alt="Coffeeza Coffee" width="100" height="350">
+        <img loading="lazy" class="mobile" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/forte_fefd4a43-bbca-4831-9cbb-76c623f031a4.webp?v=1717500180" alt="Coffeeza Coffee" width="100" height="350">
+        <img loading="lazy" class="desktop" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/mysore.webp?v=1717393196" alt="Coffeeza Coffee" width="100" height="350">
+        <img loading="lazy" class="mobile" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/mysore_0c2126b5-772d-42b2-abc1-b2792eb71553.webp?v=1717500178" alt="Coffeeza Coffee" width="100" height="350">
+        <img loading="lazy" class="desktop" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/intenso_a189bc28-6903-4117-b8f8-1bc64cf238b2.webp?v=1717393196" alt="Coffeeza Coffee" width="100" height="350">
+        <img loading="lazy" class="mobile" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/intenso_83cc3447-a1f1-4a6e-a087-87bbc8725f85.webp?v=1717500179" alt="Coffeeza Coffee" width="100" height="350">
+      </div>
+    {%- endif -%}
+    {%- if product.id == 8656073064662 -%}
       <div class="brewing-suggestion">
         <img loading="lazy" class="desktop" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/classico_27e9616f-da6b-4712-aeb0-9fe10cc71f3d.webp?v=1717393196" alt="Coffeeza Coffee" width="100" height="350">        
         <img loading="lazy" class="mobile" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/classico_71ef98b7-30ef-428f-84cc-d9d540259f1e.webp?v=1717500179" alt="Coffeeza Coffee" width="100" height="350">        
@@ -942,6 +983,15 @@
         <img loading="lazy" class="mobile" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Mysore_Nuggests.webp?v=1717670103" alt="Coffeeza Coffee" width="100" height="350">
       </div>
     {%- endif -%}
+
+    {%- if product.id == 8635967275222 -%}
+      <div class="brewing-suggestion">
+        <img loading="lazy" class="desktop" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Drip_Desktop__Hazelnut.webp?v=1719380807" alt="Coffeeza Coffee" width="100" height="350">
+        <img loading="lazy" class="mobile" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Drip_Mobile_Hazelnut.webp?v=1719380806" alt="Coffeeza Coffee" width="100" height="350">
+      </div>
+    {%- endif -%}
+
+    
     <div class="brewing-suggestion">
       <img loading="lazy" class="desktop" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/imgpsh_fullsize_anim_11_-min.jpg?v=1717671274" alt="Coffeeza Coffee" width="100" height="350">
       <img loading="lazy" class="mobile" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/imgpsh_fullsize_anim_13_-min.png?v=1717671274" alt="Coffeeza Coffee" width="100" height="350">
@@ -994,9 +1044,13 @@
      <div class="inbetween-banner-wrapper">
         <div class="container d-grid">
           <div class="flex d-flex align-center justify-start">
-            <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/1_Year_Warranty.webp?v=1717133713" alt="Coffeeza Coffee" width="100" height="100">
-            <h4>1 Year Warranty</h4>
-            <p></p>
+            {%- if product.id == 7690206970070 or product.id == 8087924310230 or product.id == 8515091366102 -%}
+              <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/6_months_warranty_1.webp?v=1720606506" alt="Coffeeza Coffee" width="100" height="100">
+              <h4>6 Months Warranty</h4>
+            {%- else -%}
+              <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/1_Year_Warranty.webp?v=1717133713" alt="Coffeeza Coffee" width="100" height="100">
+              <h4>1 Year Warranty</h4>
+            {%- endif -%}
           </div>
           <div class="flex d-flex align-center justify-start">
             <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Hassle_Free_Service.webp?v=1717133714" alt="Coffeeza Coffee" width="100" height="100">

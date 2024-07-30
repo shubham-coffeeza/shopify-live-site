@@ -60,40 +60,7 @@
           {%- endfor -%}
         </div>
 
-<script>
-// var handle = '{{product.handle}}';
-// jQuery.getJSON('/products/'+handle+'.js', function(product) {
 
-// var newarry =[]
-// for(let x of product.variants){
-// var newobj = {"optionName":x.option2,"optionSrc":x.featured_image.src};
-// newarry.push(newobj);
-
-
-// }
-
-// const uniqueIds = new Set();
-// const unique = newarry.filter(element => {
-//   const isDuplicate = uniqueIds.has(element.optionName);
-//   uniqueIds.add(element.optionName);
-
-//   if (!isDuplicate) {
-//     return true;
-//   }
-
-//   return false;
-// });
-
-// console.log(unique);
-// for(let x of unique){
-//   var name = x.optionName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-$/, '').replace(/^-/, '');
-//   var src = x.optionSrc;
-// console.log(name,src);
-// $("."+name).css("background-image", "url(" + src + ")");
-// }
-// } );
-
-</script>
  
 <style>
   .grind_guide_btn_new {
@@ -177,24 +144,27 @@ span.picker_caption {
 </style>
 {% else %}
         <div  class="option-selector__btns">
+          {% assign iteration_count = 0 %}
           {%- for value in option.values -%}
+            
             <input class="opt-btn js-option" type="radio" name="{{ option_id }}-option" id="{{ option_id }}-opt-{{ forloop.index0 }}" value="{{ value | escape }}"{% if option.selected_value == value %} checked{% endif %}>
             <div class="custom-swatches relative">
               <label class="opt-label{% if swatches == true %}{% if settings.swatch_method == 'image' %} opt-swatch--image{% else %} opt-swatch--dot{% endif %}{% endif %}"
                   {% if swatches == true %} data-swatch="{{ value | downcase | replace: '"', ''}}"{% endif %} for="{{ option_id }}-opt-{{ forloop.index0 }}">{{ value }}</label>
               <!-- <span class="swatch-inner-label">88% Off</span> -->
-                <!-- <span class="price-off-perc swatch-inner-label">
-                  {% if variant.compare_at_price %}
-                    {% assign original_price = variant.compare_at_price %}
-                    {% assign discounted_price = variant.price %}
-                    {% assign percentage_off = original_price | minus: discounted_price | times: 100 | divided_by: original_price | round %}
+                <span class="price-off-perc swatch-inner-label">
+                  {% if product.variants[iteration_count].compare_at_price %}
+                    {% assign original_price = product.variants[iteration_count].compare_at_price %}
+                    {% assign discounted_price = product.variants[iteration_count].price %}
+                    {% assign percentage_off_swatch = original_price | minus: discounted_price | times: 100 | divided_by: original_price | round %}
   
-                      {{ percentage_off }}% off
+                      {{ percentage_off_swatch }}% off
                     {% else %}
                     0% Off
                   {% endif %}
-                </span> -->
+                </span>
             </div>
+            {% assign iteration_count = iteration_count | plus: 1 %}
           {%- endfor -%}
         </div>
 {% endif %}
@@ -206,3 +176,6 @@ span.picker_caption {
 
   </div>
 {% endfor %}
+{% if product.type == "ground coffee" %}
+  <div class="grind_guide_btn_new">Grind Guide <img src="//cdn.shopify.com/s/files/1/1308/0907/t/239/assets/question.svg?v=29412005784520030971660282224" alt=""></div>
+{%- endif -%}
