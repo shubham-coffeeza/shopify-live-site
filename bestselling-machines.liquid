@@ -24,7 +24,7 @@
     <div class="bestselling-machines  scroll-slider-wrapper">
         <div class="prod-card">
           {% if bestselling-collection-1 %}
-            {% for product in bestselling-collection-1.products limit:6 %}
+            {% for product in bestselling-collection-1.products limit:8 %}
               {% render 'machine-card-grid-list', product: product %}
               
               {% if forloop.index == 1 %}
@@ -39,25 +39,7 @@
               {% endif %}
 
               {% if forloop.index == 2 %}
-                <!-- <div class="inbetween-banner-wrapper">
-                  <div class="container d-grid">
-                    <div class="flex d-flex align-center justify-start">
-                      <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/image_d694ccda-fc4c-4869-bfac-29aa73fe014f.svg?v=1715575744" alt="Coffeeza Coffee" width="35" height="35">
-                      <h4>PREMIUM COFFEE SELECTIONS</h4>
-                      <p>Whether you prefer dark and strong or mild and smooth, there's a Nespresso coffee capsule to fit every taste and mood.</p>
-                    </div>
-                    <div class="flex d-flex align-center justify-start">
-                      <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/image_d694ccda-fc4c-4869-bfac-29aa73fe014f.svg?v=1715575744" alt="Coffeeza Coffee" width="35" height="35">
-                      <h4>PREMIUM COFFEE SELECTIONS</h4>
-                      <p>Whether you prefer dark and strong or mild and smooth, there's a Nespresso coffee capsule to fit every taste and mood.</p>
-                    </div>
-                    <div class="flex d-flex align-center justify-start">
-                      <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/image_2.svg?v=1715575744" alt="Coffeeza Coffee" width="35" height="35">
-                      <h4>PREMIUM COFFEE SELECTIONS</h4>
-                      <p>Whether you prefer dark and strong or mild and smooth, there's a Nespresso coffee capsule to fit every taste and mood.</p>
-                    </div>
-                  </div>
-                </div> -->
+                
                 <div class="full-width-banner">
                   <img loading="lazy" class="desktop"  src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/combo.webp?v=1716464134" alt="Coffeeza Coffee" width="1000" height="300" >
                   <img loading="lazy" class="mobile"  src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/combo_c93888fe-a31e-4e4f-a125-d3dea99f176f.webp?v=1717158754" alt="Coffeeza Coffee" width="1000" height="300" >
@@ -107,20 +89,67 @@
                 </div>
               {% endif %}
 
-              {% if forloop.index == 5 %}
+              {% if forloop.index == 6 %}
                 <div class="full-width-banner">
-                  <img loading="lazy"  class="desktop" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/coffee_sipping.webp?v=1716464134" alt="Coffeeza Coffee" width="1000" height="300" >
-                  <img loading="lazy"  class="mobile" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/coffee_sipping_8ae65bd0-09b3-4f4c-b457-65b73b98a951.webp?v=1717158754" alt="Coffeeza Coffee" width="1000" height="300" >
-                  <div class="collection-data container">    
-                    <!-- <h2 class="collection-title">Elevate your at-home coffee brewing game with compact and easy to use coffee machines</h2> -->
-                    <p class="collection-para">Elevate your at-home coffee brewing game with compact and easy to use coffee machines</p>  
+                  <img loading="lazy"  class="desktop" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/freepik-purple-space-stars-desktop-wallpaper-20240720093216X7N8_1.jpg?v=1721468294" alt="Coffeeza Coffee" width="1000" height="300" >
+                  <img loading="lazy"  class="mobile" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/freepik-purple-space-stars-desktop-wallpaper-20240720094209sItz.jpg?v=1721468590" alt="Coffeeza Coffee" width="1000" height="300" >
+                  <!-- <div class="collection-data container">    
+                    <h2 class="collection-title">Clearance Sale</h2>
+                    <p class="collection-para">Explore unbeatable prices on our clearance sale items, including premium coffee capsule machines!</p>  
+                  </div> -->
+                </div>
+                
+              {% endif %}
+
+              {% if forloop.index == 5 %}
+                <div class="inbetween-banner-wrapper">
+                  <div class="container d-grid">
+                    <div class="flex d-flex align-center justify-start">
+                        <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/6_months_warranty__1_-removebg-preview.png?v=1721125777" alt="Coffeeza Coffee" width="100" height="100">
+                        <h4>6 Months Warranty</h4>
+                    </div>
+                    <div class="flex d-flex align-center justify-start">
+                      <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Hassle_Free_Service.webp?v=1717133714" alt="Coffeeza Coffee" width="100" height="100">
+                      <h4>Hassle Free Service</h4>
+                      
+                    </div>
+                    <div class="flex d-flex align-center justify-start">
+                      <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Express_Delivery.webp?v=1717133714" alt="Coffeeza Coffee" width="100" height="100">
+                      <h4>Express Delivery</h4>
+                      
+                    </div>
+                    <div class="flex d-flex align-center justify-start">
+                      <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Easy_Maintenance.webp?v=1717133714" alt="Coffeeza Coffee" width="100" height="100">
+                      <h4>Easy Maintenance</h4>
+                      
+                    </div>
                   </div>
                 </div>
               {% endif %}
 
-              {% if forloop.index == 6 %}
-                <div class="inbetween-banner">
-                  
+              {% if forloop.index == 7 %}
+                <div class="inbetween-banner-wrapper">
+                  <div class="container d-grid">
+                    <div class="flex d-flex align-center justify-start">
+                        <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/3_months_warranty.webp?v=1721461492" alt="Coffeeza Coffee" width="100" height="100">
+                        <h4>3 Months Warranty</h4>
+                    </div>
+                    <div class="flex d-flex align-center justify-start">
+                      <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Hassle_Free_Service.webp?v=1717133714" alt="Coffeeza Coffee" width="100" height="100">
+                      <h4>Hassle Free Service</h4>
+                      
+                    </div>
+                    <div class="flex d-flex align-center justify-start">
+                      <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Express_Delivery.webp?v=1717133714" alt="Coffeeza Coffee" width="100" height="100">
+                      <h4>Express Delivery</h4>
+                      
+                    </div>
+                    <div class="flex d-flex align-center justify-start">
+                      <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Easy_Maintenance.webp?v=1717133714" alt="Coffeeza Coffee" width="100" height="100">
+                      <h4>Easy Maintenance</h4>
+                      
+                    </div>
+                  </div>
                 </div>
               {% endif %}
             {% endfor %}

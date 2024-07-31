@@ -4,7 +4,7 @@
 {% assign env = 'sandbox.pdp' %}
 {%endif%}
 {% if settings.goEnable %}
-<script>
+<script defer="defer" async>
 
 window.merchantInfo  = {
         mid: "{{ settings.mid }}",
@@ -18,8 +18,8 @@ var cart = {{ cart | json }}
 var templateName = '{{template.name}}'
 </script>
 
-<script defer="defer" src="https://{{ env }}.gokwik.co/merchant-integration/build/merchant.integration.js?v4"></script>
-<script defer="defer"  src="https://analytics.gokwik.co/analytics.js" id="gokwikHeaderAnalytics"></script>
+<script defer="defer" async src="https://{{ env }}.gokwik.co/merchant-integration/build/merchant.integration.js?v4"></script>
+<script defer="defer" async  src="https://analytics.gokwik.co/analytics.js" id="gokwikHeaderAnalytics"></script>
 
 <style>
 {% if settings.goEnable %}

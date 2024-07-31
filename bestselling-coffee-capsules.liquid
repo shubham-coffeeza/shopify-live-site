@@ -53,7 +53,7 @@
       </div>
   </div>
   <div class="view-all-collection d-flex justify-center">
-    <a href="https://coffeeza.in/collections/{{ collection.handle }}" >
+    <a href="https://coffeeza.in/collections/best-sellers-1" >
       <button type="button" >View All</button>
     </a>
   </div>
@@ -87,7 +87,7 @@
         <button name="next_button" class="next"><svg width="60" height="60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M470.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 256 265.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160zm-352 160l160-160c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L210.7 256 73.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0z"/></svg></button>
     </div>
     <div class="view-all-collection d-flex justify-center">
-      <a href="https://coffeeza.in/collections/without-milk-coffee-capsules" >
+      <a href="https://coffeeza.in/collections/best-sellers-1" >
         <button type="button" >View All</button>
       </a>
     </div>
@@ -117,44 +117,21 @@
         <button name="next_button" class="next"><svg width="60" height="60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M470.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 256 265.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160zm-352 160l160-160c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L210.7 256 73.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0z"/></svg></button>
     </div>
     <div class="view-all-collection d-flex justify-center">
-      <a href="https://coffeeza.in/collections/milk-based-coffee-capsules" >
+      <a href="https://coffeeza.in/collections/best-sellers-1" >
         <button type="button" >View All</button>
       </a>
     </div>
 </div>
 
-<!-- <a href="https://coffeeza.in/pages/capsule-recycling-program">  -->
+<a href="https://coffeeza.in/pages/capsule-recycling-program"> 
   <div class="full-width-banner third">
     <img loading="lazy" class="desktop" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/recycling_1.webp?v=1716899200" alt="" width="1000" height="300" >
     <img loading="lazy" class="mobile" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/recycling.webp?v=1717158754" alt="" width="1000" height="300" >
     <div class="collection-data container">    
       <h2 class="collection-title">CAPSULES <br>RECYCLING PROGRAM</h2>
       <p class="collection-para">Return used Coffeeza Aluminium capsules<br> and we will recycle them for you.<br> Get a reward for every return.</p>  
-      <!-- <p class="learn-more">LEARN MORE</p> -->
+      <p class="learn-more">LEARN MORE</p>
     </div>
   </div>
-<!-- </a> -->
+</a>
           
-<div class="bestselling-capsules-wrapper collection-show relative " id="show-1">
-  <!-- <h2 class="collection-title">All Flavours Coffee Capsules</h2>
-      <p class="collection-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-      <div class="relative">   -->
-    <div class="bestselling-capsules container scroll-slider-wrapper">
-      <div class="prod-card">
-          {% if allflavours-collection %}
-            {% for product in allflavours-collection.products limit:6 %}
-              {% render 'product-card-grid-list', product: product %}
-            {% endfor %}
-          {% else %}
-            <p>The collection "{{ collection_handle }}" does not exist.</p>
-          {% endif %}
-        </div>
-        <button name="prev_button" class="prev"><svg width="60" height="60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160zm352-160l-160 160c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L301.3 256 438.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0z"/></svg></button>
-        <button name="next_button" class="next"><svg width="60" height="60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M470.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 256 265.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160zm-352 160l160-160c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L210.7 256 73.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0z"/></svg></button>
-    </div> 
-    <div class="view-all-collection d-flex justify-center">
-      <a href="https://coffeeza.in/collections/all-flavours-coffee-capsule" >
-        <button type="button" >View All</button>
-      </a>
-    </div>
-</div>

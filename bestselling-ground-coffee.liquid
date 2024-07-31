@@ -46,11 +46,20 @@
     {% assign collection = filter-ground-coffee-collection %}
 {% endcase %}
 {% assign GCoffeecounter = GCoffeecounter | plus: 1 %}
+
+{% assign limit = 15 %}
+{% if request.query.view == 'all' %}
+  {% assign limit = 15 %}
+{% endif %}
+  <script>
+    console.log("limit:", {{ limit }});
+  </script>
+        
 <div class="bestselling-capsules-wrapper bestselling-groundcoffee-wrapper ground-coffee-everything-wrapper collection-show relative category-wise-GCoffee-filter d-none {% if GCoffeecounter == 1 %}d-block{% endif %}" id="display-GCoffee-filter-category-{{ GCoffeecounter }}">
   <div class="bestselling-groundcoffee container scroll-slider-wrapper">
-      <div class="prod-card">
+      <div id="gc-product-list-{{ GCoffeecounter }}" class="prod-card">
         {% if collection and collection.products.size > 0 %}
-          {% for product in collection.products %}
+          {% for product in collection.products limit: limit %}
             {% render 'product-card-grid-list', product: product %}
           {% endfor %}
         {% else %}
@@ -59,44 +68,49 @@
       </div>
   </div>
   <div class="view-all-collection d-flex justify-center">
-    <a href="#show-all-ground-coffee" >
+    <a href="https://coffeeza.in/collections/ground-coffee-tier-3" >
       <button type="button" >View All</button>
     </a>
   </div>
 </div>
 {% endfor %}
 
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const viewAllButtons = document.querySelectorAll('[id^="gc-view-all-button-"]');
+    
+    viewAllButtons.forEach(function(button) {
+      button.addEventListener('click', function(event) {
+        event.preventDefault();
+        const counter = button.id.split('-').pop(); // Get the GCoffeecounter value from the button ID
+        const productListContainer = document.getElementById(`gc-product-list-${counter}`);
+        
+        fetch(window.location.pathname + '?view=all')
+          .then(response => response.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            const newProductList = doc.getElementById(`gc-product-list-${counter}`).innerHTML;
+            productListContainer.innerHTML = newProductList;
+          })
+          .catch(error => {
+            console.error('Error fetching the updated product list:', error);
+          });
+      });
+    });
+  });
+</script>
 
-<div class="full-width-banner">
+
+<!-- <div class="full-width-banner">
       <img class="desktop" loading="lazy" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/imgpsh_fullsize_anim_14_1.png?v=1717670681" alt="Coffeeza Coffee" width="1000" height="300">
       <img class="mobile" loading="lazy" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Ground_Coffee_Mobile.webp?v=1717673326" alt="Coffeeza Coffee" width="1000" height="300">
-      <!-- <div class="collection-data container">    
+       <div class="collection-data container">    
         <h2 class="collection-title">Bestselling Ground Coffee</h2>
         <p class="collection-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>  
-      </div> -->
-</div>
-                              
-<div class="bestselling-groundcoffee-wrapper collection-show relative container" id="show-1">
-    <div class="bestselling-groundcoffee scroll-slider-wrapper">
-        <div class="prod-card">
-          {% if bestselling-collection-2 %}
-            {% for product in bestselling-collection-1.products limit:3 %}
-              {% render 'product-card-grid-list', product: product %}
-            {% endfor %}
-          {% else %}
-            <p>The collection "{{ collection_handle }}" does not exist.</p>
-          {% endif %}
-        </div>
-                              
-      <button name="prev_button" class="prev"><svg width="60" height="60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160zm352-160l-160 160c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L301.3 256 438.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0z"/></svg></button>
-      <button name="next_button" class="next"><svg width="60" height="60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M470.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 256 265.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160zm-352 160l160-160c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L210.7 256 73.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0z"/></svg></button>
-    </div>
-    <div class="view-all-collection d-flex justify-center">
-      <a href="#show-all-ground-coffee" >
-        <button type="button" >View All</button>
-      </a>
-    </div>
-</div>
+      </div> 
+</div> -->
+  
 
 <div class="full-width-banner">
       <img loading="lazy" class="desktop" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/coffee_farm_1_1c0cef21-c259-4ac0-934c-596aa6093198.webp?v=1717392833" alt="Coffeeza Coffee" width="" height="">
@@ -106,20 +120,4 @@
         <p class="collection-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>  
       </div> -->
 </div>
-                              
-<div class="bestselling-groundcoffee-wrapper collection-show relative container" id="show-all-ground-coffee">
-    <div class="bestselling-groundcoffee scroll-slider-wrapper">
-        <div class="prod-card">
-          {% if bestselling-collection-3 %}
-            {% for product in bestselling-collection-2.products %}
-              {% render 'product-card-grid-list', product: product %}
-            {% endfor %}
-          {% else %}
-            <p>The collection "{{ collection_handle }}" does not exist.</p>
-          {% endif %}
-        </div>
-                              
-      <button name="prev_button" class="prev"><svg width="60" height="60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160zm352-160l-160 160c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L301.3 256 438.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0z"/></svg></button>
-      <button name="next_button" class="next"><svg width="60" height="60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M470.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 256 265.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160zm-352 160l160-160c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L210.7 256 73.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0z"/></svg></button>
-    </div>
-</div>
+

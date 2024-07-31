@@ -1,12 +1,30 @@
 <!doctype html>
 <html class="no-js supports-no-cookies" lang="{{ request.locale.iso_code }}">
 <head>
+ {%- render 'layouthub_header' -%}
   {% render 'gokwik' %}
   <!-- Boost 6.2.1 -->
   {% render 'head-tag' %}
 
-  <script>
-    const imageUrl = "https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Capsule_Banner_Mobile.webp?v=1717673326";
+  <script defer="defer" async src="https://www.googletagmanager.com/gtag/js?id=G-78RTDVVDKY"></script>
+  <script defer="defer" async>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config','G-78RTDVVDKY',{ 'groups': 'GA4'});
+  </script>
+
+
+  <!-- Google Tag Manager -->
+    <script defer="defer" async>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-5RRQNFF');</script>
+    <!-- End Google Tag Manager -->
+
+  <script defer="defer" async>
+    const imageUrl = "https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Capsule_Mobile_1_1.webp?v=1720505875";
     const preloadLink = document.createElement("link");
     preloadLink.rel = "preload";
     preloadLink.href = imageUrl;
@@ -17,7 +35,7 @@
   <style>
     @media screen and (max-width: 450px){
       body .banner-custom .slide:first-child .rimage-outer-wrapper {
-          background-image: url('https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Capsule_Banner_Mobile.webp?v=1717673326') !important;
+          background-image: url('https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Capsule_Mobile_1_1.webp?v=1720505875') !important;
       }
     }
   </style>
@@ -68,7 +86,7 @@
   <!-- Custom file Shubham Sawant -->
   <link rel="stylesheet" href="{{ 'custom.css' | asset_url }}">
   
-  <script>
+  <script defer="defer" async>
     document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
     window.theme = window.theme || {};
     window.slate = window.slate || {};
@@ -130,27 +148,12 @@
   </script>
 
   {%- if template.directory == 'customers' -%}
-    <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>
+    <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer" async></script>
   {%- endif -%}
   {{ content_for_header }}
 
-  <!-- Add the robots meta tag -->
-  <meta name="robots" content="index,follow" />
-
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
-  </style>
-
-  <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "mmjvj1aisj");
-  </script>
-
   <!-- Hotjar Tracking Code for https://coffeeza.in -->
-  <script>
+  <script async defer="defer">
       (function(h,o,t,j,a,r){
           h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
           h._hjSettings={hjid:5010659,hjsv:6};
@@ -160,12 +163,23 @@
           a.appendChild(r);
       })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
   </script>
+
+  <script type="text/javascript" src="//script.crazyegg.com/pages/scripts/0124/2189.js" defer="defer" async="async"></script>
+
+{% include 'store-credit-launcher' %}
 </head>
 
 <body id="{{ page_title | handle }}" class="template-{{ template | split: '.' | first }}
     {%- if template.suffix %} template-suffix-{{ template.suffix }}{% endif -%}
     {%- if settings.swatch_enabled_productpage %} swatch-method-{{ settings.swatch_method }}{% endif -%}
     {% if settings.animations_enabled != "disabled" %} cc-animate-enabled{% endif %}">
+
+  <!-- Google Tag Manager (noscript) -->
+<noscript defer="defer" async><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5RRQNFF"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  
   <a class="in-page-link visually-hidden skip-link" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
 
   <div class="header-group">
@@ -206,8 +220,6 @@
       
       {% section 'must-try' %}
   
-      <!-- {% section 'hero-section' %} -->
-  
       {% section 'instagram-reels' %}
     {% endif %}
     
@@ -234,17 +246,19 @@
     {% if request.path == '/collections/best-sellers' %}
       {% section 'bestselling-bestsellers' %}
     {% endif %}
+
+    {% if request.path == '/collections/whole-coffee-beans' %}
+      {% section 'bestselling-whole-beans' %}
+    {% endif %}
     
     {% if request.path != '/collections/ground-coffee' %}
-      {{ content_for_layout }}
+      <!--LayoutHub-Workspace-Start-->{{ content_for_layout }}<!--LayoutHub-Workspace-End-->
     {% endif %}
   </main>
 
   {% if request.path != '/' %}
     {% section 'instagram-reels' %}
   {% endif %}
-
-  <!-- {% section 'testimonial-slide' %} -->
   
   {% section 'note-from-founder' %}
   
@@ -264,14 +278,38 @@
     <div class="spinner"></div>
   </div>
 
-  {% render "request-popup" %}
+  {%- if product.type == "Capsule Coffee Machine" -%}
+    {% render "request-popup" %}
+    <script>
+      //Machine Demo
+      document.querySelector(".requedtvideo_demo").addEventListener("click", function() {
+        document.querySelector(".request_popup").style.display = "block";
+      });
+    
+      document.querySelector(".modal-header a.close").addEventListener("click", function() {
+        document.querySelector(".request_popup").style.display = "none";
+      });
+      //Machine Demo
 
-  {% section 'grind-guid-popup' %}
+      const images = document.querySelectorAll('body img');
+  images.forEach((img, index) => {
+    console.log("shubham");
+      img.alt = `Coffeeza Coffee1`;
+  });
+    </script>
+  {% endif %}
+
+    {% section 'grind-guid-popup' %}
+  
+  <!-- custom file Shubham Sawant -->
+  <script src="{{ 'custom.js' | asset_url }}" defer="defer"></script>
   
   <script src="{{ 'vendor.min.js' | asset_url }}" defer="defer"></script>
   <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
-  <!-- custom file Shubham Sawant -->
-  <script src="{{ 'custom.js' | asset_url }}" defer="defer"></script>
-  {% include 'store-credit-launcher' %}
-</body>
+  
+  
+
+{% include 'store-credit-launcher' %}
+{%- render 'layouthub_footer' -%} 
+ </body>
 </html>

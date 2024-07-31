@@ -21,15 +21,6 @@
   <div class="page-footer__inner {% if section.settings.sticky_footer %}sticky-footer{% endif %}">
     {%- if section.settings.show_subscribe_form -%}
       <div class="page-footer__subscribe subscribe-form">
-        <!-- <div class="subscribe-form__heading">
-          {{- section.settings.subscribe_title -}}
-        </div> -->
-
-        <!-- {%- if section.settings.subscribe_description != blank -%}
-          <div class="subscribe-form__text rte small-text">
-            {{- section.settings.subscribe_description -}}
-          </div>
-        {%- endif -%} -->
         <div class="container">
           <div class="page-width d-flex align-center justify-between">
             <div class="left d-flex align-center justify-between">
@@ -138,60 +129,25 @@
         {%- endif -%}
 
         <div class="page-footer__end">
-          <!-- <div>
-            {%- assign small_linklist = section.settings.small_linklist -%}
-            {%- if linklists[small_linklist].links.size > 0 -%}
-              <ul class="small-nav">
-                {%- for link in linklists[small_linklist].links -%}
-                  <li class="small-nav__item">
-                    <a class="small-nav__link" href="{{ link.url }}">{{ link.title }}</a>
-                  </li>
-                {%- endfor -%}
-              </ul>
-            {%- endif -%}
-
-            <small class="copyright-text">
-              {{ 'layout.footer.copyright' | t }} &copy; {{ 'now' | date: "%Y" }} <a href="{{ routes.root_url }}">{{ shop.name }}</a>.
-              {% if section.settings.show_powered_by %}
-                {{ powered_by_link }}
-              {% endif %}
-            </small>
-          </div>
-
-          <div>
-            {%- if section.settings.show_country_selector or section.settings.show_language_selector -%}
-              <div class="footer-localization">
-                {% render 'localization', input_prefix: 'footer' %}
-              </div>
-            {%- endif -%}
-
-            {%- if section.settings.show_payment_icons -%}
-              {% unless shop.enabled_payment_types == empty %}
-                <span class="visually-hidden">{{ 'layout.footer.payment_methods' | t }}</span>
-                <ul class="payment-icons">
-                  {%- for type in shop.enabled_payment_types -%}
-                    <li class="payment-icon">
-                      {{ type | payment_type_svg_tag: class: 'payment-icon-svg' }}
-                    </li>
-                  {%- endfor -%}
-                </ul>
-              {% endunless %}
-            {%- endif -%}
-          </div> -->
+         
 
           <div class="second">
             <div class="left d-flex justify-between align-start">
                 <ul>
+                    <li><a href="https://coffeeza.in/pages/our-story">About Us</a></li>
                     <li><a href="https://coffeeza.in/collections/all">Shop</a></li>
+                    <li><a href="https://coffeeza.in/pages/sale">Offers</a></li>
                     <li><a href="https://coffeeza.wiq.app/">Track Your Order</a></li>
                     <li><a href="https://coffeeza.in/pages/offer">Register Warranty</a></li>
                     <li><a href="https://coffeeza.in/pages/coffeeza-for-business">For Business</a></li>
-                    <li><a href="https://coffeeza.in/products/coffee-capsule-giftbox">Gift Box</a></li>
                     <li><a href="https://coffeeza.in/pages/videos">How-to Videos</a></li>
                     <li><a href="https://coffeeza.in/pages/recipe-videos">Recipe Videos</a></li>
+                    <li><a href="https://coffeeza.in/blogs/coffeeza-blog">Blogs</a></li>
                 </ul>
                 <ul>
                     <li><a href="https://coffeeza.in/pages/contact">Contact Us</a></li>
+                    <li><a href="https://coffeeza.in/pages/hirings">Careers</a></li>
+                    <li><a href="https://coffeeza.in/pages/pages-coffeeza-press-releasest15">Press Releases</a></li>
                     <li><a href="https://coffeeza.in/pages/capsule-recycling-program">Recycling Program</a></li>
                     <li><a href="https://coffeeza.in/policies/terms-of-service">Terms of Service</a></li>
                     <li><a href="https://coffeeza.in/policies/privacy-policy">Privacy Policy</a></li>

@@ -46,7 +46,7 @@
           {{- option.name -}}{% if swatches %} - <span class="js-option-title">{{ option.selected_value }}</span>{% endif %}
         </legend>
 {% endif %}
-{% if product.template_suffix contains 'swatches' and option.name=='Grind' %}
+{% if option.name=='Grind' %}
         <div   class="option-selector__btns option-selector__btns_img">
           {%- for value in option.values -%}
             <div class="picker_wrap_custom">
@@ -77,6 +77,12 @@
     justify-content: space-between;
     cursor: pointer;
     font-weight:500;
+        text-decoration: underline;
+    color: #00f !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    background: none !important;
+    padding: 0 !important;
 }
 .label_wrap {
     display: flex;
@@ -146,7 +152,6 @@ span.picker_caption {
         <div  class="option-selector__btns">
           {% assign iteration_count = 0 %}
           {%- for value in option.values -%}
-            
             <input class="opt-btn js-option" type="radio" name="{{ option_id }}-option" id="{{ option_id }}-opt-{{ forloop.index0 }}" value="{{ value | escape }}"{% if option.selected_value == value %} checked{% endif %}>
             <div class="custom-swatches relative">
               <label class="opt-label{% if swatches == true %}{% if settings.swatch_method == 'image' %} opt-swatch--image{% else %} opt-swatch--dot{% endif %}{% endif %}"
@@ -176,6 +181,3 @@ span.picker_caption {
 
   </div>
 {% endfor %}
-{% if product.type == "ground coffee" %}
-  <div class="grind_guide_btn_new">Grind Guide <img src="//cdn.shopify.com/s/files/1/1308/0907/t/239/assets/question.svg?v=29412005784520030971660282224" alt=""></div>
-{%- endif -%}

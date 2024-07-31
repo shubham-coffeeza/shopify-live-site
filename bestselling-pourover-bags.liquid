@@ -20,7 +20,7 @@
     <div class="bestselling-pourover scroll-slider-wrapper">
         <div class="prod-card">
           {% if bestselling-collection-1 %}
-            {% for product in bestselling-collection-1.products limit:3 %}
+            {% for product in bestselling-collection-1.products limit:4 %}
               {% render 'product-card-grid-list', product: product %}
             {% endfor %}
           {% else %}
@@ -31,10 +31,10 @@
       <button name="prev_button" class="prev"><svg width="60" height="60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160zm352-160l-160 160c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L301.3 256 438.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0z"/></svg></button>
       <button name="next_button" class="next"><svg width="60" height="60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M470.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 256 265.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160zm-352 160l160-160c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L210.7 256 73.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0z"/></svg></button>
     </div>
-    <div class="view-all-collection d-flex justify-center">
+    <!-- <div class="view-all-collection d-flex justify-center">
       <a href="https://coffeeza.in/collections/pour-over-coffee-bags" >
         <button type="button" >View All</button>
       </a>
-    </div>
+    </div> -->
 </div>
 

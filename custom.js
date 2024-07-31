@@ -71,6 +71,7 @@ document.addEventListener("DOMContentLoaded", function() {
   if (window.location.pathname.includes('/policies') || (window.location.pathname === '/pages/warranty-policy') || (window.location.pathname === '/pages/shipping-policy')) {
     document.body.classList.add('custom-policy-page');
   }
+
   //Custom page marking End
 
   // Window Scroll start
@@ -186,7 +187,7 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     });
   });
-
+  
   document.addEventListener('scroll', function() {
       const target = document.querySelector('.multi-tabs');
       const stickyCCFilters = document.querySelector('.multi-tabs .tabs-primary');
@@ -308,76 +309,6 @@ document.addEventListener("DOMContentLoaded", function() {
   });
   //Ground coffee collection filter wrapper end
 
-  //try
-  function updateMoneySaved() {
-    var selectedVariant = Shopify.Product.current_variant;
-    if (selectedVariant && selectedVariant.compare_at_price && selectedVariant.price) {
-      var compareAtPrice = selectedVariant.compare_at_price / 100;
-      var price = selectedVariant.price / 100;
-      var moneySaved = (compareAtPrice - price).toFixed(2);
-      document.getElementById('money-saved').innerText = moneySaved;
-    }
-  }
-  document.querySelectorAll('.option-selector__btns .opt-btn').forEach(function(input) {
-    input.addEventListener('change', updateMoneySaved);
-  });
-  updateMoneySaved();
-  //try
-
-  
-  //Swatches price change dynamically
-  const swatches = document.querySelectorAll('.product-swatch');
-  const discountElement = document.getElementById('discount-percentage');
-
-  swatches.forEach(swatch => {
-    swatch.addEventListener('click', function() {
-      const variantId = this.getAttribute('data-variant-id');
-
-      const variant = getVariantById(variantId); 
-      
-      if (variant && variant.compare_at_price && variant.price) {
-        const originalPrice = variant.compare_at_price;
-        const discountedPrice = variant.price;
-        const percentageOff = Math.round((originalPrice - discountedPrice) * 100 / originalPrice);
-        
-        discountElement.textContent = `${percentageOff}% off`;
-      } else {
-        discountElement.textContent = '';
-      }
-    });
-  });
-
-  function getVariantById(id) {
-    const variants = [
-      {id: '1', compare_at_price: 100, price: 80},
-      {id: '2', compare_at_price: 120, price: 90},
-    ];
-    return variants.find(variant => variant.id === id);
-  }
-  //Swatches price change dynamically
-
-
-  //Percent off in product desc
-  // Function to calculate the percentage off
-  function calculatePercentageOff(originalPrice, discountedPrice) {
-    if (originalPrice > discountedPrice) {
-      return Math.round(((originalPrice - discountedPrice) / originalPrice) * 100);
-    }
-    return 0;
-  }
-
-  // Function to update the percentage off in the DOM
-  function updatePercentageOff(originalPrice, discountedPrice) {
-    const percentageOffElement = document.getElementById('price-off-perc');
-    if (percentageOffElement) {
-      const percentageOff = calculatePercentageOff(originalPrice, discountedPrice);
-      if (percentageOff > 0) {
-        percentageOffElement.textContent = `${percentageOff}% off`;
-      } else {
-        percentageOffElement.textContent = '';
-      }
-    }
-  }
   
   // Example of event listener for swatch change
   document.querySelectorAll('.custom-swatches').forEach(function(swatch) {
@@ -407,11 +338,53 @@ document.addEventListener("DOMContentLoaded", function() {
       grindGuideWrapper.style.display = "none";
   })
   //Grind Guide
-  
-  //Frequently Bought Together
-  document.querySelector('main .cbb-frequently-bought-container').classList.add("o");
-  //Frequently Bought Together
 
+  //lazy loading
+  // let lazyImages = [].slice.call(document.querySelectorAll("img.lazyload"));
+    
+  // if ("IntersectionObserver" in window) {
+  //   let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+  //     entries.forEach(function(entry) {
+  //       if (entry.isIntersecting) {
+  //         let lazyImage = entry.target;
+  //         lazyImage.src = lazyImage.dataset.src;
+  //         lazyImage.classList.remove("lazyload");
+  //         lazyImageObserver.unobserve(lazyImage);
+  //       }
+  //     });
+  //   });
+
+  //   lazyImages.forEach(function(lazyImage) {
+  //     lazyImageObserver.observe(lazyImage);
+  //   });
+  // } else {
+  //   let lazyLoadThrottleTimeout;
+  //   function lazyload() {
+  //     if (lazyLoadThrottleTimeout) {
+  //       clearTimeout(lazyLoadThrottleTimeout);
+  //     }
+
+  //     lazyLoadThrottleTimeout = setTimeout(function() {
+  //       let scrollTop = window.pageYOffset;
+  //       lazyImages.forEach(function(img) {
+  //         if (img.offsetTop < (window.innerHeight + scrollTop)) {
+  //           img.src = img.dataset.src;
+  //           img.classList.remove('lazyload');
+  //         }
+  //       });
+  //       if (lazyImages.length == 0) {
+  //         document.removeEventListener("scroll", lazyload);
+  //         window.removeEventListener("resize", lazyload);
+  //         window.removeEventListener("orientationChange", lazyload);
+  //       }
+  //     }, 20);
+  //   }
+
+  //   document.addEventListener("scroll", lazyload);
+  //   window.addEventListener("resize", lazyload);
+  //   window.addEventListener("orientationChange", lazyload);
+  // }
+  //lazy loading
   
   //Machine Demo
   document.querySelector(".requedtvideo_demo").addEventListener("click", function() {
@@ -422,64 +395,6 @@ document.addEventListener("DOMContentLoaded", function() {
     document.querySelector(".request_popup").style.display = "none";
   });
   //Machine Demo
-
-  //lazy loading
-  let lazyImages = [].slice.call(document.querySelectorAll("img.lazyload"));
-    
-  if ("IntersectionObserver" in window) {
-    let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          let lazyImage = entry.target;
-          lazyImage.src = lazyImage.dataset.src;
-          lazyImage.classList.remove("lazyload");
-          lazyImageObserver.unobserve(lazyImage);
-        }
-      });
-    });
-
-    lazyImages.forEach(function(lazyImage) {
-      lazyImageObserver.observe(lazyImage);
-    });
-  } else {
-    // Fallback for older browsers
-    let lazyLoadThrottleTimeout;
-    function lazyload() {
-      if (lazyLoadThrottleTimeout) {
-        clearTimeout(lazyLoadThrottleTimeout);
-      }
-
-      lazyLoadThrottleTimeout = setTimeout(function() {
-        let scrollTop = window.pageYOffset;
-        lazyImages.forEach(function(img) {
-          if (img.offsetTop < (window.innerHeight + scrollTop)) {
-            img.src = img.dataset.src;
-            img.classList.remove('lazyload');
-          }
-        });
-        if (lazyImages.length == 0) {
-          document.removeEventListener("scroll", lazyload);
-          window.removeEventListener("resize", lazyload);
-          window.removeEventListener("orientationChange", lazyload);
-        }
-      }, 20);
-    }
-
-    document.addEventListener("scroll", lazyload);
-    window.addEventListener("resize", lazyload);
-    window.addEventListener("orientationChange", lazyload);
-  }
-  //lazy loading
-
-  //Aria-label
-var dialogElement = document.querySelector('.banner-custom .slick-track');
-if (dialogElement) {
-    dialogElement.setAttribute('aria-label', 'Descriptive Coffeeza Banner');
-} else {
-    console.error('Element not found');
-}
-//Aria-label
-  
   
 });
 
@@ -489,26 +404,6 @@ function showLoadingOverlay() {
     loadingOverlay.style.opacity = '1';
 }
 showLoadingOverlay();
-
-
-document.addEventListener("DOMContentLoaded", function() {
-    //Aria-label
-    var dialogElement = document.getElementByClassname('.slick-track');
-    if (dialogElement) {
-        dialogElement.setAttribute('aria-label', 'Descriptive Coffeeza Banner');
-    } else {
-        console.error('Element not found 1');
-    }
-    //Aria-label
-  });
-
-document.addEventListener("DOMContentLoaded", function() {
-    const lazyloadedImages = document.querySelectorAll('.slide .rimage-outer-wrapper img');
-  console.log("Number of lazyloaded images foundd:", lazyloadedImages.length);
-    lazyloadedImages.forEach(function(image) {
-        image.classList.add('new-class'); 
-    });
-});
 
 document.addEventListener("DOMContentLoaded", function() {
     let lazyDiv = document.getElementById('lazyDiv');

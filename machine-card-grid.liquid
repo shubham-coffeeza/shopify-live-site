@@ -1,13 +1,12 @@
 <a href="{{ product.url }}" class="container">
   <div class="products">
-    <div class="top">
-        <img loading="lazy" class="prod-img" loading="lazy" width="420" height="250" src="{{ product.featured_image.src | product_img_url: 'large' }}" alt="Coffeeza Coffee">
+    <div class="top product-image-wrapper">
+        <img loading="lazy" class="prod-img hover-first-image" loading="lazy" width="420" height="250" src="{{ product.featured_image.src | product_img_url: 'large' }}" alt="Coffeeza Coffee">
+        <img loading="lazy" class="prod-img hover-second-image" loading="lazy" width="300" height="250" src="{{ product.images[1] | product_img_url: 'large' }}" alt="Coffeeza Coffee">  
         <p class="label-one">
-          {% if product.label-one %}
-            {{ product.label-one }}
-          {% else %}
-            Newly Launched
-          {% endif %}
+          {% if product.metafields.custom.product_sale_label %}
+              {{ product.metafields.custom.product_sale_label }}
+            {% endif %}
         </p>
     </div>
     <div class="data-right">

@@ -3,7 +3,7 @@
     <div class="page-width large-row">
       {% if cart.item_count > 0 %}
         <h1 class="cente large-title">{{ 'cart.general.title' | t }}</h1>
-
+        <!-- <h3 class="cart-promotion">FREE Bryan & Candy Coffee Face Scrub with every coffee order! Limited Offer, T&C Apply.</h3> -->
         <form action="{{ routes.cart_url }}" method="post" novalidate>
           <ul class="cart-items">
             <li class="cart-item flex cart-item--titles">

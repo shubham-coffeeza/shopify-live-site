@@ -1,25 +1,18 @@
 <a href="{{ product.url }}">
   <div class="products">
-      <div class="top">
-          <img loading="lazy" class="prod-img" loading="lazy" width="300" height="250" src="{{ product.featured_image.src | product_img_url: 'large' }}" alt="Coffeeza Coffee">
+      <div class="top product-image-wrapper">
+          <img loading="lazy" class="prod-img hover-first-image" loading="lazy" width="300" height="250" src="{{ product.featured_image.src | product_img_url: 'large' }}" alt="Coffeeza Coffee">
+          <img loading="lazy" class="prod-img hover-second-image" loading="lazy" width="300" height="250" src="{{ product.images[1] | product_img_url: 'large' }}" alt="Coffeeza Coffee">
           <p class="label-one">
             {% if product.metafields.custom.product_sale_label %}
               {{ product.metafields.custom.product_sale_label }}
             {% endif %}
           </p>
-        {% if product.compare_at_price %}
-            {% assign original_price = product.compare_at_price %}
-            {% assign discounted_price = product.price %}
-            {% assign percentage_off = original_price | minus: discounted_price | times: 100 | divided_by: original_price | round %}
-
-            <p class="label-two">
-              {{ percentage_off }}% off
-            </p>
-          {% endif %}
+        
       </div>
       <div class="mid">
           
-          <p class="label-three d-none">{{ product.type }}</p>
+          <p class="label-three d-none">{{ product.id }}</p>
           <h3 class="prod-heading">{{ product.title }}</h3>
           
           <p class="prod-desc">{{ product.description | strip_html | slice: 0, 150 }}</p>
@@ -44,6 +37,20 @@
                   <p class="discount">{{ product.compare_at_price | money }}</p>
               </div>
           </button> -->
+
+        <div class="price-wrapper">
+                  <p class="price">{{ product.price | money }}</p>
+                  <p class="discount">{{ product.compare_at_price | money }}</p>
+                  {% if product.compare_at_price %}
+                    {% assign original_price = product.compare_at_price %}
+                    {% assign discounted_price = product.price %}
+                    {% assign percentage_off = original_price | minus: discounted_price | times: 100 | divided_by: original_price | round %}
+        
+                    <p class="label-two">
+                      {{ percentage_off }}% off
+                    </p>
+                  {% endif %}
+              </div>
 
           {%- form 'product', product, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form', id: 'add-to-cart-form' -%}
             <input
@@ -71,11 +78,8 @@
                   {{ 'products.product.add_to_cart' | t }}
                 {%- endif -%}
               </span>
-              <svg width="30" height="30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg>
-              <div class="price-wrapper">
-                  <p class="price">{{ product.price | money }}</p>
-                  <p class="discount">{{ product.compare_at_price | money }}</p>
-              </div>
+              <!-- <svg width="30" height="30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg> -->
+              
             </button>
           {%- endform -%}
 
@@ -96,11 +100,11 @@
       </div>
       <div class="bottom ">
         <h4 class="bottom-title">
-          {% if product.type == "Coffee Capsules" %}
+          {% if product.type == "Coffee Capsules" or product.id == 8677528305878 or product.id == 8677524832470 or product.id == 8677516280022 or product.id == 8677504876758 %}
               Best Enjoyed As
           {% elsif product.type == "Capsule Coffee Machine" %}
               Your Barista At Home
-          {% elsif product.type == "ground coffee" %}
+          {% elsif product.type == "ground coffee" and product.id != 8677528305878 and product.id != 8677524832470 and product.id != 8677516280022 and product.id != 8677504876758 %}
               Recommended Brewing Style
           {% elsif product.type == "Pour Over Coffee Bags" %}
               Single-Serve Specialty Coffees

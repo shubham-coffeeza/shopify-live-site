@@ -6,6 +6,10 @@
 font-display: swap;
 }
 
+.form_submit_div .btn{
+background: red;
+}
+
 :root {
 --gold: #ffba00;
 --bg: #eee;
@@ -425,14 +429,14 @@ background: #fff;
                 align-items: center;
                 padding-bottom: 10px;
                 padding-top: 10px;
-                    transition: all .5s cubic-bezier(0,0,.5,1);
+                transition: all .5s cubic-bezier(0,0,.5,1);
                 margin-bottom: 0px;
-              overflow-x: auto;
-              animation: top-down 1s cubic-bezier(0.5, 0, 0, 1) 0s; 
+                overflow-x: auto;
+                animation: top-down 1s cubic-bezier(0.5, 0, 0, 1) 0s; 
                 .collection-click{
                       margin-right: 15px;
-                    cursor: pointer;
-                    padding: 10px 10px;
+                  cursor: pointer;
+                  padding: 10px 10px;
                     border: 1px solid gray;
                       border-radius: 10px;
                   &:last-child{
@@ -444,9 +448,9 @@ background: #fff;
                         font-size: 18px;
                         text-transform: capitalize;
                         font-weight: 500;
-                          word-break: auto-phrase;
-                          /* min-width: max-content; */
-                          width: max-content;
+                      word-break: auto-phrase;
+                        /* min-width: max-content; */
+                        width: max-content;
                     }
                     &.active{
                             border-bottom: 5px solid #ffba00;
@@ -457,39 +461,39 @@ background: #fff;
                         }
                     } 
                 }
-              &::-webkit-scrollbar {
-                height: 4px;
-              }
-              
-              &::-webkit-scrollbar-track {
-                  box-shadow: inset 0 0 5px rgb(99, 99, 99); 
-                  border-radius: 6px;
-              }
-              
-              &::-webkit-scrollbar-thumb {
-                  background: #8c8c8c;
-                  border-radius: 6px;
-              }
-              
-              &::-webkit-scrollbar-thumb:hover {
-                  background: #454545; 
-              }
-              &.scrolled-past-must-try{
-                    position: fixed;
-                  top: 70px;
-                  left: 0;
-                  right: 0;
-                  width: calc(100% + 32px);
-                  /* margin-left: -16px; */
-                  padding: 10px 15px;
-                  background: white;
-                  z-index: 999;
-              }
+                &::-webkit-scrollbar {
+                  height: 4px;
+                }
+            
+                &::-webkit-scrollbar-track {
+                    box-shadow: inset 0 0 5px rgb(99, 99, 99); 
+                    border-radius: 6px;
+                }
+                
+                &::-webkit-scrollbar-thumb {
+                    background: #8c8c8c;
+                    border-radius: 6px;
+                }
+                
+                &::-webkit-scrollbar-thumb:hover {
+                    background: #454545; 
+                }
+                &.scrolled-past-must-try{
+                      position: fixed;
+                    top: 70px;
+                    left: 0;
+                    right: 0;
+                    width: calc(100% + 32px);
+                    /* margin-left: -16px; */
+                    padding: 10px 15px;
+                    background: white;
+                    z-index: 999;
+                }
             }       
             .tabs-secondary{
               border-top: 1px solid #c4c4c4;
-              padding-top: 20px;
-              margin-top: 20px;
+            padding-top: 20px;
+            margin-top: 20px;
                 img{
                     max-width: 100%;
                     /* height: auto; */
@@ -1784,7 +1788,7 @@ background: #fff;
               }
             }
             .opt-btn:checked+.custom-swatches {
-               background: #f2ae00;
+               background: #f2ae0087;
                   /* max-width: 100px; */
             }
             
@@ -1861,7 +1865,7 @@ background: #fff;
   .brewing-suggestion{
     img{
       width: 100%;
-      margin-bottom: 50px;
+      /* margin-bottom: 50px; */
       &.desktop{
         display: block;
       }
@@ -2163,7 +2167,7 @@ background: #fff;
 
 &.custom-cart{
   .non-banner-page{
-     margin-top: 75px;
+     margin-top: 70px;
   }
   .cart{
     .cart-items{
@@ -2248,6 +2252,7 @@ background: #fff;
             .cart-discount__label{
               color: #333;
               margin-bottom: 5px;
+                  font-weight: 700;
             }
           }
         }
@@ -2370,6 +2375,22 @@ background: #fff;
   }
   .instagram-reels, .founders-note-wrapper{
     display: none;
+  }
+}
+
+&.custom-thankyou-page{
+  .reading-width{
+    padding: 50px 0;
+  background: #4c924ce0;
+  color: white;
+  border-radius: 20px;
+    h1{
+      text-align: center !important;
+    }
+    .rte{
+      font-size: 16px;
+      font-weight: 700;
+    }
   }
 }
 
@@ -3583,7 +3604,7 @@ background: #fff;
 }
 
 .non-banner-page{
-  margin-top: 100px;
+  margin-top: 70px;
 }
 
 .testimonial-slider {
@@ -4024,7 +4045,7 @@ background: #fff;
               display: none;
             }
             .bottom, .add-to-cart-wrapper svg, .add-to-cart-wrapper .cart-label{
-              display: none;
+              /* display: none; */
             }
           }
         }
@@ -4066,7 +4087,7 @@ background: #fff;
   }
 }
 
-&#finero-next-coffee-machine-milk-frother-10-assorted-capsules-includ{
+&#finero-next-coffee-machine-milk-frother-10-assorted-coffee-capsules{
   .custom-extra-coupon{
     .finero-machine-combo{
       display: block;
@@ -4077,7 +4098,7 @@ background: #fff;
   }
 }
 
-&#finero-next-coffee-machine-free-10-assorted-capsules{
+&#finero-next-coffee-machine-free-10-assorted-coffee-capsules-coffeeza {
   .custom-extra-coupon{
     .finero-machine-combo{
       display: none;
@@ -4098,7 +4119,7 @@ background: #fff;
   .shopify-policy__container{
     max-width: 100ch;
   }
-  .instagram-reels{
+  .instagram-reels, .breadcrumbs-container{
     display: none;
   }
 }
@@ -4250,6 +4271,30 @@ background: #fff;
       font-size: 14px;
       line-height: 1.2;
     }
+    .lh-item-blog{
+      padding: 15px;
+    }
+    .lh-row{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      padding: 15px;
+      .lh-item-article{
+            max-width: 100%;
+          margin-bottom: 0px;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        border-radius: 20px;
+        box-shadow: 0px 5px 15px #d7d7d7;
+        padding: 15px;
+        .lh-article-image img{
+              height: auto;
+            width: 35%;
+            margin: 0 auto;
+        }
+      }
+    }
   }
 }
 
@@ -4306,7 +4351,169 @@ background: #fff;
     }
   }
 }
+
+&#career-with-us{
+  .lh-wrapper .lh-contents{
+    .lh-col-md-8{
+          display: grid;
+      grid-template-columns: auto auto auto;
+      max-width: unset;
+      flex: 1;
+      gap: 15px;
+      .lh-content-title{
+            text-align: left;
+          font-size: 18px;
+      }
+      .lh-content{
+            text-align: left;
+        font-size: 14px !important;
+            margin-bottom: 0px !important;
+        a{
+              color: blue;
+  font-weight: 600;
+        }
+      }
+    }
+  }
+  .lh-slider-wrapper{
+    .lh-overlay{
+      background: unset;
+    }
+    .lh-items_slider{
+      min-height: unset;
+    }
+  }
+  section[data-layouthub="section"]{
+    margin: 0;
+  }
+  .breadcrumbs-container{
+     display: none; 
+  }
+  .non-banner-page{
+    margin-top: 70px;
+  }
+  .instagram-reels{
+    display: none;
+  }
 }
+
+&#capsule-recycling-program, &#bulk-coffee-machines-and-capsules-for-business-coffeeza-for-business, &#coffeeza-blog, &#about-coffeeza, &#register-coffee-machine-warranty, &#how-to-videos, &#recipe-videos, &#contact-us{
+  .breadcrumbs-container, .instagram-reels{
+    display: none;
+  }
+}
+
+&#how-to-videos, &#recipe-videos{
+  .giant-title{
+        text-align: center !important;
+  margin-top: 50px;
+  }
+  .how-to-videos{
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 15px;
+    h4{
+      font-size: 18px;
+          margin-bottom: 0px;
+    }
+    p{
+      width: 100%;
+          margin-bottom: 0px;
+      
+    }
+    .rte__video-wrapper{
+      iframe{
+        position: static;
+        width: 100%;
+        height: 315px;
+      }
+      height: auto;
+      margin: 0;
+    } 
+    .individual-video{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+  }
+  .reading-width{
+        max-width: unset;
+  }
+}
+
+&#coffeeza-blog{
+    .blog{
+      margin-top: 50px;
+      .blog-tags{
+          display: grid;
+          grid-template-columns: repeat(5, 1fr);
+        .overlay-tag {
+              border: 1px solid lightgray;
+            border-radius: 25px;
+            padding: 4px;
+            margin: 5px 10px;
+            font-weight: 700;
+        }
+      }
+      .grid__item-no-gutter{
+        width: 100%;
+      }
+      .products{
+        border-radius: 10px !important;
+        box-shadow: 0 8px 12px #0000002e !important;
+        display: flex !important;
+        .hover-second-image{
+          /* display: none; */
+          height: auto;
+        }
+        .top{
+          .rimage-wrapper {
+            padding-top: 0px !important;
+            img{
+              position: static;
+            }
+          }
+        }
+      }
+    }
+  }
+
+&#bulk-coffee-machines-and-capsules-for-business-coffeeza-for-business{
+  section[data-section-id="wwesygkh2ki"] {
+    top: 75px;
+    display: block !Important;
+    .lh-social_label{
+      display: none;
+    }
+    .lh-social_items::before {
+        content: "Call us for inquiries 1800-123-5171 ";
+        color: white !important;
+        font-size: 16px;
+        font-weight: 700;
+        display: block;
+        text-align: right;
+    }
+    
+    .lh-social_items::after {
+        content: "For Domestic : sales@coffeeza.com For Export : export@coffeeza.com ";
+        color: white !important;
+        font-size: 16px;
+        font-weight: 700;
+        display: block;
+        text-align: right;
+    }
+    .lh-container{
+      max-width: unset;
+    }
+  }
+  section[data-section-id="jez4sob1349"] {
+    display: none !Important;
+  }
+}
+}
+
+
 
 .hover-images--two:hover .image-one{
 opacity: 1;
@@ -5309,6 +5516,50 @@ transform: translateY(-50%);
       display: none !important;
     }
   }
+
+  &#coffeeza-press-releases{
+    .lh-blog-content{
+      .lh-row{
+        grid-template-columns: repeat(1, 1fr);
+      }
+    }
+  }
+
+  &#career-with-us{
+    .lh-wrapper .lh-contents{
+      .lh-col-md-8{
+        grid-template-columns: auto;
+        gap: 0px;
+        
+      
+      }
+    }
+    .lh-wrapper .lh-heading{
+        margin-bottom: 0px;
+    }
+    .non-banner-page{
+      margin-top: 60px;
+    }
+  }
+
+  &#how-to-videos, &#recipe-videos{
+    .how-to-videos{
+      grid-template-columns: auto;
+      .rte__video-wrapper{
+        iframe{
+          height: 170px;
+        }
+      }
+    }
+  }
+
+  &#coffeeza-blog{
+    .blog{
+      .blog-tags{
+          grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  }
 }
 }
 
@@ -5826,9 +6077,9 @@ body{
           .multi-tabs{
               .tabs-primary{
                 justify-content: flex-start;
-                  /* padding: 0 0 20px 0;
-                  flex-wrap: wrap;
-                margin-bottom: 20px; */
+                /* padding: 0 0 20px 0;
+                flex-wrap: wrap;
+              margin-bottom: 20px; */
                   .collection-click{
                     margin: 0 5px 0 0;
                       padding: 5px 5px;
@@ -6469,7 +6720,7 @@ body{
 
   &.custom-cart{
     .non-banner-page{
-       margin-top: 70px;
+       margin-top: 60px;
     }
     .cart{
       .cart-items{
@@ -6825,7 +7076,7 @@ body{
       }
     }
     .brewing-suggestion img{
-       margin-bottom: 40px; 
+       /* margin-bottom: 40px;  */
               margin-top: 0px;
       &.desktop{
         display: none;
@@ -7487,6 +7738,27 @@ body{
         &::-webkit-scrollbar-thumb:hover {
             background: #454545; 
         }
+    }
+  }
+
+  &#bulk-coffee-machines-and-capsules-for-business-coffeeza-for-business{
+    section[data-section-id="wwesygkh2ki"] {
+      top: 70px;
+    }
+    section[data-section-id="riywy4bcftl"] {
+      padding-top: 0px;
+    }
+    section[data-section-id="wpp33zmplw"] {
+      h3, h4{
+        text-align: left;
+        line-height: 1;
+      }
+    }
+    section[data-section-id="l3cyck0dg1h"] {
+      padding-top: 120px;
+      h3{
+        line-height: 1;
+      }
     }
   }
 }

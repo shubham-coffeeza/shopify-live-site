@@ -2,9 +2,9 @@
 {% if animate %} data-cc-animate="{{ animate_style }}"{% if animate > 0 %} data-cc-animate-delay="{{ animate | times: 0.07 }}s"{% endif %}{% endif %}>
   <div class="top product-block__image-container">
     <div class="global-border-radius {% if product.media.size > 1 or settings.product_grid_image_shape == 'natural' or settings.prod_thumb_crop %}hover-images{% endif %} {% if settings.hover_image_enabled == true and product.media.size > 1 %} hover-images--two {% if product.featured_media.preview_image.aspect_ratio == product.media[1].preview_image.aspect_ratio %}same-aspect-ratio{% endif %}{% endif %} relative">
-      <a class="product-block__image product-block__image--shape-{{ settings.product_grid_image_shape }} product-block__image--crop-{{ settings.prod_thumb_crop }} product-block__image--valign-{{ settings.prod_thumb_crop_align }}" href="{{ product.url | within: collection }}">
+      <a class="top product-image-wrapper product-block__image product-block__image--shape-{{ settings.product_grid_image_shape }} product-block__image--crop-{{ settings.prod_thumb_crop }} product-block__image--valign-{{ settings.prod_thumb_crop_align }}" href="{{ product.url | within: collection }}">
         {%- if product.featured_media != blank -%}
-          <div class="image-one">
+          <div class="image-one  hover-first-image">
             {% liquid
               if settings.product_grid_image_shape == 'natural'
                 assign aspect_ratio = false
@@ -22,7 +22,8 @@
             %}
             {% render 'responsive-image', image: product.featured_media.preview_image, aspect_ratio: aspect_ratio %}
           </div>
-          {%- if settings.hover_image_enabled == true and product.media.size > 1 -%}
+          <img loading="lazy" class="prod-img hover-second-image" loading="lazy" width="300" height="250" src="{{ product.images[1] | product_img_url: 'large' }}" alt="Coffeeza Coffee">
+          <!-- {%- if settings.hover_image_enabled == true and product.media.size > 1 -%}
             <div class="image-two">
               <div class="rimage-background fade-in lazyload global-border-radius"
                    data-bgset="{% render 'bgset', image: product.media[1].preview_image %}"
@@ -33,22 +34,14 @@
                 </noscript>
               </div>
             </div>
-          {%- endif -%}
-        {%- else -%}
+          {%- endif -%} -->
+        <!-- {%- else -%}
           {{- product.featured_media.preview_image | img_url: '600x600' | img_tag -}}
-        {%- endif -%}
+        {%- endif -%} -->
       </a>
 
     </div>
-    {% if product.compare_at_price %}
-      {% assign original_price = product.compare_at_price %}
-      {% assign discounted_price = product.price %}
-      {% assign percentage_off = original_price | minus: discounted_price | times: 100 | divided_by: original_price | round %}
-
-      <p class="label-two">
-        {{ percentage_off }}% off
-      </p>
-    {% endif %}
+    
   </div>
 
   <div class="mid">
@@ -64,7 +57,7 @@
       </div>
     {%- endif -%}
 
-    <div class="add-to-cart-wrapper">
+    <!-- <div class="add-to-cart-wrapper">
         <p class="cart-label">Add to cart</p>
         <svg width="30" height="30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg>
         <div class="product-price">
@@ -96,13 +89,57 @@
             <span class="product-label product-label--sold-out global-border-radius">{{ 'products.product.sold_out' | t }}</span>
           {% endif %}
         </div>
-    </div>
-  
+    </div> -->
+
+              <div class="price-wrapper">
+                  <p class="price">{{ product.price | money }}</p>
+                  <p class="discount classic-collection">{{ product.compare_at_price | money }}</p>
+                {% if product.compare_at_price %}
+                  {% assign original_price = product.compare_at_price %}
+                  {% assign discounted_price = product.price %}
+                  {% assign percentage_off = original_price | minus: discounted_price | times: 100 | divided_by: original_price | round %}
+            
+                  <p class="label-two">
+                    {{ percentage_off }}% off
+                  </p>
+                {% endif %}
+              </div>
+    
+          {%- form 'product', product, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form', id: 'add-to-cart-form' -%}
+            <input
+              type="hidden"
+              name="id"
+              value="{{ product.selected_or_first_available_variant.id }}"
+              {% if product.selected_or_first_available_variant.available == false or quantity_rule_soldout %}
+                disabled
+              {% endif %}
+              class="product-variant-id"
+            >
+            <button
+              id="ProductSubmitButton-{{ section_id }}"
+              type="submit"
+              name="add"
+              class="product-form__submit add-to-cart-wrapper button button--full-width {% if show_dynamic_checkout %}button--secondary{% else %}button--primary{% endif %}"
+              {% if product.selected_or_first_available_variant.available == false or quantity_rule_soldout %}
+                disabled
+              {% endif %}
+            >
+              <span class="cart-label">
+                {%- if product.selected_or_first_available_variant.available == false or quantity_rule_soldout -%}
+                  {{ 'products.product.sold_out' | t }}
+                {%- else -%}
+                  {{ 'products.product.add_to_cart' | t }}
+                {%- endif -%}
+              </span>
+              <!-- <svg width="30" height="30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg> -->
+              
+            </button>
+          {%- endform -%}
 
     {%- if settings.enable_product_reviews_collection and product.metafields.reviews.rating_count != blank -%}
       {%- assign rating_count = product.metafields.reviews.rating_count | plus: 0 -%}
       {%- if rating_count > 0 -%}
-        <div class="star-ratings">
+        <div class="star-ratings shubh-try">
           <div class="theme-product-reviews-summary product-block__rating">
             {% render 'rating', rating_value: product.metafields.reviews.rating.value %}
             <span class="cc-rating-custom-caption">
@@ -169,20 +206,38 @@
   </div>
 
   <div class="bottom ">
-    <h4 class="bottom-title">Best Enjoyed As</h4>
-    <div class="more-details-wrapper">
-      <div class="more-details">
-          <img loading="lazy" width="35" height="35" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Espresso.webp?v=1715682106" alt="Coffeeza Coffee">
-          <p>Espresso</p>
+        <h4 class="bottom-title">
+          {% if product.type == "Coffee Capsules" %}
+              Best Enjoyed As
+          {% elsif product.type == "Capsule Coffee Machine" %}
+              Your Barista At Home
+          {% elsif product.type == "ground coffee" %}
+              Recommended Brewing Style
+          {% elsif product.type == "Pour Over Coffee Bags" %}
+              Single-Serve Specialty Coffees
+          {% else %}
+              Extra Specifications
+          {% endif %}
+        </h4>
+        <div class="more-details-wrapper">
+          <div class="more-details">
+              {% if product.metafields.custom.product_bottom_footer_image_one %}
+                <img loading="lazy" loading="lazy" width="35" height="35" src="{{ product.metafields.custom.product_bottom_footer_image_one | img_url: 'large' }}" alt="Coffeeza Coffee">
+              {% endif %}
+              <p>{{ product.metafields.custom.product_footer_label }}</p>
+          </div>
+          <div class="more-details">
+              {% if product.metafields.custom.product_bottom_footer_image_one %}
+                <img loading="lazy" loading="lazy" width="35" height="35" src="{{ product.metafields.custom.product_bottom_footer_image_two | img_url: 'large' }}" alt="Coffeeza Coffee">
+              {% endif %}
+              <p>{{ product.metafields.custom.product_footer_label_two }}</p>
+          </div>
+          <div class="more-details">
+              {% if product.metafields.custom.product_bottom_footer_image_one %}
+                <img loading="lazy" loading="lazy" width="35" height="35" src="{{ product.metafields.custom.product_bottom_footer_image_three | img_url: 'large' }}" alt="Coffeeza Coffee">
+              {% endif %}
+              <p>{{ product.metafields.custom.product_footer_label_three }}</p>
+          </div>
+        </div>
       </div>
-      <div class="more-details">
-          <img loading="lazy" width="35" height="35" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Cappuccino.webp?v=1715682106" alt="Coffeeza Coffee">
-          <p>Cappuccino</p>
-      </div>
-      <div class="more-details">
-          <img loading="lazy" width="35" height="35" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Latte.webp?v=1715682174" alt="Coffeeza Coffee">
-          <p>Latte</p>
-      </div>
-    </div>
-  </div>
 </div>
