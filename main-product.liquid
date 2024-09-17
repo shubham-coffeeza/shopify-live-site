@@ -112,10 +112,10 @@
 
                     
                     {% if product.type == "Capsule Coffee Machine" %}
-                      <div class="custom-extra-coupon">
+                      <!-- <div class="custom-extra-coupon">
                         <p class="finero-machine">Use Code <b>"FINERO300"</b> & Get ₹300/- Additional Discount on Finero Next Coffee Machine. </p>
                         <p class="finero-machine-combo">Use Code <b>"FINERO300"</b> & Get ₹300/- Additional Discount on Finero Next Coffee Machine & Frothimo. </p>
-                      </div>
+                      </div> -->
                       <div class="requedtvideo_demo">
                         <div class="ico_text">
                           <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/virtual-demo.png?v=1665379985" width="20" height="20"  alt="Coffeeza Coffee"/>
@@ -184,7 +184,72 @@
                         });
                       });
                     </script>
+
                     
+                    {%- if product.id == 4380345466970 or product.id == 8515091366102 -%}
+                      <div class="timer-discount-wrapper">
+                        {%- if product.id == 4380345466970 -%}
+                          <p class="limited-keyword">Limited Time Offer</p>
+                        {%- else -%}
+                          <p class="limited-keyword">Special Flash Sale</p>
+                        {% endif %}
+                        <div class="timer-discount">
+                          <img src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/stopwatch-red-flat-colour_78370-7264-removebg-preview.png?v=1724225943" width="50" height="50"  alt="Coffeeza Coffee"/>
+                          <p class="timer-countdown" id="timer">
+                           <span class="hours"></span> : <span class="minutes"></span> : <span class="seconds"></span>
+                          </p>
+                        </div>
+                      </div>
+                      {%- if product.id == 4380345466970 -%}
+                        <p style="color: #d7282f;text-align: left;"><b>Only 1 left in stock</b></p>
+                      {%- else -%}
+                        <p style="color: #d7282f;text-align: left;"><b>Only 4 left in stock</b></p>
+                      {% endif %}
+                      
+                      <script>
+                        function startTimer(duration, display) {
+                          var timer = duration, hours, minutes, seconds;
+                          setInterval(function () {
+                              hours = Math.floor(timer / 3600);
+                              minutes = Math.floor((timer % 3600) / 60);
+                              seconds = Math.floor(timer % 60);
+                      
+                              hours = hours < 10 ? "0" + hours : hours;
+                              minutes = minutes < 10 ? "0" + minutes : minutes;
+                              seconds = seconds < 10 ? "0" + seconds : seconds;
+                      
+                              display.querySelector('.hours').textContent = hours;
+                              display.querySelector('.minutes').textContent = minutes;
+                              display.querySelector('.seconds').textContent = seconds;
+                      
+                              if (timer <= 0) {
+                                  timer = duration; // Reset to 3 hours once it reaches 00:00:00
+                              } else {
+                                  timer--;
+                              }
+                          }, 1000);
+                      }
+                      </script>
+                      
+                      {%- if product.id == 4380345466970 -%}
+                        <script>
+                          var timerDuration = 60 * 60 * 2.46; // 2.46 hours in seconds
+                        </script>
+                      {%- elsif product.id == 8515091366102 -%}
+                        <script>
+                          var timerDuration = 60 * 60 * 43.6; // 48.6 hours in seconds (approx. 2 days)
+                        </script>
+                      {%- endif -%}
+                      
+                      <script>
+                      // window.onload = function () {
+                          display = document.querySelector('#timer');
+                          startTimer(timerDuration, display);
+                      // };
+                      </script>
+                    {% endif %}
+                    
+
 
                     {%- form 'product', product, id: installments_form_id, class: form_class -%}
                       <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" data-product-secondary-select>
@@ -258,12 +323,31 @@
                   </div>
 
                 {%- when 'variant_picker' -%}
+                {%- if product.id == 8694187917526 -%}
+                    <p style="line-height: 1.5; font-weight: 600;letter-spacing: 0.2px;">
+                    Make this Ganesh Chaturthi truly special with our thoughtfully curated gift set. 
+                    <br><br>
+                    Includes:<br>
+                    5 Assorted 50g Ground Coffees<br>
+                    Pastel Fringe Mug<br>
+                    </p>
+                  {% endif %}
                   {%- unless product.has_only_default_variant -%}
                     {% if product.type == "Coffee Capsules" %}
-                      <div class="d-flex row coffee-capsules-compatibility align-center">
-                        <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/nesp_comp.jpg?v=1717670585" alt="Coffeeza Coffee" height="50" width="50">
-                        <p><b>Compatible with all Coffeeza & *Nespresso® original line machines</b></p>
+                      <div class="d-flex row coffee-capsules-compatibility align-center" style="margin-bottom: 0px;">
+                        <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/nesp_comp.jpg?v=1717670585" alt="Coffeeza Coffee" height="40" width="40">
+                        <p><b>Compatible with all Coffeeza & *Nespresso® Original Line Machines</b></p>
                       </div>
+                      <div class="d-flex row coffee-capsules-compatibility align-center" style="margin-top: 0;margin-bottom: 0">
+                        <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/pngtree-set-recycle-recycling-icon-vector-logo-template-illustration-design-eps-10-png-image_5213174.png?v=1725089974" alt="Coffeeza Coffee" height="40" width="40">
+                        <p><b>Eco-friendly Capsules: 80% Recycled Aluminum, Recyclable after use</b></p>
+                      </div>
+                      {% if product.id != 6123826643098 and product.id != 1857037238362 and product.id != 6126576042138 and product.id != 5910425567386 and product.id != 4570526974042 and product.id != 6705159504026 %}
+                        <div class="d-flex row coffee-capsules-compatibility align-center" style="margin-top: 0;">
+                          <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/single_estate1.webp?v=1725108036" alt="Coffeeza Coffee" height="40" width="40">
+                          <p><b>Single-Origin Estate Coffee Blend</b></p>
+                        </div>
+                      {% endif %}
                     {% endif %}
                     
                     <div class="product-detail__options row" {{ block.shopify_attributes }}>
@@ -282,6 +366,105 @@
                     {%- endif -%}
                   {%- endunless -%}
 
+                {% if product.type == "Pour Over Coffee Bags" %}
+                  <div class="available-offers">
+                    <div class="heading"><img src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/offer_3584266.png?v=1724830360" width="25" height="25"> Available Offers</div>
+                    <div class="carousel">
+                      <div class="slides">
+                        <div class="slide">Get 10% OFF on Pour Over Coffee Bags above Rs. 500. Code: <b>POUR10</b></div>
+                        <div class="slide">Earn points with every purchase that can be redeemed for FREE coffee capsules.</div>
+                        <!-- <div class="slide">Slide 2</div> -->
+                        <!-- <div class="slide">Slide 3</div> -->
+                      </div>
+                      <div class="dots">
+                        <span class="dot active" data-slide="0"></span>
+                        <span class="dot" data-slide="1"></span>
+                      </div>
+                    </div>
+                  </div>
+                {%- endif -%}
+
+                {% if product.type == "Coffee Capsules" %}
+                  <div class="available-offers">
+                    <div class="heading"><img src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/offer_3584266.png?v=1724830360" width="25" height="25"> Available Offers</div>
+                    <div class="carousel">
+                      <div class="slides">
+                        <div class="slide">Get 5% OFF on Coffee Capsule purchases above Rs. 500. Code: <b>DEAL5</b></div>
+                        <div class="slide">Get Rs. 200 OFF on purchases above Rs. 2400 <br>Code: <b>FAMILY200</b></div>
+                        <div class="slide">Earn points with every purchase that can be redeemed for FREE coffee capsules.</div>
+                        <!-- <div class="slide">Slide 2</div> -->
+                        <!-- <div class="slide">Slide 3</div> -->
+                      </div>
+                      <div class="dots">
+                        <span class="dot active" data-slide="0"></span>
+                        <span class="dot" data-slide="1"></span>
+                        <span class="dot" data-slide="2"></span>
+                      </div>
+                    </div>
+                  </div>
+                {%- endif -%}
+
+                {% if product.type == "ground coffee" %}
+                  <div class="available-offers">
+                    <div class="heading"><img src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/offer_3584266.png?v=1724830360" width="25" height="25"> Available Offers</div>
+                    <div class="carousel">
+                      <div class="slides">
+                        {%- if product.id == 8687274328278 or product.id == 8694187163862 -%}
+                          <div class="slide">Get 10% OFF on South Indian Filter Coffee above Rs. 500. Code: <b>FILTERSAVE10</b></div>
+                          <div class="slide">Get Rs. 200 OFF on min purchase of Rs. 2400<br>Code: <b>FAMILY200</b></div>
+                          <div class="slide">Earn points with every purchase that can be redeemed for FREE coffee capsules.</div>
+                        {%- else -%}
+                          <div class="slide">Enjoy 10% OFF on all ground coffee purchases over Rs. 500. Code: <b>COFFEELOVER10</b></div>
+                          <div class="slide">Get Rs. 200 OFF on purchases above Rs. 2400<br>Code: <b>FAMILY200</b></div>
+                          <div class="slide">Earn points with every purchase that can be redeemed for FREE coffee capsules.</div>
+                        {%- endif -%}
+                        <!-- <div class="slide">Slide 2</div> -->
+                        <!-- <div class="slide">Slide 3</div> -->
+                      </div>
+                      <div class="dots">
+                        <span class="dot active" data-slide="0"></span>
+                        <span class="dot" data-slide="1"></span>
+                        <span class="dot" data-slide="2"></span>
+                      </div>
+                    </div>
+                  </div>
+                {%- endif -%}
+.
+                {% if product.id == 6146731245722 or product.id == 6672641261722 or product.id == 8700623880406 %}
+                  <div class="available-offers"> 
+                    <div class="heading"><img src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/offer_3584266.png?v=1724830360" width="25" height="25"> Available Offers</div>
+                    <div class="carousel">
+                      <div class="slides">
+                        {% if product.id == 6146731245722 or product.id == 6672641261722 %}
+                          <div class="slide">Get Rs. 300 OFF<br>Code: <b>FINERO300</b></div>
+                          <div class="slide">Earn points with every purchase that can be redeemed for FREE coffee capsules.</div>
+                        {%- else -%}
+                          <div class="slide">Get 5% OFF on Finero Mini Portable Espresso Machine.<br>Code: <b>MINI5</b></div>
+                          <div class="slide">Earn points with every purchase that can be redeemed for FREE coffee capsules.</div>
+                        {%- endif -%}
+                      </div>
+                      <div class="dots">
+                        <span class="dot active" data-slide="0"></span>
+                        <span class="dot" data-slide="1"></span>
+                      </div>
+                    </div>
+                  </div>
+                {%- endif -%}
+
+                {% if product.id == 8515091366102 %}
+                  <div class="available-offers"> 
+                    <div class="heading"><img src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/offer_3584266.png?v=1724830360" width="25" height="25">Special Flash Sale</div>
+                    <div class="carousel">
+                      <div class="slides">
+                          <div class="slide">Save <strong>₹2000</strong> on the Refurbished Lattisso One-Touch Capsule Coffee Machine for the next 48 hours only.<br><br>Code: <b>LAT2000</b></div>
+                      </div>
+                      <div class="dots">
+                        <span class="dot active" data-slide="0"></span>
+                      </div>
+                    </div>
+                  </div>
+                {%- endif -%}
+                
                 {%- when 'buy_buttons' -%}
 
                   {%- if product.id == 8677528305878 -%}
@@ -321,6 +504,33 @@
                     Includes:<br>
                     Belgian Chocolate Flavoured Ground Coffee (Fine Grind) 250gms x 1<br>
                     Moka Pot Coffee Maker 150ml x 1<br>
+                    </p>
+                  {% endif %}
+                {%- if product.id == 5910425567386 -%}
+                    <p style="line-height: 1.5; font-weight: 600;letter-spacing: 0.2px;">
+                    The perfect choice for gifting a coffee lover this festive season. This assorted gift box of 4 is sure to brighten up your loved one’s Diwali. Each gift box contains an assortment of 40 Aluminium coffee capsules. You can choose any 4 blends from our 6 variants.
+                    
+                    </p>
+                  {% endif %}
+                {%- if product.id == 8694187163862 -%}
+                    <p style="line-height: 1.5; font-weight: 600;letter-spacing: 0.2px;">
+                    Celebrate Ganesh Chaturthi with a touch of tradition and elegance. 
+                    <br><br>
+                    Our specially curated gift box includes:<br>
+                    250g of South Indian Filter Coffee with Chicory<br>
+                    Brass Dabara Set<br>
+                    Brass Filter Coffee Maker<br>
+                    </p>
+                  {% endif %}
+                
+                {%- if product.id == 8694831513814 -%}
+                    <p style="line-height: 1.5; font-weight: 600;letter-spacing: 0.2px;">
+                    Brighten up the festivities of your loved ones with the ultimate coffee experience! This beautifully curated gift set includes everything needed to create café-quality beverages right at home. Perfect for gifting joy during the festive season
+                    <br><br>
+                    Includes:<br>
+                    Finero Next Coffee Machine<br>
+                    Milk Frother<br>
+                    20 Assorted Capsules<br>
                     </p>
                   {% endif %}
                 
@@ -423,7 +633,7 @@
                           {%- endif -%}
                         {%- endcapture -%}
                         <button
-                          class="btn {% if enable_dynamic_payment_button == true %}btn--secondary{% endif %}"
+                          class="btn atc-btn {% if enable_dynamic_payment_button == true %}btn--secondary{% endif %}"
                           type="submit"
                           name="add"
                           data-add-to-cart
@@ -758,6 +968,45 @@
       </div>
     </div>
   </div>
+
+  <div class="d-none floating-add-to-cart">
+    <div class="button-wrapper">
+      {%- capture add_to_cart_text -%}
+        {%- if product.template_suffix contains 'preorder' -%}
+          {{- 'products.product.preorder' | t -}}
+        {%- else -%}
+          {{- 'products.product.add_to_cart' | t -}}
+        {%- endif -%}
+      {%- endcapture -%}
+      <button
+        class="btn {% if enable_dynamic_payment_button == true %}btn--secondary{% endif %}"
+        type="submit"
+        name="add"
+        data-add-to-cart
+        {% unless current_variant.available %}disabled{% endunless %}>
+          <span data-add-to-cart-text>
+            {%- if current_variant.available -%}
+              {{ add_to_cart_text }}
+            {%- else -%}
+              {{ 'products.product.sold_out' | t }}
+            {%- endif -%}
+          </span>
+      </button>
+    </div>
+    <script>
+    //   window.addEventListener('scroll', function() {
+    //     const div = document.querySelector('.floating-add-to-cart'); 
+    //     const viewportHeight = window.innerHeight;
+    //     const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    
+    //     if (scrollTop >= viewportHeight) {
+    //         div.classList.remove('d-none');
+    //     } else {
+    //         div.classList.add('d-none');
+    //     }
+    // });
+    </script>
+  </div>
   
   <!-- <button class="container read-more-btn">Read More</button> -->
   
@@ -890,6 +1139,18 @@
         <img loading="lazy" class="mobile" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/vanilla_5acb1488-013e-43e6-8340-e3f7d1c03de2.webp?v=1717500178" alt="Coffeeza Coffee" width="100" height="350">
       </div>
     {%- endif -%}
+    {%- if product.id == 5910425567386 -%}
+      <div class="brewing-suggestion">
+        <img loading="lazy" class="desktop" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/hazelnut.webp?v=1717393196" alt="Coffeeza Coffee" width="100" height="350">
+        <img loading="lazy" class="mobile" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/hazelnut_507727d4-ee6f-4a82-97b4-47fe3d3778e3.webp?v=1717500179" alt="Coffeeza Coffee" width="100" height="350">
+        <img loading="lazy" class="desktop" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/caramel.webp?v=1717393196" alt="Coffeeza Coffee" width="100" height="350">
+        <img loading="lazy" class="mobile" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/caramel_7280cf99-4f02-44ef-aa52-cd0b2c42ff28.webp?v=1717500179" alt="Coffeeza Coffee" width="100" height="350">
+        <img loading="lazy" class="desktop" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/vanilla.webp?v=1717393196" alt="Coffeeza Coffee" width="100" height="350">
+        <img loading="lazy" class="mobile" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/vanilla_5acb1488-013e-43e6-8340-e3f7d1c03de2.webp?v=1717500178" alt="Coffeeza Coffee" width="100" height="350">
+        <img loading="lazy" class="desktop" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/mysore.webp?v=1717393196" alt="Coffeeza Coffee" width="100" height="350">
+        <img loading="lazy" class="mobile" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/mysore_0c2126b5-772d-42b2-abc1-b2792eb71553.webp?v=1717500178" alt="Coffeeza Coffee" width="100" height="350">
+      </div>
+    {%- endif -%}
     {%- if product.id == 6705159504026 -%}
       <div class="brewing-suggestion">
         <img loading="lazy" class="desktop" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/intenso_a189bc28-6903-4117-b8f8-1bc64cf238b2.webp?v=1717393196" alt="Coffeeza Coffee" width="100" height="350">
@@ -991,12 +1252,28 @@
         <img loading="lazy" class="mobile" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Ground_Coffee_Mobile_Caramel-min.png?v=1717671503" alt="Coffeeza Coffee" width="100" height="350">
       </div>
     {%- endif -%}
-    <!-- {%- if product.id == 8687274328278 -%}
+    {%- if product.id == 8694187917526 -%}
       <div class="brewing-suggestion">
-        <img loading="lazy" class="desktop" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/filter_blend_details.webp?v=1722332932" alt="Coffeeza Coffee" width="100" height="350">
-        <img loading="lazy" class="mobile" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/filter_blend_details_mobile.webp?v=1722332932" alt="Coffeeza Coffee" width="100" height="350">
+        <img loading="lazy" class="desktop" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Ground_Coffee_Desktop_Classico-min.png?v=1717671509" alt="Coffeeza Coffee" width="100" height="350">
+        <img loading="lazy" class="mobile" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Ground_Coffee_Mobile_Classico-min.png?v=1717671503" alt="Coffeeza Coffee" width="100" height="350">
+        <img loading="lazy" class="desktop" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Ground_Coffee_Desktop_Intenso-min.png?v=1717671509" alt="Coffeeza Coffee" width="100" height="350">
+        <img loading="lazy" class="mobile" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Ground_Coffee_Mobile_Intenso-min.png?v=1717671503" alt="Coffeeza Coffee" width="100" height="350">
+        <img loading="lazy" class="desktop" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Ground_Coffee_Desktop_Cremoso-min.png?v=1717671509" alt="Coffeeza Coffee" width="100" height="350">
+        <img loading="lazy" class="mobile" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Ground_Coffee_Mobile_Cremoso-min.png?v=1717671503" alt="Coffeeza Coffee" width="100" height="350">
+        <img loading="lazy" class="desktop" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Ground_Coffee_Desktop_Monsooned_Malabar-min.png?v=1717671509" alt="Coffeeza Coffee" width="100" height="350">
+        <img loading="lazy" class="mobile" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Ground_Coffee_Mobile_Monsooned-min.png?v=1717671503" alt="Coffeeza Coffee" width="100" height="350">
+        <img loading="lazy" class="desktop" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Ground_Coffee_Desktop_Vanilla-min.png?v=1717671509" alt="Coffeeza Coffee" width="100" height="350">
+        <img loading="lazy" class="mobile" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Ground_Coffee_Mobile_Vanilla-min.png?v=1717671503" alt="Coffeeza Coffee" width="100" height="350">
+        <img loading="lazy" class="desktop" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Ground_Coffee_Desktop_Mysore_Nuggets-min.png?v=1717671509" alt="Coffeeza Coffee" width="100" height="350">
+        <img loading="lazy" class="mobile" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Ground_Coffee_Mobile_Mysore_Nuggets-min.png?v=1717671503" alt="Coffeeza Coffee" width="100" height="350">
+         <img loading="lazy" class="desktop" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Ground_Coffee_Desktop_Hazelnut-min.png?v=1717671509" alt="Coffeeza Coffee" width="100" height="350">
+        <img loading="lazy" class="mobile" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Ground_Coffee_Mobile_Hazelnut-min.png?v=1717671503" alt="Coffeeza Coffee" width="100" height="350">
+        <img loading="lazy" class="desktop" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Ground_Coffee_Desktop_Belgian_Chocolate-min.png?v=1717671509" alt="Coffeeza Coffee" width="100" height="350">
+        <img loading="lazy" class="mobile" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Ground_Coffee_Mobile_Belgian_Chocolate-min.png?v=1717671503" alt="Coffeeza Coffee" width="100" height="350">
+        <img loading="lazy" class="desktop" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Ground_Coffee_Desktop_Caramel-min.png?v=1717671509" alt="Coffeeza Coffee" width="100" height="350">
+        <img loading="lazy" class="mobile" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Ground_Coffee_Mobile_Caramel-min.png?v=1717671503" alt="Coffeeza Coffee" width="100" height="350">
       </div>
-    {%- endif -%} -->
+    {%- endif -%}
     {%- if product.id == 8663976640726 -%}
       <div class="brewing-suggestion">
         <img loading="lazy" class="desktop" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Ground_Coffee_Desktop_Classico-min.png?v=1717671509" alt="Coffeeza Coffee" width="100" height="350">
@@ -1080,13 +1357,23 @@
       <div class="brewing-suggestion">
         <img loading="lazy" class="desktop" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/filter_blend_details.webp?v=1722332932" alt="Coffeeza Coffee" width="100" height="350">
         <img loading="lazy" class="mobile" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/filter_blend_details_mobile.webp?v=1722332932" alt="Coffeeza Coffee" width="100" height="350">
-        <img loading="lazy" class="desktop" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Filter_desktop.jpg?v=1722407983" alt="Coffeeza Coffee" width="100" height="350">
-        <img loading="lazy" class="mobile" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Filter_Mobile.jpg?v=1722407983" alt="Coffeeza Coffee" width="100" height="350">
+        <img loading="lazy" class="desktop" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/filter_desktop_1_2.webp?v=1722581921" alt="Coffeeza Coffee" width="100" height="350">
+        <img loading="lazy" class="mobile" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/filter_mobile.webp?v=1722579709" alt="Coffeeza Coffee" width="100" height="350">
        
       </div>
     {%- endif -%}
 
-    {%- if product.id != 8677528305878 and product.id != 8677524832470 and product.id != 8677516280022 and product.id != 8677504876758 and product.id != 8687274328278 -%}
+     {%- if product.id == 8694187163862 -%}
+      <div class="brewing-suggestion">
+        <img loading="lazy" class="desktop" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/filter_blend_details.webp?v=1722332932" alt="Coffeeza Coffee" width="100" height="350">
+        <img loading="lazy" class="mobile" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/filter_blend_details_mobile.webp?v=1722332932" alt="Coffeeza Coffee" width="100" height="350">
+        <img loading="lazy" class="desktop" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/filter_desktop_1_2.webp?v=1722581921" alt="Coffeeza Coffee" width="100" height="350">
+        <img loading="lazy" class="mobile" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/filter_mobile.webp?v=1722579709" alt="Coffeeza Coffee" width="100" height="350">
+       
+      </div>
+    {%- endif -%}
+
+    {%- if product.id != 8677528305878 and product.id != 8677524832470 and product.id != 8677516280022 and product.id != 8677504876758 and product.id != 8687274328278 and product.id != 8694187163862 -%}
       <div class="brewing-suggestion">
         <img loading="lazy" class="desktop" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/coffee_farm_1_1c0cef21-c259-4ac0-934c-596aa6093198.webp?v=1717392833" alt="Coffeeza Coffee" width="" height="">
         <img loading="lazy" class="mobile" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/coffee_farm_2a7699ed-0831-4abb-9dff-3d242db8e132.webp?v=1717392832" alt="Coffeeza Coffee" width="" height="">
@@ -1105,6 +1392,20 @@
         <div class="recipe">
           <iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/wYG2MMVAD4o?si=VyPE7bq81QUaN9Zn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
           <iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/eHcmvWMJeT8?si=cwDuWReJyqmkfPgV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+      </div>
+      {%- elsif product.id == 8687274328278 -%}
+      <div class="recipe-video-wrapper container">
+        <h2>How To Videos</h2>
+        <div class="recipe" style="gap: 10px;flex-wrap: nowrap;">
+          <iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/iLJJo1OR9-s?si=lzToa0McvlqeBdDD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+      </div>
+      {%- elsif product.id == 8694187163862 -%}
+      <div class="recipe-video-wrapper container">
+        <h2>How To Videos</h2>
+        <div class="recipe" style="gap: 10px;flex-wrap: nowrap;">
+          <iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/iLJJo1OR9-s?si=lzToa0McvlqeBdDD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
       </div>
       {%- else -%}
@@ -1192,6 +1493,20 @@
         <img loading="lazy"  class="mobile" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/machine_steps.webp?v=1717234562" alt="Coffeeza Coffee" width="1000" height="300" >
       </div>
     {%- endif -%}
+    
+    {%- if product.id == 8700623880406 -%}
+      <div class="brewing-suggestion">
+        <img loading="lazy" class="desktop"  src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/banner1_web.webp?v=1723462375" alt="Coffeeza Coffee" width="1000" height="300" >
+        <img loading="lazy" class="mobile"  src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/banner1.webp?v=1723462375" alt="Coffeeza Coffee" width="1000" height="300" >
+        <img loading="lazy" class="desktop"  src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/banner2_web.webp?v=1723462375" alt="Coffeeza Coffee" width="1000" height="300" >
+        <img loading="lazy" class="mobile"  src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/banner2.webp?v=1723462375" alt="Coffeeza Coffee" width="1000" height="300" >
+        <img loading="lazy" class="desktop"  src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/banner3_web_9224703d-2829-47e0-b22f-d6839161a1dc.webp?v=1723545818" style="    margin-bottom: 30px;" alt="Coffeeza Coffee" width="1000" height="300" >
+        <img loading="lazy" class="mobile"  src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/banner3_63da9b28-db20-41f6-8339-a4051a857aa8.webp?v=1723545818" style="    margin-bottom: 30px;" alt="Coffeeza Coffee" width="1000" height="300" >
+        <img loading="lazy" class="desktop"  src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/banner4_web.webp?v=1723462375" alt="Coffeeza Coffee" width="1000" height="300" >
+        <img loading="lazy" class="mobile"  src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/banner4.webp?v=1723462375" alt="Coffeeza Coffee" width="1000" height="300" >
+      
+      </div>
+    {%- endif -%}
 
     {%- if product.id == 6597911740570 or product.id == 8087924310230 -%}
       <div class="brewing-suggestion">
@@ -1203,7 +1518,7 @@
      <div class="inbetween-banner-wrapper">
         <div class="container d-grid">
           <div class="flex d-flex align-center justify-start">
-            {%- if product.id == 7690206970070 or product.id == 8087924310230 or product.id == 8515091366102 -%}
+            {%- if product.id == 7690206970070 or product.id == 8087924310230 or product.id == 8515091366102 or product.id == 8700623880406 -%}
               <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/6_months_warranty__1_-removebg-preview.png?v=1721125777" alt="Coffeeza Coffee" width="100" height="100">
               <h4>6 Months Warranty</h4>
             {%- elsif product.id == 4380345466970 or product.id == 1987466592346 -%}
@@ -1215,9 +1530,12 @@
             {%- endif -%}
           </div>
           <div class="flex d-flex align-center justify-start">
-            <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Hassle_Free_Service.webp?v=1717133714" alt="Coffeeza Coffee" width="100" height="100">
+            {%- if product.id == 8700623880406 -%}
+              <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/hassle_free_portable.webp?v=1723527703" alt="Coffeeza Coffee" width="100" height="100">
+            {%- else -%}
+              <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Hassle_Free_Service.webp?v=1717133714" alt="Coffeeza Coffee" width="100" height="100">
+            {%- endif -%}
             <h4>Hassle Free Service</h4>
-            
           </div>
           <div class="flex d-flex align-center justify-start">
             <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Express_Delivery.webp?v=1717133714" alt="Coffeeza Coffee" width="100" height="100">
@@ -1233,7 +1551,11 @@
       </div>
     
     <div class="autoplay-videos">
-      <video loading="lazy" src="https://cdn.shopify.com/videos/c/o/v/7c085b8f2f944d0fa0ca423fa2540b2e.mp4" loop="loop" autoplay="autoplay" muted="muted" ></video>
+      {%- if product.id == 8700623880406 -%}
+        <video loading="lazy" src="https://cdn.shopify.com/videos/c/o/v/a577c3448a134dfba28a16a67f82756e.mp4" loop="loop" autoplay="autoplay" muted="muted" ></video>
+      {%- else -%}
+        <video loading="lazy" src="https://cdn.shopify.com/videos/c/o/v/7c085b8f2f944d0fa0ca423fa2540b2e.mp4" loop="loop" autoplay="autoplay" muted="muted" ></video>
+      {%- endif -%}
     </div>
 
     
@@ -1243,6 +1565,10 @@
         <div class="recipe">
           <iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/OWRjcZ3NXbw?si=rRaXhgWvixBz3AC2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
           <iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/r3ZopS1sEJE?si=vNVqwHPcHAygoxV8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+      {%- elsif product.id == 8700623880406 -%}
+        <div class="recipe">
+          <iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/YuNzuUuviO0?si=gRGxYWrKkEhQ6FWg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
       {%- else -%}
         <div class="recipe">

@@ -1,3 +1,4 @@
+console.log("Prod Live");
 document.addEventListener("DOMContentLoaded", function() {
   
   //Loading overlay start
@@ -70,6 +71,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
   if (window.location.pathname.includes('/policies') || (window.location.pathname === '/pages/warranty-policy') || (window.location.pathname === '/pages/shipping-policy')) {
     document.body.classList.add('custom-policy-page');
+  }
+
+  if (window.location.pathname.includes('/one-day-delivery-in-delhi-ncr')) {
+    document.body.classList.add('one-day-delivery');
+  }
+
+  if (window.location.pathname.includes('/orders')) {
+    document.body.classList.add('custom-orders');
   }
 
   //Custom page marking End
@@ -158,49 +167,50 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
   // navbar variety hover end
-
+  
   //Must try wrapper start
-  var divs = document.querySelectorAll(".collection-click");
-  divs.forEach(function(div, index) {
-    div.addEventListener("click", function() {
-      var relatedDiv = document.getElementById("show-" + (index + 1));
-      var allRelatedDivs = document.querySelectorAll('.collection-show');
-      divs.forEach(function(d) {
-        d.classList.remove('active');
-      });
-
-      div.classList.add('active');
-      
-      allRelatedDivs.forEach(function(element) {
-        if (element === relatedDiv) {
-          element.classList.remove("d-none");
-          element.classList.add("d-block");
+  if (window.location.pathname === '/') {
+    var divs = document.querySelectorAll(".collection-click");
+    divs.forEach(function(div, index) {
+      div.addEventListener("click", function() {
+        var relatedDiv = document.getElementById("show-" + (index + 1));
+        var allRelatedDivs = document.querySelectorAll('.collection-show');
+        divs.forEach(function(d) {
+          d.classList.remove('active');
+        });
+  
+        div.classList.add('active');
+        
+        allRelatedDivs.forEach(function(element) {
+          if (element === relatedDiv) {
+            element.classList.remove("d-none");
+            element.classList.add("d-block");
+          } else {
+            element.classList.remove("d-block");
+            element.classList.add("d-none");
+          }
+        });
+        if (window.matchMedia("(max-width: 450px)").matches) {
+          window.scrollTo({top: 550, behavior: 'smooth'});
         } else {
-          element.classList.remove("d-block");
-          element.classList.add("d-none");
+          window.scrollTo({top: 1000, behavior: 'smooth'});
         }
       });
-      if (window.matchMedia("(max-width: 450px)").matches) {
-        window.scrollTo({top: 1550, behavior: 'smooth'});
-      } else {
-        window.scrollTo({top: 2700, behavior: 'smooth'});
-      }
     });
-  });
-  
-  document.addEventListener('scroll', function() {
-      const target = document.querySelector('.multi-tabs');
-      const stickyCCFilters = document.querySelector('.multi-tabs .tabs-primary');
-      const targetPosition = target.getBoundingClientRect().top;
-  
-      if (targetPosition <= 0) {
-          stickyCCFilters.classList.add('scrolled-past-must-try');
-      } else {
-          stickyCCFilters.classList.remove('scrolled-past-must-try');
-      }
-  });
+    
+    document.addEventListener('scroll', function() {
+        const target = document.querySelector('.multi-tabs');
+        const stickyCCFilters = document.querySelector('.multi-tabs .tabs-primary');
+        const targetPosition = target.getBoundingClientRect().top;
+    
+        if (targetPosition <= 0) {
+            stickyCCFilters.classList.add('scrolled-past-must-try');
+        } else {
+            stickyCCFilters.classList.remove('scrolled-past-must-try');
+        }
+    });
+  }
   //Must try wrapper end
-
 
   //Add to cart
     document.addEventListener('DOMContentLoaded', function() {
@@ -245,156 +255,164 @@ document.addEventListener("DOMContentLoaded", function() {
   //Add to cart
   
   //coffee capsule collection filter wrapper start
-  var filters = document.querySelectorAll(".coffee-capsule-everything-wrapper .inner");
-  filters.forEach(function(filter, index) {
-    filter.addEventListener("click", function() {
-      var relatedFilter = document.getElementById("display-filter-category-" + (index + 1));
-      var allRelatedFilters = document.querySelectorAll('.category-wise-filter');
-      filters.forEach(function(d) {
-        d.classList.remove('active');
-      });
-
-      filter.classList.add('active');
-      
-      allRelatedFilters.forEach(function(element) {
-        if (element === relatedFilter) {
-          element.classList.remove("d-none");
-          element.classList.add("d-block");
-        } else {
-          element.classList.remove("d-block");
-          element.classList.add("d-none");
-        }
-      });
-      window.scrollTo({top: 450, behavior: 'smooth'});
-    });
-  });
-
-  document.addEventListener('scroll', function() {
-      const target = document.querySelector('.everything-wrapper');
-      const stickyCCFilters = document.querySelector('.everything-wrapper .main-div-inside');
-      const targetPosition = target.getBoundingClientRect().top;
+  if ((window.location.pathname === '/collections/coffee-capsules' || window.location.pathname.includes('/collections/coffee-capsules') || window.location.pathname.includes('/one-day-delivery-in-delhi-ncr')) && !(window.location.pathname.includes('/products'))) {
   
-      if (targetPosition <= 0) {
-          stickyCCFilters.classList.add('sticky-coffee-capsule-everything');
-      } else {
-          stickyCCFilters.classList.remove('sticky-coffee-capsule-everything');
-      }
-  });
+    var filters = document.querySelectorAll(".coffee-capsule-everything-wrapper .inner");
+    filters.forEach(function(filter, index) {
+      filter.addEventListener("click", function() {
+        var relatedFilter = document.getElementById("display-filter-category-" + (index + 1));
+        var allRelatedFilters = document.querySelectorAll('.category-wise-filter');
+        filters.forEach(function(d) {
+          d.classList.remove('active');
+        });
+  
+        filter.classList.add('active');
+        
+        allRelatedFilters.forEach(function(element) {
+          if (element === relatedFilter) {
+            element.classList.remove("d-none");
+            element.classList.add("d-block");
+          } else {
+            element.classList.remove("d-block");
+            element.classList.add("d-none");
+          }
+        });
+        if((window.location.pathname.includes('/collections/coffee-capsules') || window.location.pathname === '/collections/coffee-capsules')){
+          window.scrollTo({top: 450, behavior: 'smooth'});
+        }
+        else{
+          window.scrollTo({top: 50, behavior: 'smooth'});
+        }
+        
+      });
+    });
+  
+    document.addEventListener('scroll', function() {
+        const target = document.querySelector('.everything-wrapper');
+        const stickyCCFilters = document.querySelector('.everything-wrapper .main-div-inside');
+        const targetPosition = target.getBoundingClientRect().top;
+    
+        if (targetPosition <= 0) {
+            stickyCCFilters.classList.add('sticky-coffee-capsule-everything');
+        } else {
+            stickyCCFilters.classList.remove('sticky-coffee-capsule-everything');
+        }
+    });
+  }
   //coffee capsule collection filter wrapper end
 
   //Ground coffee collection filter wrapper start
-  var groundFilters = document.querySelectorAll(".ground-coffee-everything-wrapper .inner");
-  groundFilters.forEach(function(filter, index) {
-    console.log("1");
-    filter.addEventListener("click", function() {
-      var relatedGroundCoffeeFilter = document.getElementById("display-GCoffee-filter-category-" + (index + 1));
-      var allRelatedGroundFilters = document.querySelectorAll('.category-wise-GCoffee-filter');
-      groundFilters.forEach(function(d) {
-        d.classList.remove('active');
+  if (window.location.pathname === '/collections/ground-coffee' || window.location.pathname.includes('/collections/ground-coffee') && !(window.location.pathname.includes('/products'))) {
+    var groundFilters = document.querySelectorAll(".ground-coffee-everything-wrapper .inner");
+    groundFilters.forEach(function(filter, index) {
+      filter.addEventListener("click", function() {
+        var relatedGroundCoffeeFilter = document.getElementById("display-GCoffee-filter-category-" + (index + 1));
+        var allRelatedGroundFilters = document.querySelectorAll('.category-wise-GCoffee-filter');
+        groundFilters.forEach(function(d) {
+          d.classList.remove('active');
+        });
+  
+        filter.classList.add('active');
+        
+        allRelatedGroundFilters.forEach(function(element) {
+          if (element === relatedGroundCoffeeFilter) {
+            element.classList.remove("d-none");
+            element.classList.add("d-block");
+          } else {
+            element.classList.remove("d-block");
+            element.classList.add("d-none");
+          }
+        });
+        window.scrollTo({top: 450, behavior: 'smooth'});
       });
-
-      filter.classList.add('active');
-      
-      allRelatedGroundFilters.forEach(function(element) {
-        if (element === relatedGroundCoffeeFilter) {
-          element.classList.remove("d-none");
-          element.classList.add("d-block");
-        } else {
-          element.classList.remove("d-block");
-          element.classList.add("d-none");
-        }
-      });
-      window.scrollTo({top: 450, behavior: 'smooth'});
     });
-  });
-  //Ground coffee collection filter wrapper end
 
+    document.addEventListener('scroll', function() {
+        const target = document.querySelector('.everything-wrapper');
+        const stickyCCFilters = document.querySelector('.everything-wrapper .main-div-inside');
+        const targetPosition = target.getBoundingClientRect().top;
+    
+        if (targetPosition <= 0) {
+            stickyCCFilters.classList.add('sticky-coffee-capsule-everything');
+        } else {
+            stickyCCFilters.classList.remove('sticky-coffee-capsule-everything');
+        }
+    });
+  }
   
   // Example of event listener for swatch change
-  document.querySelectorAll('.custom-swatches').forEach(function(swatch) {
-    swatch.addEventListener('click', function() {
-      console.log("SHubham");
+  // document.querySelectorAll('.custom-swatches').forEach(function(swatch) {
+  //   swatch.addEventListener('click', function() {
       // Fetch the new variant prices
-      const newOriginalPrice = parseFloat(swatch.getAttribute('data-compare-price'));
-      const newDiscountedPrice = parseFloat(swatch.getAttribute('data-product-price'));
-      console.log("a:",newOriginalPrice, "b:",newDiscountedPrice);
+      // const newOriginalPrice = parseFloat(swatch.getAttribute('data-compare-price'));
+      // const newDiscountedPrice = parseFloat(swatch.getAttribute('data-product-price'));
       // Update the percentage off
-      updatePercentageOff(newOriginalPrice, newDiscountedPrice);
-    });
-  });
+      // updatePercentageOff(newOriginalPrice, newDiscountedPrice);
+    // });
+  // });
   //Percent off in product desc
+  
+  //Machine Demo
+  if (!(window.location.pathname === '/collections/coffee-machines') && window.location.pathname.includes('/collections/coffee-machines') && (window.location.pathname.includes('/products'))) {
+    document.querySelector(".requedtvideo_demo").addEventListener("click", function() {
+      document.querySelector(".request_popup").style.display = "block";
+    });
+  
+    document.querySelector(".modal-header a.close").addEventListener("click", function() {
+      document.querySelector(".request_popup").style.display = "none";
+    });
+  }
+  //Machine Demo
 
+  if (window.location.pathname.includes('/products')) {
+    const slides = document.querySelector('.slides');
+    const dots = document.querySelectorAll('.dot');
+    const totalSlides = document.querySelectorAll('.slide').length;
+    let currentIndex = 0;
+    let intervalId;
+    
+    function showSlide(index) {
+      currentIndex = index;
+      const offset = -currentIndex * 100;
+      slides.style.transform = `translateX(${offset}%)`;
+      updateDots();
+    }
+    
+    function updateDots() {
+      dots.forEach(dot => dot.classList.remove('active'));
+      dots[currentIndex].classList.add('active');
+    }
+    
+    function showNextSlide() {
+      currentIndex = (currentIndex + 1) % totalSlides;
+      showSlide(currentIndex);
+    }
+    
+    dots.forEach(dot => {
+      dot.addEventListener('click', (event) => {
+        clearInterval(intervalId); // Stop autoplay when a dot is clicked
+        const slideIndex = parseInt(event.target.getAttribute('data-slide'));
+        showSlide(slideIndex);
+        intervalId = setInterval(showNextSlide, 3000); // Restart autoplay
+      });
+    });
+    
+    intervalId = setInterval(showNextSlide, 3000); // Start autoplay
+  }
 
-  //Grind Guide
+    //Grind Guide
   const grindGuideBtn = document.querySelector(".grind_guide_btn_new");
   const grindGuideWrapper = document.querySelector("div#shopify-section-grind-guid-popup");
   const grindGuideClose = document.querySelector(".guide_closs_btn");
-  
   grindGuideBtn.addEventListener("click", function(){
       grindGuideWrapper.style.display = "block";
   })
-
   grindGuideClose.addEventListener("click", function(){
       grindGuideWrapper.style.display = "none";
   })
   //Grind Guide
+  //Ground coffee collection filter wrapper end
 
-  //lazy loading
-  // let lazyImages = [].slice.call(document.querySelectorAll("img.lazyload"));
-    
-  // if ("IntersectionObserver" in window) {
-  //   let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
-  //     entries.forEach(function(entry) {
-  //       if (entry.isIntersecting) {
-  //         let lazyImage = entry.target;
-  //         lazyImage.src = lazyImage.dataset.src;
-  //         lazyImage.classList.remove("lazyload");
-  //         lazyImageObserver.unobserve(lazyImage);
-  //       }
-  //     });
-  //   });
-
-  //   lazyImages.forEach(function(lazyImage) {
-  //     lazyImageObserver.observe(lazyImage);
-  //   });
-  // } else {
-  //   let lazyLoadThrottleTimeout;
-  //   function lazyload() {
-  //     if (lazyLoadThrottleTimeout) {
-  //       clearTimeout(lazyLoadThrottleTimeout);
-  //     }
-
-  //     lazyLoadThrottleTimeout = setTimeout(function() {
-  //       let scrollTop = window.pageYOffset;
-  //       lazyImages.forEach(function(img) {
-  //         if (img.offsetTop < (window.innerHeight + scrollTop)) {
-  //           img.src = img.dataset.src;
-  //           img.classList.remove('lazyload');
-  //         }
-  //       });
-  //       if (lazyImages.length == 0) {
-  //         document.removeEventListener("scroll", lazyload);
-  //         window.removeEventListener("resize", lazyload);
-  //         window.removeEventListener("orientationChange", lazyload);
-  //       }
-  //     }, 20);
-  //   }
-
-  //   document.addEventListener("scroll", lazyload);
-  //   window.addEventListener("resize", lazyload);
-  //   window.addEventListener("orientationChange", lazyload);
-  // }
-  //lazy loading
-  
-  //Machine Demo
-  document.querySelector(".requedtvideo_demo").addEventListener("click", function() {
-    document.querySelector(".request_popup").style.display = "block";
-  });
-
-  document.querySelector(".modal-header a.close").addEventListener("click", function() {
-    document.querySelector(".request_popup").style.display = "none";
-  });
-  //Machine Demo
   
 });
 

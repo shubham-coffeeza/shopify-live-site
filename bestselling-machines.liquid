@@ -24,7 +24,7 @@
     <div class="bestselling-machines  scroll-slider-wrapper">
         <div class="prod-card">
           {% if bestselling-collection-1 %}
-            {% for product in bestselling-collection-1.products limit:8 %}
+            {% for product in bestselling-collection-1.products limit: 9 %}
               {% render 'machine-card-grid-list', product: product %}
               
               {% if forloop.index == 1 %}
@@ -78,6 +78,17 @@
                 </div>
               {% endif %}
 
+              {% if forloop.index == 5 %}
+                <div class="full-width-banner">
+                  <img loading="lazy"  class="desktop" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/banner3_web.webp?v=1723462375" alt="Coffeeza Coffee" width="1000" height="300" >
+                  <img loading="lazy"  class="mobile" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/banner3.webp?v=1723462375" alt="Coffeeza Coffee" width="1000" height="300" >
+                  <!-- <div class="collection-data container">    
+                    <h2 class="collection-title">Bestselling Machine</h2>
+                    <p class="collection-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>  
+                  </div> -->
+                </div>
+              {% endif %}
+
               {% if forloop.index == 4 %}
                 <div class="full-width-banner">
                   <img loading="lazy"  class="desktop" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/coffee_brewing3.webp?v=1717129369" alt="Coffeeza Coffee" width="1000" height="300" >
@@ -89,7 +100,7 @@
                 </div>
               {% endif %}
 
-              {% if forloop.index == 6 %}
+              {% if forloop.index == 7 %}
                 <div class="full-width-banner">
                   <img loading="lazy"  class="desktop" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/freepik-purple-space-stars-desktop-wallpaper-20240720093216X7N8_1.jpg?v=1721468294" alt="Coffeeza Coffee" width="1000" height="300" >
                   <img loading="lazy"  class="mobile" src="https://cdn.shopify.com/s/files/1/0069/2446/8314/files/freepik-purple-space-stars-desktop-wallpaper-20240720094209sItz.jpg?v=1721468590" alt="Coffeeza Coffee" width="1000" height="300" >
@@ -101,7 +112,7 @@
                 
               {% endif %}
 
-              {% if forloop.index == 5 %}
+              {% if forloop.index == 6 %}
                 <div class="inbetween-banner-wrapper">
                   <div class="container d-grid">
                     <div class="flex d-flex align-center justify-start">
@@ -127,7 +138,7 @@
                 </div>
               {% endif %}
 
-              {% if forloop.index == 7 %}
+              {% if forloop.index == 8 %}
                 <div class="inbetween-banner-wrapper">
                   <div class="container d-grid">
                     <div class="flex d-flex align-center justify-start">

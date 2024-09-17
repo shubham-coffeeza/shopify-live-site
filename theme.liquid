@@ -24,7 +24,7 @@
     <!-- End Google Tag Manager -->
 
   <script defer="defer" async>
-    const imageUrl = "https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Capsule_Mobile_1_1.webp?v=1720505875";
+    const imageUrl = "https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Portable_home_page_mobile.webp?v=1723453548";
     const preloadLink = document.createElement("link");
     preloadLink.rel = "preload";
     preloadLink.href = imageUrl;
@@ -35,7 +35,7 @@
   <style>
     @media screen and (max-width: 450px){
       body .banner-custom .slide:first-child .rimage-outer-wrapper {
-          background-image: url('https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Capsule_Mobile_1_1.webp?v=1720505875') !important;
+          background-image: url('https://cdn.shopify.com/s/files/1/0069/2446/8314/files/Portable_home_page_mobile.webp?v=1723453548') !important;
       }
     }
   </style>
@@ -151,22 +151,9 @@
     <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer" async></script>
   {%- endif -%}
   {{ content_for_header }}
-
-  <!-- Hotjar Tracking Code for https://coffeeza.in -->
-  <script async defer="defer">
-      (function(h,o,t,j,a,r){
-          h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-          h._hjSettings={hjid:5010659,hjsv:6};
-          a=o.getElementsByTagName('head')[0];
-          r=o.createElement('script');r.async=1;
-          r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-          a.appendChild(r);
-      })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-  </script>
-
-  <script type="text/javascript" src="//script.crazyegg.com/pages/scripts/0124/2189.js" defer="defer" async="async"></script>
-
+  
 {% include 'store-credit-launcher' %}
+{% include 'creditsyard-script' %}
 </head>
 
 <body id="{{ page_title | handle }}" class="template-{{ template | split: '.' | first }}
@@ -213,12 +200,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="company-intro">
         <h2 class="intro-title">Coffeeza, A Pioneer In India’s Coffee Scene, Curates A Wide Range Of Unique Blends <Span>Using AA Or AAA-Grade Indian Specialty Coffee Across Various Formats</Span>.</h2>
       </div>
-      
-      {% section 'main-categories' %}
+
+      {% section 'must-try' %}
 
       {% section 'exclusive-collection' %}
       
-      {% section 'must-try' %}
+      {% section 'main-categories' %}
   
       {% section 'instagram-reels' %}
     {% endif %}
@@ -250,6 +237,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     {% if request.path == '/collections/whole-coffee-beans' %}
       {% section 'bestselling-whole-beans' %}
     {% endif %}
+
+    {% if request.path == '/pages/machine-virtual-demo' %}
+      {% section 'machine-virtual-demo' %}
+    {% endif %}
+
+    {% if request.path == '/collections/one-day-delivery-in-delhi-ncr' %}
+      {% section 'bestselling-one-day-delivery' %}
+    {% endif %}
     
     {% if request.path != '/collections/ground-coffee' %}
       <!--LayoutHub-Workspace-Start-->{{ content_for_layout }}<!--LayoutHub-Workspace-End-->
@@ -278,6 +273,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="spinner"></div>
   </div>
 
+  {% if request.path contains  '/orders' %}
+    {% render "feedback-popup" %}
+  {%- endif -%}
+
   {%- if product.type == "Capsule Coffee Machine" -%}
     {% render "request-popup" %}
     <script>
@@ -290,12 +289,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         document.querySelector(".request_popup").style.display = "none";
       });
       //Machine Demo
-
-      const images = document.querySelectorAll('body img');
-  images.forEach((img, index) => {
-    console.log("shubham");
-      img.alt = `Coffeeza Coffee1`;
-  });
     </script>
   {% endif %}
 
@@ -306,10 +299,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   
   <script src="{{ 'vendor.min.js' | asset_url }}" defer="defer"></script>
   <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
-  
-  
 
-{% include 'store-credit-launcher' %}
 {%- render 'layouthub_footer' -%} 
- </body>
+ {% include 'store-credit-launcher' %}
+</body>
 </html>
